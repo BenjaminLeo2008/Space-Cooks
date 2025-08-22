@@ -17,7 +17,7 @@ public class GridManager : MonoBehaviour
         grid = new Grid2D<int>(size, offset);
 
         // Ejemplo de uso
-        grid[1, 2] = 99;
+        grid[1, 2] = 10;
         Debug.Log("Valor en (1,2): " + grid[1, 2]);
     }
     void OnDrawGizmos()
