@@ -17,10 +17,10 @@ public class PickUpObject : MonoBehaviour
                 PickedObject = ObjectToPickUp;
                 PickedObject.GetComponent<PickableObject>().IsPickable = false;
                 PickedObject.transform.SetParent(interactionZone);
-                PickedObject.transform.position = interactionZone.position;
+                PickedObject.transform.localPosition = Vector3.zero;
                 PickedObject.GetComponent<Rigidbody>().useGravity = false;
                 PickedObject.GetComponent<Rigidbody>().isKinematic = true;
-                PickedObject.transform.rotation = Quaternion.Euler(Vector3.zero);
+                PickedObject.transform.localRotation = Quaternion.identity;
             }
         }
 
