@@ -405,8 +405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 733d05c41cf15ca4d9b0387544e52096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  min: 1
-  seg: 0
+  min: 0
+  seg: 10
   TimerTxt: {fileID: 1713791836}
 --- !u!114 &324759756
 MonoBehaviour:
@@ -1533,7 +1533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tiempo_image: {fileID: 41878874}
   timer_linear_image: {fileID: 1112920721}
-  max_time: 60
+  max_time: 5
 --- !u!4 &1331269868
 Transform:
   m_ObjectHideFlags: 0
