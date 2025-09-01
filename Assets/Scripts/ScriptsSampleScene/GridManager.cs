@@ -34,4 +34,28 @@ public class GridManager : MonoBehaviour
             }
         }
     }
+    void update()
+    {
+        GridManager gridManager = FindObjectOfType<GridManager>();
+
+// Posición del objeto en el mundo
+Vector3 objectPosition = transform.position;
+
+// Calcula los índices de la celda de la grilla
+int gridX = Mathf.FloorToInt((objectPosition.x - offset.x) / cellSize);
+int gridY = Mathf.FloorToInt((objectPosition.z - offset.y) / cellSize); 
+// Índices de la celda deseada
+int targetX = 2;
+int targetY = 3;
+
+// Calcula la posición en el mundo para el centro de la celda
+Vector3 targetPosition = new Vector3(
+    targetX * cellSize + offset.x + (cellSize / 2f),
+    0f, // Mantén la posición Y en 0, o en la altura deseada
+    targetY * cellSize + offset.y + (cellSize / 2f)
+);
+
+// Mueve el objeto a la nueva posición
+transform.position = targetPosition;
+    }
 }
