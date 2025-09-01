@@ -36,13 +36,25 @@ public class ObjectCatcherScript : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other) {
-        // Check if the child transform exists and the tag matches
-        if (superficieTransform != null && other.gameObject.CompareTag(layer)) {
-            // Set the position of the other object
-            other.gameObject.transform.position = superficieTransform.position + offset;
+  void OnTriggerEnter(Collider other) {
+        if (superficieTransform != null && other.gameObject.CompareTag(layer)) {
+            
+            // 1. Calcula la altura del objeto.
+            // other.bounds.extents.y es la mitad de la altura del collider.
+            float objectHeight = other.bounds.extents.y;
+
+            // 2. Obtiene la posición de la superficie.
+            Vector3 superficiePosition = superficieTransform.position;
+
+            // 3. Calcula la nueva posición del objeto para que su base descanse sobre la superficie.
+            // Mantenemos la 'x' y 'z' de la superficie, pero ajustamos la 'y'.
+            Vector3 newPosition = new Vector3(superficiePosition.x + offset.x, superficiePosition.y + objectHeight + offset.y, superficiePosition.z + offset.z);
+
+            // 4. Asigna la nueva posición al objeto.
+            other.gameObject.transform.position = newPosition;
+            
             Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
             rb.isKinematic = true;
-        }
-    }
+        }
+    }
 }
