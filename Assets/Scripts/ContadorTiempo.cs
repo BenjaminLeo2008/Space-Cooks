@@ -36,6 +36,7 @@ public class ContadorTiempo : MonoBehaviour
             {
                 restante = 0;
                 enMarcha = false;
+                TimerTxt.text = string.Format("{00:00}:{01:00}", 00 ,00);
             }
         }
     }
