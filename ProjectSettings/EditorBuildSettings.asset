@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Juego.unity
     guid: d0c8dd0f06ee4584f853be3314e0c30b
+  - enabled: 1
+    path: Assets/Scenes/EscenaPuntaje.unity
+    guid: b8e8df3a1bf81684da33944c7f2b9953
   m_configObjects: {}

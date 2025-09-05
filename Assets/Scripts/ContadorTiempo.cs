@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 using TMPro;
 
 public class ContadorTiempo : MonoBehaviour
@@ -27,7 +26,10 @@ public class ContadorTiempo : MonoBehaviour
             if (restante > 0)
             {
                 restante -= Time.deltaTime;
-            
+            if (restante < 0)
+                {
+                    restante = 0;
+                }
             int tempMin = Mathf.FloorToInt(restante / 60);
             int tempSeg = Mathf.FloorToInt(restante % 60);
             TimerTxt.text = string.Format("{00:00}:{01:00}", tempMin, tempSeg);
@@ -36,7 +38,6 @@ public class ContadorTiempo : MonoBehaviour
             {
                 restante = 0;
                 enMarcha = false;
-                TimerTxt.text = string.Format("{00:00}:{01:00}", 00 ,00);
             }
         }
     }

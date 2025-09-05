@@ -146,7 +146,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: -19.52}
+  m_AnchoredPosition: {x: -1, y: -19.52}
   m_SizeDelta: {x: 155.17542, y: 61.94603}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &41878876
@@ -784,7 +784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   min: 0
-  seg: 30
+  seg: 5
   TimerTxt: {fileID: 1713791836}
 --- !u!114 &324759756
 MonoBehaviour:
@@ -2725,9 +2725,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01dded3eaae71945a5174df1be78105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tiempo_image: {fileID: 41878874}
+  TiempoUI: {fileID: 41878874}
   timer_linear_image: {fileID: 1112920721}
-  max_time: 30
+  tiempoInicial: 5
+  player: {fileID: 754563316}
+  escenaPuntaje: EscenaPuntaje
 --- !u!4 &1331269868
 Transform:
   m_ObjectHideFlags: 0

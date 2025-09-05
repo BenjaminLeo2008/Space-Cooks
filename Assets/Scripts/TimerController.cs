@@ -2,29 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class TimerController : MonoBehaviour
 {
-    public GameObject Tiempo_image;
+    public GameObject TiempoUI;
     public Image timer_linear_image;
-    float time_remaining;
-    public int max_time = 60;
+
+    public float tiempoInicial = 60f;
+    private float tiempoRestante;
+    public PlayerController player;
+    public string escenaPuntaje = "EscenaPuntaje";
 
     void Start()
     {
-        time_remaining = max_time;
+        tiempoRestante = tiempoInicial;
+        TiempoUI.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (time_remaining > 0)
+        if (tiempoRestante > 0)
         {
-            time_remaining -= Time.deltaTime;
-            timer_linear_image.fillAmount = time_remaining / max_time;
+            tiempoRestante -= Time.deltaTime;
+            timer_linear_image.fillAmount = tiempoRestante / tiempoInicial;
+            if (tiempoRestante <= 0)
+            {
+                tiempoRestante = 0;
+                StartCoroutine(FinDelTiempo());
+            }
         }
-        else
+
+    }
+    IEnumerator FinDelTiempo()
+    {
+        TiempoUI.SetActive(true);
+        if (player != null)
         {
-            Tiempo_image.SetActive(true);
+            player.enabled = false;
         }
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(escenaPuntaje);
     }
 }
