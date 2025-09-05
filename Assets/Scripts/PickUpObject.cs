@@ -8,6 +8,8 @@ public class PickUpObject : MonoBehaviour
     public GameObject PickedObject;
     public Transform interactionZone;
 
+    private Vector3 originalScale; 
+
     void Update()
     {
         if (ObjectToPickUp != null && ObjectToPickUp.GetComponent<PickableObject>().IsPickable == true && PickedObject == null)
@@ -16,14 +18,17 @@ public class PickUpObject : MonoBehaviour
             {
                 PickedObject = ObjectToPickUp;
                 PickedObject.GetComponent<PickableObject>().IsPickable = false;
+
+                
+                originalScale = PickedObject.transform.localScale;
+
                 PickedObject.transform.SetParent(interactionZone);
                 PickedObject.transform.localPosition = Vector3.zero;
+                PickedObject.transform.localRotation = Quaternion.identity;
                 PickedObject.GetComponent<Rigidbody>().useGravity = false;
                 PickedObject.GetComponent<Rigidbody>().isKinematic = true;
-                PickedObject.transform.localRotation = Quaternion.identity;
             }
         }
-
         else if (PickedObject != null)
         {
             if (Input.GetKeyDown(KeyCode.F))
@@ -32,6 +37,10 @@ public class PickUpObject : MonoBehaviour
                 PickedObject.transform.SetParent(null);
                 PickedObject.GetComponent<Rigidbody>().useGravity = true;
                 PickedObject.GetComponent<Rigidbody>().isKinematic = false;
+
+           
+                PickedObject.transform.localScale = originalScale;
+
                 PickedObject = null;
             }
         }

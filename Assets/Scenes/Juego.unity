@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -528,6 +528,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesa (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5914848695028720968, guid: 36fe58e5ae2fd994686482e85d4b8adc,
+        type: 3}
+      propertyPath: boxSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5914848695028720968, guid: 36fe58e5ae2fd994686482e85d4b8adc,
+        type: 3}
+      propertyPath: boxSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5914848695028720968, guid: 36fe58e5ae2fd994686482e85d4b8adc,
+        type: 3}
+      propertyPath: boxSize.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6697421307975695078, guid: 36fe58e5ae2fd994686482e85d4b8adc,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -870,7 +885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b3a3e213e541d48b40dae05f5663cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 1
+  detectionRadius: 0
   col: {fileID: 0}
   layer: Object
   offset: {x: 0, y: 0, z: 0}
