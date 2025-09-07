@@ -11,6 +11,7 @@ public class ObjectCatcherScript : MonoBehaviour
     [SerializeField] private Vector3 offset;
 
     private Transform superficieTransform;
+    private Rigidbody caughtRigidbody; // Nuevo: Referencia al Rigidbody del objeto atrapado
 
     void Start()
     {
@@ -34,25 +35,38 @@ public class ObjectCatcherScript : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.transform.parent == null)
+        // Solo ejecuta el código si no hay un objeto atrapado actualmente
+        if (caughtRigidbody == null)
         {
-            if (superficieTransform != null && other.gameObject.CompareTag(layer))
+            // Verifica que el objeto detectado no sea hijo de otro objeto.
+            if (other.transform.parent == null)
             {
-
-                other.transform.rotation = superficieTransform.rotation;
-
-                float objectHeight = other.bounds.extents.y;
-                Vector3 superficiePosition = superficieTransform.position;
-                Vector3 newPosition = new Vector3(superficiePosition.x + offset.x, superficiePosition.y + objectHeight + offset.y, superficiePosition.z + offset.z);
-
-                other.gameObject.transform.position = newPosition;
-
-                Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
-                if (rb != null)
+                if (superficieTransform != null && other.gameObject.CompareTag(layer))
                 {
-                    rb.isKinematic = true;
+                    //Asigna rotación al objeto catched igual al objeto catcher
+                    other.transform.rotation = superficieTransform.rotation;
+                    //El objeto catcheado se mantiene en la superficie del objeto catcheador
+                    float objectHeight = other.bounds.extents.y;
+                    Vector3 superficiePosition = superficieTransform.position;
+                    Vector3 newPosition = new Vector3(superficiePosition.x + offset.x, superficiePosition.y + objectHeight + offset.y, superficiePosition.z + offset.z);
+
+                    other.gameObject.transform.position = newPosition;
+
+                    Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+                    if (rb != null)
+                    {
+                        rb.isKinematic = true;
+                        caughtRigidbody = rb; // Asigna el Rigidbody del objeto atrapado
+                    }
                 }
             }
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.GetComponent<Rigidbody>() == caughtRigidbody)
+        {
+            caughtRigidbody = null;
         }
     }
 }

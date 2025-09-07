@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerInteractionZone
   - Object
+  - Tile
   layers:
   - Default
   - TransparentFX
