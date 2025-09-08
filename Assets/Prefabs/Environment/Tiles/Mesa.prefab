@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b3a3e213e541d48b40dae05f5663cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 0.6
+  detectionRadius: 0.7
   col: {fileID: 0}
   layer: Object
   offset: {x: 0, y: 0, z: 0}

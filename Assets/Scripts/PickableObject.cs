@@ -8,17 +8,24 @@ public class PickableObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "PlayerInteractionZone")
+        if (other.CompareTag("PlayerInteractionZone"))
         {
-            other.GetComponentInParent<PickUpObject>().ObjectToPickUp = this.gameObject;
+            if (this.transform.parent == null)
+            {
+                other.GetComponentInParent<PickUpObject>().ObjectToPickUp = this.gameObject;
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "PlayerInteractionZone")
+        if (other.CompareTag("PlayerInteractionZone"))
         {
-            other.GetComponentInParent<PickUpObject>().ObjectToPickUp = null;
+            PickUpObject pickUpScript = other.GetComponentInParent<PickUpObject>();
+            if (pickUpScript != null && pickUpScript.ObjectToPickUp == this.gameObject)
+            {
+                pickUpScript.ObjectToPickUp = null;
+            }
         }
     }
 }

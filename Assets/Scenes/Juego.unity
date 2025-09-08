@@ -1792,6 +1792,9 @@ MonoBehaviour:
   ObjectToPickUp: {fileID: 0}
   PickedObject: {fileID: 0}
   interactionZone: {fileID: 1831323619}
+  detectionRadius: 0
+  col: {fileID: 0}
+  layer: 
 --- !u!4 &821934171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8488916972425527394, guid: 36fe58e5ae2fd994686482e85d4b8adc,
@@ -2698,7 +2701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TiempoUI: {fileID: 41878874}
   timer_linear_image: {fileID: 1112920721}
-  tiempoInicial: 5
+  tiempoInicial: 4000
   player: {fileID: 754563316}
   escenaPuntaje: EscenaPuntaje
 --- !u!4 &1331269868
