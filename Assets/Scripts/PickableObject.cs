@@ -28,4 +28,11 @@ public class PickableObject : MonoBehaviour
             }
         }
     }
+    private void CenterObject()
+    {
+        if (IsPickable == false)
+        {
+            gameObject.GetComponent<Rigidbody>();
+        }
+    }
 }

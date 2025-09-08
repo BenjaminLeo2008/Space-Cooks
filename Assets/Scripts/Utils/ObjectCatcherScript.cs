@@ -9,6 +9,9 @@ public class ObjectCatcherScript : MonoBehaviour
     [SerializeField] private SphereCollider col;
     [SerializeField] private string layer;
     [SerializeField] private Vector3 offset;
+    [SerializeField] private Rigidbody PickedRigidbody;
+    private GameObject ObjectToPickUp;
+    private GameObject PickedObject;
 
     private Transform superficieTransform;
     private Rigidbody caughtRigidbody; // Nuevo: Referencia al Rigidbody del objeto atrapado
@@ -31,28 +34,28 @@ public class ObjectCatcherScript : MonoBehaviour
         {
             Debug.LogError("Child GameObject named 'Superficie' not found! Make sure it exists.");
         }
+        PickedRigidbody = PickedObject.GetComponent<Rigidbody>();
     }
-
-    void OnTriggerStay(Collider other)
+  
+    void Update()
     {
-        // Solo ejecuta el código si no hay un objeto atrapado actualmente
-        if (caughtRigidbody == null)
+        if (ObjectToPickUp != null && ObjectToPickUp.GetComponent<PickableObject>().IsPickable == false && PickedObject == null)
         {
             // Verifica que el objeto detectado no sea hijo de otro objeto.
-            if (other.transform.parent == null)
+            if (PickedObject.transform.parent == null)
             {
-                if (superficieTransform != null && other.gameObject.CompareTag(layer))
+                if (superficieTransform != null && PickedObject.gameObject.CompareTag(layer))
                 {
                     //Asigna rotación al objeto catched igual al objeto catcher
-                    other.transform.rotation = superficieTransform.rotation;
+                    PickedObject.transform.rotation = superficieTransform.rotation;
                     //El objeto catcheado se mantiene en la superficie del objeto catcheador
-                    float objectHeight = other.bounds.extents.y;
+                    float objectHeight = PickedObject.GetComponent<Collider>().bounds.extents.y;
                     Vector3 superficiePosition = superficieTransform.position;
                     Vector3 newPosition = new Vector3(superficiePosition.x + offset.x, superficiePosition.y + objectHeight + offset.y, superficiePosition.z + offset.z);
 
-                    other.gameObject.transform.position = newPosition;
+                    PickedObject.gameObject.transform.position = newPosition;
 
-                    Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
+                    Rigidbody rb = PickedRigidbody;
                     if (rb != null)
                     {
                         rb.isKinematic = true;
@@ -69,4 +72,5 @@ public class ObjectCatcherScript : MonoBehaviour
             caughtRigidbody = null;
         }
     }
+    
 }
