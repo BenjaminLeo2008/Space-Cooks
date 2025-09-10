@@ -63,45 +63,4 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
     }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out Tile tile) && !_tileCloseList.Contains(tile))
-        {
-            _tileCloseList.Add(tile);
-
-            if (_closestTile) _closestTile.StopHighlight();
-            _closestTile = GetCloserTile();
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent(out Tile tile))
-        {
-            _tileCloseList.Remove(tile);
-
-            if (_closestTile) _closestTile.StopHighlight();
-            _closestTile = GetCloserTile();
-        }
-    }
-    private void GetCloserTile()
-    {
-        if (_tileCloseList.Count <= 0) return null;
-
-        Tile winnerTile = null;
-        float minDistance = Mathf.Infinity;
-        foreach (Tile tile in _tileCloseList)
-        {
-            float newDistance = Vector3.Distance(transform.position, tile.transform.position);
-            if (newDistance <= minDistance)
-            {
-                winnerTile = tile;
-                minDistance = newDistance;
-            }
-        }
-
-        if (winnerTile) winnerTile.StartHighlight();
-        return winnerTile;
-    }
 }
