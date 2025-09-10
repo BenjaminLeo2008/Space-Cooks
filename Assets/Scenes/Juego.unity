@@ -1806,7 +1806,7 @@ MonoBehaviour:
   ObjectToPickUp: {fileID: 0}
   PickedObject: {fileID: 0}
   interactionZone: {fileID: 1831323619}
-  detectionRadius: 0
+  detectionRadius: 2.5
   col: {fileID: 0}
   layer: Tile
 --- !u!4 &821934171 stripped
@@ -4899,15 +4899,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991992680}
     m_Modifications:
-    - target: {fileID: 359632369, guid: bac20fcdc33efcb44b12a4682fc55422, type: 3}
-      propertyPath: newCreatedPrefab
-      value: 
-      objectReference: {fileID: 4923416749525318658, guid: 56f4079f5a1304346bfa21fc28993422,
-        type: 3}
-    - target: {fileID: 359632369, guid: bac20fcdc33efcb44b12a4682fc55422, type: 3}
-      propertyPath: targetGameObjectName
-      value: Mesa para cortar
-      objectReference: {fileID: 0}
     - target: {fileID: 7341167510941702085, guid: bac20fcdc33efcb44b12a4682fc55422,
         type: 3}
       propertyPath: m_Name
