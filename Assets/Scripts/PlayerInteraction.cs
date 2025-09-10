@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpObject : MonoBehaviour
+public class PlayerInteraction : MonoBehaviour
 {
     public GameObject ObjectToPickUp;
     public GameObject PickedObject;
@@ -10,8 +10,9 @@ public class PickUpObject : MonoBehaviour
     [SerializeField] private float detectionRadius;
     [SerializeField] private SphereCollider col;
     [SerializeField] private string layer;
-
-    private Vector3 originalScale; 
+    private List<GameObject> _tileCloseList = new List<GameObject>();
+    private GameObject _closestTile;
+    private Vector3 originalScale;
     void Start()
     {
         col = GetComponent<SphereCollider>();
@@ -36,7 +37,7 @@ public class PickUpObject : MonoBehaviour
                 PickedObject = ObjectToPickUp;
                 PickedObject.GetComponent<PickableObject>().IsPickable = false;
 
-                
+
                 originalScale = PickedObject.transform.localScale;
 
                 PickedObject.transform.SetParent(interactionZone);
@@ -55,11 +56,52 @@ public class PickUpObject : MonoBehaviour
                 PickedObject.GetComponent<Rigidbody>().useGravity = true;
                 PickedObject.GetComponent<Rigidbody>().isKinematic = false;
 
-           
+
                 PickedObject.transform.localScale = originalScale;
 
                 PickedObject = null;
             }
         }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out Tile tile) && !_tileCloseList.Contains(tile))
+        {
+            _tileCloseList.Add(tile);
+
+            if (_closestTile) _closestTile.StopHighlight();
+            _closestTile = GetCloserTile();
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out Tile tile))
+        {
+            _tileCloseList.Remove(tile);
+
+            if (_closestTile) _closestTile.StopHighlight();
+            _closestTile = GetCloserTile();
+        }
+    }
+    private void GetCloserTile()
+    {
+        if (_tileCloseList.Count <= 0) return null;
+
+        Tile winnerTile = null;
+        float minDistance = Mathf.Infinity;
+        foreach (Tile tile in _tileCloseList)
+        {
+            float newDistance = Vector3.Distance(transform.position, tile.transform.position);
+            if (newDistance <= minDistance)
+            {
+                winnerTile = tile;
+                minDistance = newDistance;
+            }
+        }
+
+        if (winnerTile) winnerTile.StartHighlight();
+        return winnerTile;
     }
 }

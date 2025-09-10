@@ -12,7 +12,7 @@ public class PickableObject : MonoBehaviour
         {
             if (this.transform.parent == null)
             {
-                other.GetComponentInParent<PickUpObject>().ObjectToPickUp = this.gameObject;
+                other.GetComponentInParent<PlayerInteraction>().ObjectToPickUp = this.gameObject;
             }
         }
     }
@@ -21,18 +21,11 @@ public class PickableObject : MonoBehaviour
     {
         if (other.CompareTag("PlayerInteractionZone"))
         {
-            PickUpObject pickUpScript = other.GetComponentInParent<PickUpObject>();
+            PlayerInteraction pickUpScript = other.GetComponentInParent<PlayerInteraction>();
             if (pickUpScript != null && pickUpScript.ObjectToPickUp == this.gameObject)
             {
                 pickUpScript.ObjectToPickUp = null;
             }
-        }
-    }
-    private void CenterObject()
-    {
-        if (IsPickable == false)
-        {
-            gameObject.GetComponent<Rigidbody>();
         }
     }
 }
