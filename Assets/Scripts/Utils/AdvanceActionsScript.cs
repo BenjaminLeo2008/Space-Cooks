@@ -13,6 +13,9 @@ public class AdvanceActionsScript : MonoBehaviour
     // Nombre del GameObject para activar el reemplazo. Configúralo en el Inspector.
     [SerializeField] private string targetGameObjectName;
 
+    // Prefab que se puede entregar, agrégalo desde el Inspector.
+    [SerializeField] private GameObject deliverablePrefab;
+
     // Referencia al ObjectCatcherScript
     private ObjectCatcherScript objectCatcher;
 
@@ -134,10 +137,11 @@ public class AdvanceActionsScript : MonoBehaviour
             objectCatcher.SetPickedObject(newInstance);
         }
     }
+
     // Nueva función para eliminar el objeto agarrado y liberar la referencia.
     private void DeliverObject()
     {
-        if (objectCatcher.PickedObject != null)
+        if (objectCatcher.PickedObject != null && deliverablePrefab != null && objectCatcher.PickedObject.name == deliverablePrefab.name)
         {
             Destroy(objectCatcher.PickedObject);
             objectCatcher.SetPickedObject(null);
