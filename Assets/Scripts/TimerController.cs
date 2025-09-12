@@ -8,15 +8,19 @@ public class TimerController : MonoBehaviour
 {
     public GameObject TiempoUI;
     public Image timer_linear_image;
+    public Image pedidoImage;
 
+    public float tiempoPedido = 15f;
     public float tiempoInicial = 60f;
     private float tiempoRestante;
+    private float tiempoRestantePedido;
     public PlayerController player;
     public string escenaPuntaje = "EscenaPuntaje";
 
     void Start()
     {
         tiempoRestante = tiempoInicial;
+        tiempoRestantePedido = tiempoPedido;
         TiempoUI.SetActive(false);
     }
 
@@ -33,6 +37,11 @@ public class TimerController : MonoBehaviour
                 StartCoroutine(FinDelTiempo());
             }
         }
+                if (tiempoRestantePedido > 0)
+        {
+            tiempoRestantePedido -= Time.deltaTime;
+            pedidoImage.fillAmount = tiempoRestantePedido / tiempoPedido;
+            }
 
     }
     IEnumerator FinDelTiempo()
