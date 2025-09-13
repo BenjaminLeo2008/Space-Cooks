@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!29 &1
 OcclusionCullingSettings:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 0 
   serializedVersion: 2
   m_OcclusionBakeSettings:
     smallestOccluder: 5
@@ -371,9 +371,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-<<<<<<< Updated upstream
-  m_AnchoredPosition: {x: 0, y: 2.0000134}
-=======
   m_AnchoredPosition: {x: 0, y: 12}
 >>>>>>> Stashed changes
   m_SizeDelta: {x: 100, y: 100}
@@ -806,13 +803,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 733d05c41cf15ca4d9b0387544e52096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-  min: 0
-  seg: 60
-=======
   min: 1
   seg: 0
->>>>>>> Stashed changes
   TimerTxt: {fileID: 1713791836}
 --- !u!114 &324759756
 MonoBehaviour:
@@ -978,13 +970,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369673890}
-<<<<<<< Updated upstream
-  m_LocalRotation: {x: 0.0019530616, y: -0.96212476, z: 0.27251524, w: 0.006898394}
-  m_LocalPosition: {x: -47.68692, y: 9.417442, z: 27.095398}
-=======
   m_LocalRotation: {x: -0.3381892, y: 0.62509936, z: -0.3447483, w: -0.61321074}
   m_LocalPosition: {x: 8.168291, y: 14.080983, z: 15.1837635}
->>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2069,11 +2056,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-<<<<<<< Updated upstream
-  m_AnchoredPosition: {x: 0, y: 2}
-=======
   m_AnchoredPosition: {x: 0, y: 8.000023}
->>>>>>> Stashed changes
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &901764400
@@ -3036,15 +3019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TiempoUI: {fileID: 41878874}
   timer_linear_image: {fileID: 1112920721}
-<<<<<<< Updated upstream
-  pedidoImage: {fileID: 1446150820}
-  tiempoPedido: 15
-  tiempoInicial: 40000000
-  player: {fileID: 754563316}
-  escenaPuntaje: EscenaPuntaje
-=======
   max_time: 60
->>>>>>> Stashed changes
 --- !u!4 &1331269868
 Transform:
   m_ObjectHideFlags: 0
