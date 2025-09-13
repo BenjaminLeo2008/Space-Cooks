@@ -22,6 +22,8 @@ public class AdvanceActionsScript : MonoBehaviour
     // Variable para rastrear si el jugador está dentro del área del collider.
     private bool _isPlayerInTrigger = false;
 
+    public PlayerController player;
+
     void Start()
     {
         // Obtiene la referencia al ObjectCatcherScript en el mismo GameObject
@@ -92,6 +94,12 @@ public class AdvanceActionsScript : MonoBehaviour
     // Corrutina para reemplazar el objeto después de un retraso
     private IEnumerator ReplacePickedObjectDelayed(float delay)
     {
+        // Deshabilita el script del jugador para que no pueda interactuar
+        if (player != null)
+        {
+            player.enabled = false;
+        }
+
         // Espera el tiempo especificado antes de continuar
         yield return new WaitForSeconds(delay);
 
@@ -116,6 +124,11 @@ public class AdvanceActionsScript : MonoBehaviour
             }
             // Llama a la función del otro script para actualizar el objeto
             objectCatcher.SetPickedObject(newInstance);
+        }
+        // Habilita el script del jugador al final de la corrutina
+        if (player != null)
+        {
+            player.enabled = true;
         }
     }
 

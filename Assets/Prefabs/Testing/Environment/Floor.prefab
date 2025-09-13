@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 2180153873684757646}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadius: 0.6
-  col: {fileID: 0}
-  layer: Object
   offset: {x: 0, y: 0, z: 0}
+  ObjectToPickUp: {fileID: 0}
+  pickedObject: {fileID: 0}
+  interactionZone: {fileID: 0}

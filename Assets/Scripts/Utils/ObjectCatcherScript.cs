@@ -1,18 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class ObjectCatcherScript : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private float detectionRadius;
-    [SerializeField] private string layerTag;
     [SerializeField] private Vector3 offset;
 
     private SphereCollider _col;
     private Transform _superficieTransform;
     private GameObject _pickedObject;
     private Rigidbody _caughtRigidbody;
+
+    public GameObject ObjectToPickUp;
+    public GameObject pickedObject;
+    public Transform interactionZone;
+    private Vector3 originalScale;
 
     // Propiedad pública para que otros scripts puedan leer el objeto atrapado.
     public GameObject PickedObject => _pickedObject;
@@ -57,29 +62,64 @@ public class ObjectCatcherScript : MonoBehaviour
     // El Update se encargará de posicionar el objeto solo si ya ha sido detectado
     void Update()
     {
-        // Solo ejecuta la lógica si un objeto ha sido atrapado
-        if (_pickedObject != null)
+        if (gameObject.CompareTag("Tile") || gameObject.CompareTag("Floor"))
         {
-            // Opcional: Asegúrate de que el objeto no tiene un padre (esto ayuda a evitar problemas)
-            if (_pickedObject.transform.parent == null)
+            // Solo ejecuta la lógica si un objeto ha sido atrapado
+            if (_pickedObject != null)
             {
-                // Verifica que la superficie exista y el objeto tenga el tag correcto
-                if (_superficieTransform != null && _pickedObject.CompareTag(layerTag))
+                // Opcional: Asegúrate de que el objeto no tiene un padre (esto ayuda a evitar problemas)
+                if (_pickedObject.transform.parent == null)
                 {
-                    // Obtiene la altura del objeto con su collider
-                    float objectHeight = _pickedObject.GetComponent<Collider>().bounds.extents.y;
-                    Vector3 superficiePosition = _superficieTransform.position;
+                    // Verifica que la superficie exista y el objeto tenga el tag correcto
+                    if (_superficieTransform != null && _pickedObject.CompareTag("Object") || _pickedObject.CompareTag("Plate"))
+                    {
+                        // Obtiene la altura del objeto con su collider
+                        float objectHeight = _pickedObject.GetComponent<Collider>().bounds.extents.y;
+                        Vector3 superficiePosition = _superficieTransform.position;
 
-                    // Calcula la nueva posición del objeto
-                    Vector3 newPosition = new Vector3(
-                        superficiePosition.x + offset.x,
-                        superficiePosition.y + objectHeight + offset.y,
-                        superficiePosition.z + offset.z
-                    );
+                        // Calcula la nueva posición del objeto
+                        Vector3 newPosition = new Vector3(
+                            superficiePosition.x + offset.x,
+                            superficiePosition.y + objectHeight + offset.y,
+                            superficiePosition.z + offset.z
+                        );
 
-                    // Establece la rotación y posición
-                    _pickedObject.transform.rotation = _superficieTransform.rotation;
-                    _pickedObject.transform.position = newPosition;
+                        // Establece la rotación y posición
+                        _pickedObject.transform.rotation = _superficieTransform.rotation;
+                        _pickedObject.transform.position = newPosition;
+                    }
+                }
+            }
+        }
+        else if (gameObject.CompareTag("Plate"))
+        {
+            // Solo ejecuta la lógica si un objeto ha sido atrapado
+            if (_pickedObject != null)
+            {
+                // Opcional: Asegúrate de que el objeto no tiene un padre (esto ayuda a evitar problemas)
+                if (_pickedObject.transform.parent == null)
+                {
+                    // Verifica que la superficie exista y el objeto tenga el tag correcto
+                    if (_superficieTransform != null && _pickedObject.CompareTag("Object") || _pickedObject.CompareTag("Plate"))
+                    {
+                        // Obtiene la altura del objeto con su collider
+                        float objectHeight = _pickedObject.GetComponent<Collider>().bounds.extents.y;
+                        Vector3 superficiePosition = _superficieTransform.position;
+
+                        // Calcula la nueva posición del objeto
+                        Vector3 newPosition = new Vector3(
+                            superficiePosition.x + offset.x,
+                            superficiePosition.y + objectHeight + offset.y,
+                            superficiePosition.z + offset.z
+                        );
+
+                        // Establece la posición y rotación del objeto
+                        _pickedObject.transform.position = newPosition;
+                        _pickedObject.transform.rotation = _superficieTransform.rotation;
+                        originalScale = _pickedObject.transform.localScale;
+                        // Una vez posicionado, establece el padre
+                        _pickedObject.transform.SetParent(interactionZone);
+                    }
                 }
             }
         }
@@ -89,7 +129,7 @@ public class ObjectCatcherScript : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // Detecta el objeto solo si no estamos sosteniendo uno y si tiene el tag correcto
-        if (_pickedObject == null && other.gameObject.CompareTag(layerTag))
+        if (_pickedObject == null && other.gameObject.CompareTag("Object") || other.gameObject.CompareTag("Plate"))
         {
             // Obtiene el Rigidbody del objeto que entró
             Rigidbody rb = other.GetComponent<Rigidbody>();

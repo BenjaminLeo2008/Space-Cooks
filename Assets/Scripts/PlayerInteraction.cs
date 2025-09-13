@@ -6,7 +6,7 @@ public class PlayerInteraction : MonoBehaviour
 {
     public GameObject ObjectToPickUp;
     public GameObject PickedObject;
-    public Transform interactionZone;
+    public Transform PlayerInteractionZone;
     [SerializeField] private float detectionRadius;
     [SerializeField] private SphereCollider col;
     [SerializeField] private string layer;
@@ -40,7 +40,7 @@ public class PlayerInteraction : MonoBehaviour
 
                 originalScale = PickedObject.transform.localScale;
 
-                PickedObject.transform.SetParent(interactionZone);
+                PickedObject.transform.SetParent(PlayerInteractionZone);
                 PickedObject.transform.localPosition = Vector3.zero;
                 PickedObject.transform.localRotation = Quaternion.identity;
                 PickedObject.GetComponent<Rigidbody>().useGravity = false;
