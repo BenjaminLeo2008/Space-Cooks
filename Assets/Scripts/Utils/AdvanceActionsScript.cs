@@ -15,6 +15,7 @@ public class AdvanceActionsScript : MonoBehaviour
 
     // Prefab que se puede entregar, agrégalo desde el Inspector.
     [SerializeField] private GameObject deliverablePrefab;
+    [SerializeField] private GameObject replaceablePrefab;
 
     // Referencia al ObjectCatcherScript
     private ObjectCatcherScript objectCatcher;
@@ -67,6 +68,16 @@ public class AdvanceActionsScript : MonoBehaviour
                 DeliverObject();
             }
         }
+        else if (targetGameObjectName == "Mesa para eliminar")
+        {
+            // Solo se ejecuta si el "Player" está en el trigger, se presiona 'Q'
+            // y ya se tiene un objeto en la mano.
+            if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.Q) && objectCatcher.PickedObject != null)
+            {
+                // Si el nombre no coincide, ejecuta la función de reemplazo.
+                DestroyObject();
+            }
+        }
         else
         {
             Debug.Log("El GameObject de nombre " + gameObject.name + " no tiene acciones avanzadas");
@@ -94,41 +105,46 @@ public class AdvanceActionsScript : MonoBehaviour
     // Corrutina para reemplazar el objeto después de un retraso
     private IEnumerator ReplacePickedObjectDelayed(float delay)
     {
-        // Deshabilita el script del jugador para que no pueda interactuar
-        if (player != null)
+        // Corrección: Comprobamos si el nombre del objeto sostenido comienza con el nombre del prefab
+        // Esto soluciona el problema de que Instantiate agrega "(Clone)" al nombre.
+        if (objectCatcher.PickedObject.name.StartsWith(replaceablePrefab.name))
         {
-            player.enabled = false;
-        }
-
-        // Espera el tiempo especificado antes de continuar
-        yield return new WaitForSeconds(delay);
-
-        // Accede al objeto atrapado a través de la propiedad pública "PickedObject"
-        if (objectCatcher.PickedObject != null && newObjectPrefab != null)
-        {
-            // Obtiene la posición y rotación del objeto actual
-            Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
-            Quaternion currentRotation = objectCatcher.PickedObject.transform.rotation;
-
-            // Destruye el objeto actual
-            Destroy(objectCatcher.PickedObject);
-
-            // Instancia el nuevo objeto desde el prefab en la misma posición y rotación
-            GameObject newInstance = Instantiate(newObjectPrefab, currentPosition, currentRotation);
-
-            // Nos aseguramos de que el nuevo objeto tenga un Rigidbody y lo hacemos cinemático.
-            Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
-            if (newRb != null)
+            // Deshabilita el script del jugador para que no pueda interactuar
+            if (player != null)
             {
-                newRb.isKinematic = true;
+                player.enabled = false;
             }
-            // Llama a la función del otro script para actualizar el objeto
-            objectCatcher.SetPickedObject(newInstance);
-        }
-        // Habilita el script del jugador al final de la corrutina
-        if (player != null)
-        {
-            player.enabled = true;
+
+            // Espera el tiempo especificado antes de continuar
+            yield return new WaitForSeconds(delay);
+
+            // Accede al objeto atrapado a través de la propiedad pública "PickedObject"
+            if (objectCatcher.PickedObject != null && newObjectPrefab != null)
+            {
+                // Obtiene la posición y rotación del objeto actual
+                Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
+                Quaternion currentRotation = objectCatcher.PickedObject.transform.rotation;
+
+                // Destruye el objeto actual
+                Destroy(objectCatcher.PickedObject);
+
+                // Instancia el nuevo objeto desde el prefab en la misma posición y rotación
+                GameObject newInstance = Instantiate(newObjectPrefab, currentPosition, currentRotation);
+
+                // Nos aseguramos de que el nuevo objeto tenga un Rigidbody y lo hacemos cinemático.
+                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
+                if (newRb != null)
+                {
+                    newRb.isKinematic = true;
+                }
+                // Llama a la función del otro script para actualizar el objeto
+                objectCatcher.SetPickedObject(newInstance);
+            }
+            // Habilita el script del jugador al final de la corrutina
+            if (player != null)
+            {
+                player.enabled = true;
+            }
         }
     }
 
@@ -154,7 +170,15 @@ public class AdvanceActionsScript : MonoBehaviour
     // Nueva función para eliminar el objeto agarrado y liberar la referencia.
     private void DeliverObject()
     {
-        if (objectCatcher.PickedObject != null && deliverablePrefab != null && objectCatcher.PickedObject.name == deliverablePrefab.name)
+        if (deliverablePrefab != null && objectCatcher.PickedObject.name == deliverablePrefab.name)
+        {
+            Destroy(objectCatcher.PickedObject);
+            objectCatcher.SetPickedObject(null);
+        }
+    }
+    private void DestroyObject()
+    {
+        if (objectCatcher.PickedObject != null)
         {
             Destroy(objectCatcher.PickedObject);
             objectCatcher.SetPickedObject(null);

@@ -43,6 +43,7 @@ public class PlayerInteraction : MonoBehaviour
                 PickedObject.transform.SetParent(PlayerInteractionZone);
                 PickedObject.transform.localPosition = Vector3.zero;
                 PickedObject.transform.localRotation = Quaternion.identity;
+                PickedObject.transform.localScale = originalScale; // Establece la escala local del objeto recogido
                 PickedObject.GetComponent<Rigidbody>().useGravity = false;
                 PickedObject.GetComponent<Rigidbody>().isKinematic = true;
             }

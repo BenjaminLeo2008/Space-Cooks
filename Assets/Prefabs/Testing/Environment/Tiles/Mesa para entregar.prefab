@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7037263672848958942}
   - component: {fileID: 5076137909934334196}
+  - component: {fileID: 2859547287945079339}
   m_Layer: 0
   m_Name: Mesa para entregar
   m_TagString: Tile
@@ -167,5 +168,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadius: 0.7
-  layerTag: Object
   offset: {x: 0, y: 0, z: 0}
+  ObjectToPickUp: {fileID: 0}
+  pickedObject: {fileID: 0}
+  interactionZone: {fileID: 0}
+--- !u!114 &2859547287945079339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5813442851220101272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dee09d9846a31e42a86df3dc430de21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newObjectPrefab: {fileID: 0}
+  newCreatedPrefab: {fileID: 0}
+  targetGameObjectName: Mesa para entregar
+  deliverablePrefab: {fileID: 4330891420389143234, guid: f522fbf0196e73141b1db434f7a371ef,
+    type: 3}
+  replaceablePrefab: {fileID: 0}
+  player: {fileID: 0}
