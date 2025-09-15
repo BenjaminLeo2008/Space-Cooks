@@ -5,23 +5,33 @@ using UnityEngine.UI;
 
 public class PedidosScript : MonoBehaviour
 {
-    public float tiempoPedido = 15f;
-    private float tiempoRestantePedido;
-    public Image pedidoImage;
+    public List<Image> timeBars;
+    private float totalTime;
+    private float remainingTime;
     
     // Start is called before the first frame update
-    void Start()
+    public void StartTimer(float maxTime)
     {
-        tiempoRestantePedido = tiempoPedido;
+        totalTime = maxTime;
+        remainingTime = maxTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-                        if (tiempoRestantePedido > 0)
+        if (remainingTime > 0)
         {
-            tiempoRestantePedido -= Time.deltaTime;
-            pedidoImage.fillAmount = tiempoRestantePedido / tiempoPedido;
+            remainingTime -= Time.deltaTime;
+            float fillAmount = remainingTime / totalTime;
+
+            foreach (Image bar in timeBars)
+            {
+                bar.fillAmount = fillAmount;
             }
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
