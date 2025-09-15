@@ -188,7 +188,7 @@ MonoBehaviour:
     type: 3}
   newCreatedPrefab: {fileID: 4923416749525318658, guid: 56f4079f5a1304346bfa21fc28993422,
     type: 3}
-  targetGameObjectName: Mesa para cortar
+  targetGameObjectName: Mesa para reemplazar
   deliverablePrefab: {fileID: 0}
   replaceablePrefab: {fileID: 4923416749525318658, guid: 56f4079f5a1304346bfa21fc28993422,
     type: 3}

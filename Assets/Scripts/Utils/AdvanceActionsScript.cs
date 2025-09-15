@@ -48,7 +48,7 @@ public class AdvanceActionsScript : MonoBehaviour
                 CreateObjectAndGrab();
             }
         }
-        else if (targetGameObjectName == "Mesa para cortar")
+        else if (targetGameObjectName == "Mesa para reemplazar")
         {
             // Solo se ejecuta si el "Player" está en el trigger, se presiona 'Q'
             // y ya se tiene un objeto en la mano.

@@ -19,6 +19,8 @@ public class ObjectCatcherScript : MonoBehaviour
     public Transform interactionZone;
     private Vector3 originalScale;
 
+    public transform PlayerInteractionZone;
+
     // Propiedad pública para que otros scripts puedan leer el objeto atrapado.
     public GameObject PickedObject => _pickedObject;
 
@@ -122,6 +124,42 @@ public class ObjectCatcherScript : MonoBehaviour
                     }
                 }
             }
+        }
+        else if (gameObject.CompareTag("Player"))
+        {
+            if (ObjectToPickUp != null && ObjectToPickUp.GetComponent<PickableObject>().IsPickable == true && PickedObject == null)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                PickedObject = ObjectToPickUp;
+                PickedObject.GetComponent<PickableObject>().IsPickable = false;
+
+
+                originalScale = PickedObject.transform.localScale;
+
+                PickedObject.transform.SetParent(PlayerInteractionZone);
+                PickedObject.transform.localPosition = Vector3.zero;
+                PickedObject.transform.localRotation = Quaternion.identity;
+                PickedObject.transform.localScale = originalScale; // Establece la escala local del objeto recogido
+                PickedObject.GetComponent<Rigidbody>().useGravity = false;
+                PickedObject.GetComponent<Rigidbody>().isKinematic = true;
+            }
+        }
+        else if (PickedObject != null)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                PickedObject.GetComponent<PickableObject>().IsPickable = true;
+                PickedObject.transform.SetParent(null);
+                PickedObject.GetComponent<Rigidbody>().useGravity = true;
+                PickedObject.GetComponent<Rigidbody>().isKinematic = false;
+
+
+                PickedObject.transform.localScale = originalScale;
+
+                PickedObject = null;
+            }
+        }
         }
     }
 
