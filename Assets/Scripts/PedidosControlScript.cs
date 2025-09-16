@@ -25,9 +25,9 @@ public class PedidosControlScript : MonoBehaviour
             yield return new WaitForSeconds(spawnInterval);
             if (orderPrefabs.Count > 0)
             {
-            int randomIndex = Random.Range(0, orderPrefabs.Count);
-              nextSpawnPoint += offsetBetweenOrders;
-              Instantiate(orderPrefabs[randomIndex], nextSpawnPoint, Quaternion.identity);
+                int randomIndex = Random.Range(0, orderPrefabs.Count);
+                GameObject newOrder = Instantiate(orderPrefabs[randomIndex], nextSpawnPoint, Quaternion.identity);
+                nextSpawnPoint = new Vector3(nextSpawnPoint.x + offsetBetweenOrders, nextSpawnPoint.y, nextSpawnPoint.z);
             }
         }
     }

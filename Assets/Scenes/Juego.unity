@@ -2189,6 +2189,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 568290775}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &923528422 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5251529518215029253, guid: 852581b3e594370418bcf719b0d32ece,
+    type: 3}
+  m_PrefabInstance: {fileID: 986946905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &923528423 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7189681616523282933, guid: 852581b3e594370418bcf719b0d32ece,
+    type: 3}
+  m_PrefabInstance: {fileID: 986946905}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923528422}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b3a3e213e541d48b40dae05f5663cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &923528425
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923528422}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &948234739 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8264980201537541418, guid: 0bd60f97ac084094c8b1f4fb550b98f8,
@@ -5204,6 +5235,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 959567965738213442, guid: 9a4898e0a29267140aa270caf30cb7f6,
+        type: 3}
+      propertyPath: objectCatcher
+      value: 
+      objectReference: {fileID: 923528423}
     - target: {fileID: 959567965738213443, guid: 9a4898e0a29267140aa270caf30cb7f6,
         type: 3}
       propertyPath: mainCam
