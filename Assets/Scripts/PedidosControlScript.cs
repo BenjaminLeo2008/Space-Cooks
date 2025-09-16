@@ -26,8 +26,8 @@ public class PedidosControlScript : MonoBehaviour
             if (orderPrefabs.Count > 0)
             {
             int randomIndex = Random.Range(0, orderPrefabs.Count);
-              nextSpawnPoint = orderSpawnPoint.position;
-              StartCoroutine(SpawnOrders());
+              nextSpawnPoint += offsetBetweenOrders;
+              Instantiate(orderPrefabs[randomIndex], nextSpawnPoint, Quaternion.identity);
             }
         }
     }
