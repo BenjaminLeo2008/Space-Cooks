@@ -11,6 +11,7 @@ GameObject:
   m_Component:
   - component: {fileID: 127898141586058840}
   - component: {fileID: 3489317055476352540}
+  - component: {fileID: 3837337428026591764}
   m_Layer: 5
   m_Name: Pedido1
   m_TagString: Untagged
@@ -59,6 +60,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBars:
   - {fileID: 63018324632662238}
+--- !u!114 &3837337428026591764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27591918871332424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b01dded3eaae71945a5174df1be78105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer_linear_image: {fileID: 63018324632662238}
+  tiempoInicial: 60
 --- !u!1 &285287997149287074
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,6 +760,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pedido1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725203754324191106, guid: 177f0f3ae6a0b4a479c67cd86044b79c,
+        type: 3}
+      propertyPath: timeBars.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 177f0f3ae6a0b4a479c67cd86044b79c, type: 3}

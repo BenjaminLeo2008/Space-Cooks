@@ -796,6 +796,7 @@ GameObject:
   - component: {fileID: 324759757}
   - component: {fileID: 324759756}
   - component: {fileID: 324759755}
+  - component: {fileID: 324759760}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -815,8 +816,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 733d05c41cf15ca4d9b0387544e52096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  min: 1
-  seg: 0
+  TiempoUI: {fileID: 41878874}
+  player: {fileID: 754563316}
+  escenaPuntaje: EscenaPuntaje
+  min: 0
+  seg: 20
   TimerTxt: {fileID: 1713791836}
 --- !u!114 &324759756
 MonoBehaviour:
@@ -901,6 +905,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &324759760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324759754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b01dded3eaae71945a5174df1be78105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer_linear_image: {fileID: 1112920721}
+  tiempoInicial: 20
 --- !u!4 &369387856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8488916972425527394, guid: 36fe58e5ae2fd994686482e85d4b8adc,
@@ -1213,7 +1231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540530959}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 65, y: 133, z: 13}
+  m_LocalPosition: {x: 43, y: 179, z: 13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3141,11 +3159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01dded3eaae71945a5174df1be78105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TiempoUI: {fileID: 41878874}
   timer_linear_image: {fileID: 1112920721}
   tiempoInicial: 40000
-  player: {fileID: 754563316}
-  escenaPuntaje: EscenaPuntaje
 --- !u!4 &1331269868
 Transform:
   m_ObjectHideFlags: 0
