@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d694fdb5c4f4b543b95cbe2bad5e514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectCatcher: {fileID: 0}
   ObjectToPickUp: {fileID: 0}
   PickedObject: {fileID: 0}
   PlayerInteractionZone: {fileID: 959567966791655252}
@@ -284,7 +285,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959567966791655253}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.002, z: 0.71}
+  m_LocalPosition: {x: 0, y: 1, z: 0.71}
   m_LocalScale: {x: 1, y: 1.52, z: 1.2}
   m_Children: []
   m_Father: {fileID: 959567965738213444}
