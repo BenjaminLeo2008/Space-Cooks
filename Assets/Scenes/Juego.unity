@@ -2194,18 +2194,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 986946905}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &923528423 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7189681616523282933, guid: 852581b3e594370418bcf719b0d32ece,
-    type: 3}
-  m_PrefabInstance: {fileID: 986946905}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923528422}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1b3a3e213e541d48b40dae05f5663cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &923528425
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5154,11 +5142,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 959567965738213442, guid: 9a4898e0a29267140aa270caf30cb7f6,
-        type: 3}
-      propertyPath: objectCatcher
-      value: 
-      objectReference: {fileID: 923528423}
     - target: {fileID: 959567965738213443, guid: 9a4898e0a29267140aa270caf30cb7f6,
         type: 3}
       propertyPath: mainCam

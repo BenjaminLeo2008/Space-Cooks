@@ -11,9 +11,17 @@ public class PlayerInteraction : MonoBehaviour
     public Transform PlayerInteractionZone;
     [SerializeField] private float detectionRadius;
     [SerializeField] private SphereCollider col;
-    [SerializeField] private string layer;
-    private List<GameObject> _tileCloseList = new List<GameObject>();
     private GameObject _closestTile;
+    [Tooltip("El objeto Tile más cercano en el radio de detección.")]
+    private GameObject _previousClosestTile;
+    [SerializeField] private Color highlightColor = Color.white;
+    [Tooltip("La intensidad del resaltado, de 0.0 (tenue) a 1.0 (fuerte).")]
+    [Range(0.0f, 1.0f)]
+    [SerializeField] private float highlightIntensity = 0.3f;
+
+    private Dictionary<GameObject, Color> _originalColors = new Dictionary<GameObject, Color>();
+    private List<GameObject> _tileCloseList = new List<GameObject>();
+
     private Vector3 originalScale;
 
     // Nueva variable para guardar la referencia al script del objeto.
@@ -24,12 +32,10 @@ public class PlayerInteraction : MonoBehaviour
     {
         col = GetComponent<SphereCollider>();
 
-
         if (col == null)
         {
             col = gameObject.AddComponent<SphereCollider>();
         }
-
 
         col.radius = detectionRadius;
         col.isTrigger = true;
@@ -76,19 +82,150 @@ public class PlayerInteraction : MonoBehaviour
                 PickedObject.GetComponent<Rigidbody>().useGravity = true;
                 PickedObject.GetComponent<Rigidbody>().isKinematic = false;
 
-
                 PickedObject.transform.localScale = originalScale;
 
-                // Si teníamos un script guardado, lo volvemos a activar.
+                // Si teníamos un script y un collider guardado, los volvemos a activar con un pequeño retraso.
                 if (_caughtCatcherScript != null)
                 {
-                    _caughtCatcherScript.enabled = true;
+                    StartCoroutine(ReactivateScriptDelayed(_caughtCatcherScript, _caughtCol));
                 }
-                if (_caughtCol != null)
-                {
-                    _caughtCol.enabled = true;
-                }
+
                 PickedObject = null;
+            }
+        }
+
+        // Si hay tiles detectados, encuentra el más cercano.
+        if (_tileCloseList.Count > 0)
+        {
+            float closestDistance = Mathf.Infinity;
+            GameObject tempWinnerTile = null;
+
+            // Recorre la lista para encontrar el tile más cercano.
+            foreach (GameObject tile in _tileCloseList)
+            {
+                if (tile != null)
+                {
+                    float distance = Vector3.Distance(transform.position, tile.transform.position);
+                    if (distance < closestDistance)
+                    {
+                        closestDistance = distance;
+                        tempWinnerTile = tile;
+                    }
+                }
+            }
+            _closestTile = tempWinnerTile;
+        }
+        else
+        {
+            // Si la lista está vacía, no hay un tile ganador.
+            _closestTile = null;
+        }
+        // --- Lógica para el cambio de color ---
+        // Comprueba si el tile ganador ha cambiado
+        if (_closestTile != _previousClosestTile)
+        {
+            // Si el tile anterior no era nulo, restablece su color original
+            if (_previousClosestTile != null)
+            {
+                ResetTileColor(_previousClosestTile);
+            }
+
+            // Si hay un nuevo tile ganador, resáltalo
+            if (_closestTile != null)
+            {
+                Highlight_closestTile(_closestTile);
+            }
+        }
+
+        // Actualiza el tile anterior para el siguiente fotograma
+        _previousClosestTile = _closestTile;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        // Si el objeto que entra tiene el tag "Tile" y no está ya en la lista, lo añade.
+        if (other.CompareTag("Tile") && !_tileCloseList.Contains(other.gameObject))
+        {
+            _tileCloseList.Add(other.gameObject);
+            // Almacena el color original del tile.
+            Renderer tileRenderer = other.GetComponentInChildren<Renderer>();
+            if (tileRenderer != null && tileRenderer.material != null)
+            {
+                // Solo guarda el color si aún no lo hemos hecho.
+                if (!_originalColors.ContainsKey(other.gameObject))
+                {
+                    _originalColors.Add(other.gameObject, tileRenderer.material.color);
+                }
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        // Si el objeto que sale tiene el tag "Tile" y está en la lista, lo elimina.
+        if (other.CompareTag("Tile") && _tileCloseList.Contains(other.gameObject))
+        {
+            ResetTileColor(other.gameObject);
+            _tileCloseList.Remove(other.gameObject);
+            // Elimina el color del diccionario al salir.
+            if (_originalColors.ContainsKey(other.gameObject))
+            {
+                _originalColors.Remove(other.gameObject);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Corrutina para reactivar los scripts y colliders después de un pequeño retraso.
+    /// Esto evita que el ObjectCatcherScript interfiera inmediatamente al soltar el objeto.
+    /// </summary>
+    private IEnumerator ReactivateScriptDelayed(ObjectCatcherScript script, SphereCollider col)
+    {
+        // Espera un pequeño momento para que el Rigidbody tome el control.
+        yield return new WaitForSeconds(0.1f);
+
+        // Reactiva el script y el collider
+        if (script != null) script.enabled = true;
+        if (col != null) col.enabled = true;
+    }
+
+    /// <summary>
+    /// Cambia el color del tile a un tono más claro.
+    /// </summary>
+    /// <param name="tile">El GameObject del tile a resaltar.</param>
+    private void Highlight_closestTile(GameObject tile)
+    {
+        if (tile != null)
+        {
+            Renderer tileRenderer = tile.GetComponentInChildren<Renderer>();
+            if (tileRenderer != null && tileRenderer.material != null)
+            {
+                if (_originalColors.ContainsKey(tile))
+                {
+                    Color originalColor = _originalColors[tile];
+                    // Mezcla el color original con el color de resaltado.
+                    tileRenderer.material.color = Color.Lerp(originalColor, highlightColor, highlightIntensity);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Restablece el color del tile a su valor original (asumiendo que era blanco).
+    /// </summary>
+    /// <param name="tile">El GameObject del tile a restablecer.</param>
+    private void ResetTileColor(GameObject tile)
+    {
+        if (tile != null)
+        {
+            Renderer tileRenderer = tile.GetComponentInChildren<Renderer>();
+            if (tileRenderer != null && tileRenderer.material != null)
+            {
+                // Restablece el color usando el valor guardado en el diccionario.
+                if (_originalColors.ContainsKey(tile))
+                {
+                    tileRenderer.material.color = _originalColors[tile];
+                }
             }
         }
     }
