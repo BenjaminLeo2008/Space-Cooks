@@ -15,7 +15,6 @@ public class AdvanceActionsScript : MonoBehaviour
 
     // Prefab que se puede entregar, agrégalo desde el Inspector.
     [SerializeField] private GameObject deliverablePrefab;
-    [SerializeField] private GameObject replaceablePrefab;
 
     // Referencia al ObjectCatcherScript
     private ObjectCatcherScript objectCatcher;
@@ -107,7 +106,7 @@ public class AdvanceActionsScript : MonoBehaviour
     {
         // Corrección: Comprobamos si el nombre del objeto sostenido comienza con el nombre del prefab
         // Esto soluciona el problema de que Instantiate agrega "(Clone)" al nombre.
-        if (objectCatcher.PickedObject.name.StartsWith(replaceablePrefab.name))
+        if (objectCatcher.PickedObject.name.StartsWith(newObjectPrefab.name))
         {
             // Deshabilita el script del jugador para que no pueda interactuar
             if (player != null)
@@ -151,7 +150,9 @@ public class AdvanceActionsScript : MonoBehaviour
     // Nueva función para crear un objeto desde cero y agarrarlo.
     private void CreateObjectAndGrab()
     {
-        if (newCreatedPrefab != null)
+        if (gameObject.name == "Mesa para crear papa")
+        {
+ if (newCreatedPrefab != null)
         {
             // Instancia el prefab en la posición del GameObject actual.
             GameObject newInstance = Instantiate(newCreatedPrefab, transform.position, transform.rotation);
@@ -165,6 +166,9 @@ public class AdvanceActionsScript : MonoBehaviour
             // Llama a la función del otro script para actualizar el objeto
             objectCatcher.SetPickedObject(newInstance);
         }
+        }
+        if (gameObject.name == "Mesa para crear papa")
+       
     }
 
     // Nueva función para eliminar el objeto agarrado y liberar la referencia.
