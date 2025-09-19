@@ -247,17 +247,17 @@ public class AdvanceActionsScript : MonoBehaviour
     {
         if (gameObject.name == "Mesa para crear papa")
         {
- if (myPrefabs.TryGetValue("RawPotato", out GameObject myPrefab))
-        {
-            GameObject newInstance = Instantiate(myPrefab, transform.position, transform.rotation);
-
-            Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
-            if (newRb != null)
+            if (myPrefabs.TryGetValue("RawPotato", out GameObject myPrefab))
             {
-                newRb.isKinematic = true;
+                GameObject newInstance = Instantiate(myPrefab, transform.position, transform.rotation);
+
+                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
+                if (newRb != null)
+                {
+                    newRb.isKinematic = true;
+                }
+                objectCatcher.SetPickedObject(newInstance);
             }
-            objectCatcher.SetPickedObject(newInstance);
-        }
         }
         else if (gameObject.name == "Mesa para crear carne")
         {

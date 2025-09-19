@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer_linear_image: {fileID: 1112920721}
-  tiempoInicial: 20
+  tiempoInicialSeg: 60
 --- !u!4 &167310861
 Transform:
   m_ObjectHideFlags: 0
@@ -864,7 +864,7 @@ MonoBehaviour:
   player: {fileID: 0}
   escenaPuntaje: EscenaPuntaje
   min: 0
-  seg: 20
+  seg: 60
   TimerTxt: {fileID: 1713791836}
 --- !u!114 &324759756
 MonoBehaviour:
@@ -1321,20 +1321,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &540530960
-Transform:
+--- !u!224 &540530960
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540530959}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43, y: 179, z: 13}
+  m_LocalPosition: {x: 0, y: 0, z: 13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 40, y: 179}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &552356412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9349,13 +9354,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnInterval: 5
   orderPrefabs:
-  - {fileID: 1785698037182910056, guid: 8afd5fc6bed7a8041a1c9948698ff86e, type: 3}
-  - {fileID: 5433472811746515635, guid: 5d01c0eaeead43b45b06c3e572686367, type: 3}
-  - {fileID: 1405090281899779022, guid: c081eb60f4ffbcc4aaf2bb6b6a82d1c8, type: 3}
-  - {fileID: 5726504309643539349, guid: cc953ffb99af01640a6d1308953b370e, type: 3}
-  - {fileID: 3151254142687951091, guid: 69f22b3a3d56b3c49b4b4d58a8b54535, type: 3}
+  - {fileID: 1363528570609600155, guid: 7cf7f3c81eb3e57468829d4866107d56, type: 3}
+  - {fileID: 4786646372534763283, guid: 2bbb6e91fcfa04f468f409ae1f273c92, type: 3}
+  - {fileID: 4520048694872434333, guid: cff64baac0834364fb2164532f593a36, type: 3}
+  - {fileID: 5523887752233030760, guid: 5db291ab0fe4b6e48bd84ac8f6a68fe6, type: 3}
+  - {fileID: 7166829390892250508, guid: 75936c6746bece84e88494d534ffbf79, type: 3}
   orderSpawnPoint: {fileID: 540530960}
-  offsetBetweenOrders: 2
+  offsetBetweenOrders: 10
+  orderTime: 30
 --- !u!4 &1592821525
 Transform:
   m_ObjectHideFlags: 0
