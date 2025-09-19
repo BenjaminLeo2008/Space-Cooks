@@ -119,7 +119,7 @@ Transform:
   m_GameObject: {fileID: 959567965738213446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 11.04, z: 14.44}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 959567966165533798}
   - {fileID: 959567965479823502}
@@ -160,7 +160,7 @@ MonoBehaviour:
   horizontalMove: 0
   verticalMove: 0
   Player: {fileID: 0}
-  playerSpeed: 6
+  playerSpeed: 10
   gravity: 17
   fallVelocity: 1
   mainCam: {fileID: 0}

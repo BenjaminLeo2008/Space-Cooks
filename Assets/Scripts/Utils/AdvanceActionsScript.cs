@@ -342,7 +342,7 @@ public class AdvanceActionsScript : MonoBehaviour
     }
     private void DestroyObject()
     {
-        if (objectCatcher.PickedObject != null)
+        if (objectCatcher.PickedObject != null && objectCatcher.PickedObject.CompareTag("Object"))
         {
             Destroy(objectCatcher.PickedObject);
             objectCatcher.SetPickedObject(null);

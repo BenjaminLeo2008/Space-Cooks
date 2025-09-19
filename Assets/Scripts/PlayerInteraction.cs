@@ -63,7 +63,6 @@ public class PlayerInteraction : MonoBehaviour
                     // Si el script existe, lo desactivamos.
                     _caughtCol.enabled = false;
                 }
-                originalScale = PickedObject.transform.localScale;
 
                 PickedObject.transform.SetParent(PlayerInteractionZone);
                 PickedObject.transform.localPosition = Vector3.zero;
