@@ -184,12 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dee09d9846a31e42a86df3dc430de21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newObjectPrefab: {fileID: 6686895762893294401, guid: a30353e9fe8197b4c8f6d5727de4cec2,
-    type: 3}
-  newCreatedPrefab: {fileID: 4923416749525318658, guid: 56f4079f5a1304346bfa21fc28993422,
-    type: 3}
-  targetGameObjectName: Mesa para reemplazar
+  targetGameObjectName: Mesa para reemplazar comida
   deliverablePrefab: {fileID: 0}
-  replaceablePrefab: {fileID: 4923416749525318658, guid: 56f4079f5a1304346bfa21fc28993422,
-    type: 3}
   player: {fileID: 0}

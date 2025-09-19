@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class AdvanceActionsScript : MonoBehaviour
 {
-    // Asegúrate de arrastrar el "Objeto Nuevo" en el Inspector de Unity.
-    [SerializeField] private GameObject newObjectPrefab;
-
-    // Prefab para la función CreateObjectAndGrab.
-    [SerializeField] private GameObject newCreatedPrefab;
-
     // Nombre del GameObject para activar el reemplazo. Configúralo en el Inspector.
     [SerializeField] private string targetGameObjectName;
 
     // Prefab que se puede entregar, agrégalo desde el Inspector.
     [SerializeField] private GameObject deliverablePrefab;
+
+    // Diccionario para almacenar todos los prefabs cargados de Resources.
+    private Dictionary<string, GameObject> myPrefabs = new Dictionary<string, GameObject>();
 
     // Referencia al ObjectCatcherScript
     private ObjectCatcherScript objectCatcher;
@@ -32,6 +29,13 @@ public class AdvanceActionsScript : MonoBehaviour
         {
             Debug.LogError("No se encontró ObjectCatcherScript en este GameObject. Asegúrate de que ambos scripts estén juntos.");
         }
+
+        // Carga todos los prefabs de la carpeta "Resources" una sola vez al inicio del juego.
+        GameObject[] loadedPrefabs = Resources.LoadAll<GameObject>("");
+        foreach (GameObject prefab in loadedPrefabs)
+        {
+            myPrefabs[prefab.name] = prefab;
+        }
     }
 
     void Update()
@@ -47,34 +51,32 @@ public class AdvanceActionsScript : MonoBehaviour
                 CreateObjectAndGrab();
             }
         }
-        else if (targetGameObjectName == "Mesa para reemplazar")
+        else if (targetGameObjectName == "Mesa para reemplazar comida")
         {
-            // Solo se ejecuta si el "Player" está en el trigger, se presiona 'Q'
-            // y ya se tiene un objeto en la mano.
             if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.Q) && objectCatcher.PickedObject != null)
             {
-                // Si el nombre no coincide, ejecuta la función de reemplazo.
                 StartCoroutine(ReplacePickedObjectDelayed(2f));
             }
         }
         else if (targetGameObjectName == "Mesa para entregar")
         {
-            // Solo se ejecuta si el "Player" está en el trigger, se presiona 'Q'
-            // y ya se tiene un objeto en la mano.
             if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.Q) && objectCatcher.PickedObject != null)
             {
-                // Si el nombre no coincide, ejecuta la función de reemplazo.
                 DeliverObject();
             }
         }
         else if (targetGameObjectName == "Mesa para eliminar")
         {
-            // Solo se ejecuta si el "Player" está en el trigger, se presiona 'Q'
-            // y ya se tiene un objeto en la mano.
             if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.Q) && objectCatcher.PickedObject != null)
             {
-                // Si el nombre no coincide, ejecuta la función de reemplazo.
                 DestroyObject();
+            }
+        }
+        else if (targetGameObjectName == "Mesa para lavar")
+        {
+            if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.Q) && objectCatcher.PickedObject != null)
+            {
+                StartCoroutine(WashPickedObjectDelayed(2f));
             }
         }
         else
@@ -104,9 +106,103 @@ public class AdvanceActionsScript : MonoBehaviour
     // Corrutina para reemplazar el objeto después de un retraso
     private IEnumerator ReplacePickedObjectDelayed(float delay)
     {
+        if (objectCatcher.PickedObject.name.StartsWith("RawPotato"))
+        {
+            if (player != null)
+            {
+                player.enabled = false;
+            }
+
+            yield return new WaitForSeconds(delay);
+
+            if (objectCatcher.PickedObject != null && myPrefabs.TryGetValue("CuttedPotato", out GameObject myPrefab))
+            {
+                Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
+                Quaternion currentRotation = objectCatcher.PickedObject.transform.rotation;
+
+                Destroy(objectCatcher.PickedObject);
+
+                GameObject newInstance = Instantiate(myPrefab, currentPosition, currentRotation);
+
+                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
+                if (newRb != null)
+                {
+                    newRb.isKinematic = true;
+                }
+                objectCatcher.SetPickedObject(newInstance);
+            }
+            if (player != null)
+            {
+                player.enabled = true;
+            }
+        }
+        else if (objectCatcher.PickedObject.name.StartsWith("RawSteak"))
+        {
+            if (player != null)
+            {
+                player.enabled = false;
+            }
+
+            yield return new WaitForSeconds(delay);
+
+            if (objectCatcher.PickedObject != null && myPrefabs.TryGetValue("CuttedSteak", out GameObject myPrefab))
+            {
+                Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
+                Quaternion currentRotation = objectCatcher.PickedObject.transform.rotation;
+
+                Destroy(objectCatcher.PickedObject);
+
+                GameObject newInstance = Instantiate(myPrefab, currentPosition, currentRotation);
+
+                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
+                if (newRb != null)
+                {
+                    newRb.isKinematic = true;
+                }
+                objectCatcher.SetPickedObject(newInstance);
+            }
+            if (player != null)
+            {
+                player.enabled = true;
+            }
+        }
+        else if (objectCatcher.PickedObject.name.StartsWith("Dough"))
+        {
+            if (player != null)
+            {
+                player.enabled = false;
+            }
+
+            yield return new WaitForSeconds(delay);
+
+            if (objectCatcher.PickedObject != null && myPrefabs.TryGetValue("DoughDisc", out GameObject myPrefab))
+            {
+                Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
+                Quaternion currentRotation = objectCatcher.PickedObject.transform.rotation;
+
+                Destroy(objectCatcher.PickedObject);
+
+                GameObject newInstance = Instantiate(myPrefab, currentPosition, currentRotation);
+
+                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
+                if (newRb != null)
+                {
+                    newRb.isKinematic = true;
+                }
+                objectCatcher.SetPickedObject(newInstance);
+            }
+            if (player != null)
+            {
+                player.enabled = true;
+            }
+        }
+    }
+    // Corrutina para lavar el objeto después de un retraso
+    private IEnumerator WashPickedObjectDelayed(float delay)
+    {
         // Corrección: Comprobamos si el nombre del objeto sostenido comienza con el nombre del prefab
         // Esto soluciona el problema de que Instantiate agrega "(Clone)" al nombre.
-        if (objectCatcher.PickedObject.name.StartsWith(newObjectPrefab.name))
+        if (objectCatcher.PickedObject.name.StartsWith("DirtyPlate"))
         {
             // Deshabilita el script del jugador para que no pueda interactuar
             if (player != null)
@@ -118,7 +214,7 @@ public class AdvanceActionsScript : MonoBehaviour
             yield return new WaitForSeconds(delay);
 
             // Accede al objeto atrapado a través de la propiedad pública "PickedObject"
-            if (objectCatcher.PickedObject != null && newObjectPrefab != null)
+            if (objectCatcher.PickedObject != null && myPrefabs.TryGetValue("Plate", out GameObject myPrefab))
             {
                 // Obtiene la posición y rotación del objeto actual
                 Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
@@ -128,7 +224,7 @@ public class AdvanceActionsScript : MonoBehaviour
                 Destroy(objectCatcher.PickedObject);
 
                 // Instancia el nuevo objeto desde el prefab en la misma posición y rotación
-                GameObject newInstance = Instantiate(newObjectPrefab, currentPosition, currentRotation);
+                GameObject newInstance = Instantiate(myPrefab, currentPosition, currentRotation);
 
                 // Nos aseguramos de que el nuevo objeto tenga un Rigidbody y lo hacemos cinemático.
                 Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
@@ -146,32 +242,96 @@ public class AdvanceActionsScript : MonoBehaviour
             }
         }
     }
-
-    // Nueva función para crear un objeto desde cero y agarrarlo.
+    // función para crear un objeto desde cero y agarrarlo.
     private void CreateObjectAndGrab()
     {
         if (gameObject.name == "Mesa para crear papa")
         {
- if (newCreatedPrefab != null)
+ if (myPrefabs.TryGetValue("RawPotato", out GameObject myPrefab))
         {
-            // Instancia el prefab en la posición del GameObject actual.
-            GameObject newInstance = Instantiate(newCreatedPrefab, transform.position, transform.rotation);
+            GameObject newInstance = Instantiate(myPrefab, transform.position, transform.rotation);
 
-            // Nos aseguramos de que el nuevo objeto tenga un Rigidbody y lo hacemos cinemático.
             Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
             if (newRb != null)
             {
                 newRb.isKinematic = true;
             }
-            // Llama a la función del otro script para actualizar el objeto
             objectCatcher.SetPickedObject(newInstance);
         }
         }
-        if (gameObject.name == "Mesa para crear papa")
-       
-    }
+        else if (gameObject.name == "Mesa para crear carne")
+        {
+            if (myPrefabs.TryGetValue("RawSteak", out GameObject myPrefab))
+            {
+                GameObject newInstance = Instantiate(myPrefab, transform.position, transform.rotation);
 
-    // Nueva función para eliminar el objeto agarrado y liberar la referencia.
+                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
+                if (newRb != null)
+                {
+                    newRb.isKinematic = true;
+                }
+                objectCatcher.SetPickedObject(newInstance);
+            }
+        }
+        else if (gameObject.name == "Mesa para crear azucar")
+        {
+            if (myPrefabs.TryGetValue("Sugar", out GameObject myPrefab))
+            {
+                GameObject newInstance = Instantiate(myPrefab, transform.position, transform.rotation);
+
+                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
+                if (newRb != null)
+                {
+                    newRb.isKinematic = true;
+                }
+                objectCatcher.SetPickedObject(newInstance);
+            }
+        }
+        else if (gameObject.name == "Mesa para crear leche")
+        {
+            if (myPrefabs.TryGetValue("Milk", out GameObject myPrefab))
+            {
+                GameObject newInstance = Instantiate(myPrefab, transform.position, transform.rotation);
+
+                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
+                if (newRb != null)
+                {
+                    newRb.isKinematic = true;
+                }
+                objectCatcher.SetPickedObject(newInstance);
+            }
+        }
+        else if (gameObject.name == "Mesa para crear huevo")
+        {
+            if (myPrefabs.TryGetValue("Egg", out GameObject myPrefab))
+            {
+                GameObject newInstance = Instantiate(myPrefab, transform.position, transform.rotation);
+
+                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
+                if (newRb != null)
+                {
+                    newRb.isKinematic = true;
+                }
+                objectCatcher.SetPickedObject(newInstance);
+            }
+        }
+        else if (gameObject.name == "Mesa para crear masa")
+        {
+            if (myPrefabs.TryGetValue("Dough", out GameObject myPrefab))
+            {
+                GameObject newInstance = Instantiate(myPrefab, transform.position, transform.rotation);
+
+                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
+                if (newRb != null)
+                {
+                    newRb.isKinematic = true;
+                }
+                objectCatcher.SetPickedObject(newInstance);
+            }
+        }
+
+    }
+    //función para eliminar el objeto agarrado y liberar la referencia.
     private void DeliverObject()
     {
         if (deliverablePrefab != null && objectCatcher.PickedObject.name == deliverablePrefab.name)

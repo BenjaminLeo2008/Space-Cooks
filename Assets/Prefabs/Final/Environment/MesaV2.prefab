@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 8753255199041543042}
   - component: {fileID: 1664574862857100909}
   m_Layer: 0
-  m_Name: 'CocinaConPersonaje.15blendv2 '
+  m_Name: MesaV2
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,8 +139,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadius: 1.2
-  layerTag: Object
   offset: {x: 0, y: 0, z: 0}
+  ObjectToPickUp: {fileID: 0}
+  pickedObject: {fileID: 0}
+  interactionZone: {fileID: 0}
 --- !u!1 &9078874949115581692
 GameObject:
   m_ObjectHideFlags: 0
