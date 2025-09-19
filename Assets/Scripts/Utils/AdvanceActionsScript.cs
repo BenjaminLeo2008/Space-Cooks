@@ -167,7 +167,6 @@ public class AdvanceActionsScript : MonoBehaviour
             objectCatcher.SetPickedObject(newInstance);
         }
         }
-        if (gameObject.name == "Mesa para crear papa")
        
     }
 

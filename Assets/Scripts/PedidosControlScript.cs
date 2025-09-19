@@ -5,36 +5,54 @@ using UnityEngine.UI;
 
 public class PedidosControlScript : MonoBehaviour
 {
-    public float spawnInterval = 10f;
-    public List<GameObject> orderPrefabs;
-    public Transform orderSpawnPoint;
-    public float offsetBetweenOrders = 2f;
-    private Vector3 nextSpawnPoint;
+    
+public float spawnInterval = 5f;
+public List<GameObject> orderPrefabs;
+public RectTransform orderSpawnPoint;
+public float offsetBetweenOrders = 50f;
+public float orderTime = 10f;
 
-        void Start()
-    {
-        nextSpawnPoint = orderSpawnPoint.position;
-        StartCoroutine(SpawnOrders());
-    }
-    IEnumerator SpawnOrders()
-    {
-        while (true) // bucle infinito para seguir generando pedidos
-        {
-            //GameObject newOrder = Instantiate(orderPrefabs[randomIndex], nextSpawnPoint, Quaternion.identity);
-            //nextSpawnPoint.x += offsetBetweenOrders;
-            yield return new WaitForSeconds(spawnInterval);
-            if (orderPrefabs.Count > 0)
-            {
-                int randomIndex = Random.Range(0, orderPrefabs.Count);
-                GameObject newOrder = Instantiate(orderPrefabs[randomIndex], nextSpawnPoint, Quaternion.identity);
-                nextSpawnPoint = new Vector3(nextSpawnPoint.x + offsetBetweenOrders, nextSpawnPoint.y, nextSpawnPoint.z);
-            }
-        }
-    }
+private Vector2 nextSpawnPoint;
 
-    //void GenerateRandomOrder()
-   // {
-   //     int randomIndex = Random.Range(0, orderPrefabs.Count);
-    //    Instantiate(orderPrefabs[randomIndex], orderSpawnPoint.position, Quaternion.identity);
-   // }
+// Start se llama antes de la primera actualización del frame
+void Start()
+{
+// Inicializa el punto de spawn con la posición anclada del RectTransform
+nextSpawnPoint = orderSpawnPoint.anchoredPosition;
+
+StartCoroutine(SpawnOrders());
+}
+
+IEnumerator SpawnOrders()
+{
+// Bucle infinito para seguir generando pedidos
+while (true)
+{
+// Espera el tiempo definido antes de crear el próximo pedido
+yield return new WaitForSeconds(spawnInterval);
+
+if (orderPrefabs.Count > 0)
+{
+// Elige un prefab de forma aleatoria
+int randomIndex = Random.Range(0, orderPrefabs.Count);
+GameObject newOrder = Instantiate(orderPrefabs[randomIndex]);
+Debug.Log("Escala del nuevo pedido: " + newOrder.transform.localScale);
+
+newOrder.transform.SetParent(orderSpawnPoint.parent, false);
+RectTransform newOrderRect = newOrder.GetComponent<RectTransform>();
+Debug.Log("La posicion del proximo pedido sera: " + nextSpawnPoint);
+newOrderRect.anchoredPosition = nextSpawnPoint;
+PedidosScript pedidoScript = newOrder.GetComponent<PedidosScript>();
+
+// Llama a StartTimer() en el pedido recién creado
+if (pedidoScript != null)
+{
+    pedidoScript.StartTimer(orderTime);
+}
+
+// Actualiza el punto de spawn para que el próximo pedido se mueva a la derecha
+nextSpawnPoint.x += offsetBetweenOrders;
+}
+}
+}
 }

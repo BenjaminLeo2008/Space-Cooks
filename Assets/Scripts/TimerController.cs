@@ -7,12 +7,12 @@ public class TimerController : MonoBehaviour
 {
     public Image timer_linear_image;
 
-    public float tiempoInicial = 60f;
+    public float tiempoInicialSeg = 60f;
     private float tiempoRestante;
 
     void Start()
     {
-        tiempoRestante = tiempoInicial;
+        tiempoRestante = tiempoInicialSeg;
         if (timer_linear_image == null)
         {
             Debug.Log("La imagen no esta asignada vro");
@@ -29,9 +29,8 @@ public class TimerController : MonoBehaviour
         if (tiempoRestante > 0)
         {
             tiempoRestante -= Time.deltaTime;
-            timer_linear_image.fillAmount = tiempoRestante / tiempoInicial;
+            timer_linear_image.fillAmount = tiempoRestante / tiempoInicialSeg;
 
-            Debug.Log("Tiempo restante: " + tiempoRestante);
 
             if (tiempoRestante <= 0)
             {
