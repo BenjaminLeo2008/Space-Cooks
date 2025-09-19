@@ -10,7 +10,7 @@ public class ObjectCatcherScript : MonoBehaviour
     [SerializeField] private Vector3 offset;
 
     private SphereCollider _col;
-    private Transform _superficieTransform;
+    public Transform superficieTransform;
     private GameObject _pickedObject;
     private Rigidbody _caughtRigidbody;
 
@@ -51,9 +51,7 @@ public class ObjectCatcherScript : MonoBehaviour
         _col.isTrigger = true;
 
         // Busca el GameObject "Superficie"
-        _superficieTransform = transform.Find("Superficie");
-
-        if (_superficieTransform == null)
+        if (superficieTransform == null)
         {
             Debug.LogError("No se encontró el hijo 'Superficie'. Asegúrate de que existe.");
         }
@@ -71,11 +69,11 @@ public class ObjectCatcherScript : MonoBehaviour
                 if (_pickedObject.transform.parent == null)
                 {
                     // Verifica que la superficie exista y el objeto tenga el tag correcto
-                    if (_superficieTransform != null && _pickedObject.CompareTag("Object") || _pickedObject.CompareTag("Plate"))
+                    if (superficieTransform != null && _pickedObject.CompareTag("Object") || _pickedObject.CompareTag("Plate"))
                     {
                         // Obtiene la altura del objeto con su collider
                         float objectHeight = _pickedObject.GetComponent<Collider>().bounds.extents.y;
-                        Vector3 superficiePosition = _superficieTransform.position;
+                        Vector3 superficiePosition = superficieTransform.position;
 
                         // Calcula la nueva posición del objeto
                         Vector3 newPosition = new Vector3(
@@ -85,40 +83,8 @@ public class ObjectCatcherScript : MonoBehaviour
                         );
 
                         // Establece la rotación y posición
-                        _pickedObject.transform.rotation = _superficieTransform.rotation;
+                        _pickedObject.transform.rotation = superficieTransform.rotation;
                         _pickedObject.transform.position = newPosition;
-                    }
-                }
-            }
-        }
-        else if (gameObject.CompareTag("Plate"))
-        {
-            // Solo ejecuta la lógica si un objeto ha sido atrapado
-            if (_pickedObject != null)
-            {
-                // Opcional: Asegúrate de que el objeto no tiene un padre (esto ayuda a evitar problemas)
-                if (_pickedObject.transform.parent == null)
-                {
-                    // Verifica que la superficie exista y el objeto tenga el tag correcto
-                    if (_superficieTransform != null && _pickedObject.CompareTag("Object") || _pickedObject.CompareTag("Plate"))
-                    {
-                        // Obtiene la altura del objeto con su collider
-                        float objectHeight = _pickedObject.GetComponent<Collider>().bounds.extents.y;
-                        Vector3 superficiePosition = _superficieTransform.position;
-
-                        // Calcula la nueva posición del objeto
-                        Vector3 newPosition = new Vector3(
-                            superficiePosition.x + offset.x,
-                            superficiePosition.y + objectHeight + offset.y,
-                            superficiePosition.z + offset.z
-                        );
-
-                        // Establece la posición y rotación del objeto
-                        _pickedObject.transform.position = newPosition;
-                        _pickedObject.transform.rotation = _superficieTransform.rotation;
-                        originalScale = _pickedObject.transform.localScale;
-                        // Una vez posicionado, establece el padre
-                        _pickedObject.transform.SetParent(interactionZone);
                     }
                 }
             }

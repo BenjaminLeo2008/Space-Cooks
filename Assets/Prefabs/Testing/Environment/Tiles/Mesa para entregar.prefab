@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 0.7
   offset: {x: 0, y: 0, z: 0}
+  superficieTransform: {fileID: 1398116368734104127}
   ObjectToPickUp: {fileID: 0}
   pickedObject: {fileID: 0}
   interactionZone: {fileID: 0}
@@ -184,10 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dee09d9846a31e42a86df3dc430de21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newObjectPrefab: {fileID: 0}
-  newCreatedPrefab: {fileID: 0}
   targetGameObjectName: Mesa para entregar
   deliverablePrefab: {fileID: 4330891420389143234, guid: f522fbf0196e73141b1db434f7a371ef,
     type: 3}
-  replaceablePrefab: {fileID: 0}
   player: {fileID: 0}

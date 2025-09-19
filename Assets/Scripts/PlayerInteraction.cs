@@ -48,28 +48,17 @@ public class PlayerInteraction : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 PickedObject = ObjectToPickUp;
-                PickedObject.GetComponent<PickableObject>().IsPickable = false;
+        PickedObject.GetComponent<PickableObject>().IsPickable = false;
 
-                // Intentamos obtener el script ObjectCatcherScript del objeto.
-                _caughtCatcherScript = PickedObject.GetComponent<ObjectCatcherScript>();
-                if (_caughtCatcherScript != null)
-                {
-                    // Si el script existe, lo desactivamos.
-                    _caughtCatcherScript.enabled = false;
-                }
-                _caughtCol = PickedObject.GetComponent<SphereCollider>();
-                if (_caughtCol != null)
-                {
-                    // Si el script existe, lo desactivamos.
-                    _caughtCol.enabled = false;
-                }
+        // Guarda la escala original del objeto antes de modificarla.
+        originalScale = PickedObject.transform.localScale;
 
-                PickedObject.transform.SetParent(PlayerInteractionZone);
-                PickedObject.transform.localPosition = Vector3.zero;
-                PickedObject.transform.localRotation = Quaternion.identity;
-                PickedObject.transform.localScale = originalScale; // Establece la escala local del objeto recogido
-                PickedObject.GetComponent<Rigidbody>().useGravity = false;
-                PickedObject.GetComponent<Rigidbody>().isKinematic = true;
+        PickedObject.transform.SetParent(PlayerInteractionZone);
+        PickedObject.transform.localPosition = Vector3.zero;
+        PickedObject.transform.localRotation = Quaternion.identity;
+        PickedObject.transform.localScale = new Vector3 (1, 1, 1);
+        PickedObject.GetComponent<Rigidbody>().useGravity = false;
+        PickedObject.GetComponent<Rigidbody>().isKinematic = true;
             }
         }
         else if (PickedObject != null)
@@ -82,12 +71,6 @@ public class PlayerInteraction : MonoBehaviour
                 PickedObject.GetComponent<Rigidbody>().isKinematic = false;
 
                 PickedObject.transform.localScale = originalScale;
-
-                // Si teníamos un script y un collider guardado, los volvemos a activar con un pequeño retraso.
-                if (_caughtCatcherScript != null)
-                {
-                    StartCoroutine(ReactivateScriptDelayed(_caughtCatcherScript, _caughtCol));
-                }
 
                 PickedObject = null;
             }
@@ -174,19 +157,6 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Corrutina para reactivar los scripts y colliders después de un pequeño retraso.
-    /// Esto evita que el ObjectCatcherScript interfiera inmediatamente al soltar el objeto.
-    /// </summary>
-    private IEnumerator ReactivateScriptDelayed(ObjectCatcherScript script, SphereCollider col)
-    {
-        // Espera un pequeño momento para que el Rigidbody tome el control.
-        yield return new WaitForSeconds(0.1f);
-
-        // Reactiva el script y el collider
-        if (script != null) script.enabled = true;
-        if (col != null) col.enabled = true;
-    }
 
     /// <summary>
     /// Cambia el color del tile a un tono más claro.

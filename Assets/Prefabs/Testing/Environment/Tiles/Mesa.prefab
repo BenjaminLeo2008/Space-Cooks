@@ -46,8 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadius: 0.7
-  layerTag: Object
   offset: {x: 0, y: 0, z: 0}
+  superficieTransform: {fileID: 504623516240785283}
+  ObjectToPickUp: {fileID: 0}
+  pickedObject: {fileID: 0}
+  interactionZone: {fileID: 0}
 --- !u!1 &6396511019176933454
 GameObject:
   m_ObjectHideFlags: 0
