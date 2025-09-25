@@ -47,32 +47,14 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                PickedObject = ObjectToPickUp;
-        PickedObject.GetComponent<PickableObject>().IsPickable = false;
-
-        // Guarda la escala original del objeto antes de modificarla.
-        originalScale = PickedObject.transform.localScale;
-
-        PickedObject.transform.SetParent(PlayerInteractionZone);
-        PickedObject.transform.localPosition = Vector3.zero;
-        PickedObject.transform.localRotation = Quaternion.identity;
-        PickedObject.transform.localScale = new Vector3 (1, 1, 1);
-        PickedObject.GetComponent<Rigidbody>().useGravity = false;
-        PickedObject.GetComponent<Rigidbody>().isKinematic = true;
+                pickUpObject();
             }
         }
         else if (PickedObject != null)
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                PickedObject.GetComponent<PickableObject>().IsPickable = true;
-                PickedObject.transform.SetParent(null);
-                PickedObject.GetComponent<Rigidbody>().useGravity = true;
-                PickedObject.GetComponent<Rigidbody>().isKinematic = false;
-
-                PickedObject.transform.localScale = originalScale;
-
-                PickedObject = null;
+                dropObject();
             }
         }
 
@@ -157,11 +139,40 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
+    private void pickUpObject()
+    {
+       PickedObject = ObjectToPickUp;
+       PickedObject.GetComponent<PickableObject>().IsPickable = false;
 
-    /// <summary>
+      // Guarda la escala original del objeto antes de modificarla.
+       originalScale = PickedObject.transform.localScale;
+
+      PickedObject.GetComponent<Rigidbody>().useGravity = false;
+      PickedObject.GetComponent<Rigidbody>().isKinematic = true;
+      PickedObject.transform.position = PlayerInteractionZone.transform.position;
+      PickedObject.transform.SetParent(PlayerInteractionZone);
+     PickedObject.transform.localRotation = Quaternion.identity;
+                
+      PickedObject.transform.localScale = new Vector3 (
+      originalScale.x / PlayerInteractionZone.lossyScale.x,
+       originalScale.y / PlayerInteractionZone.lossyScale.y,
+       originalScale.z / PlayerInteractionZone.lossyScale.z
+        );
+    }
+
+    private void dropObject()
+    {
+        PickedObject.GetComponent<PickableObject>().IsPickable = true;
+        PickedObject.transform.SetParent(null);
+        PickedObject.GetComponent<Rigidbody>().useGravity = true;
+        PickedObject.GetComponent<Rigidbody>().isKinematic = false;
+
+        PickedObject.transform.localScale = originalScale;
+
+        PickedObject = null;
+    }
+    
     /// Cambia el color del tile a un tono más claro.
-    /// </summary>
-    /// <param name="tile">El GameObject del tile a resaltar.</param>
     private void Highlight_closestTile(GameObject tile)
     {
         if (tile != null)
