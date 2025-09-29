@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 1.2
   offset: {x: 0, y: 0, z: 0}
-  _superficieTransform: {fileID: 1985376391004651210}
+  superficieTransform: {fileID: 1985376391004651210}
   ObjectToPickUp: {fileID: 0}
   pickedObject: {fileID: 0}
   interactionZone: {fileID: 0}

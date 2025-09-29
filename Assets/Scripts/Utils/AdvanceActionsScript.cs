@@ -45,7 +45,7 @@ public class AdvanceActionsScript : MonoBehaviour
         {
             // Solo se ejecuta si el "Player" está en el trigger, se presiona 'Q'
             // y no hay ningún objeto en la mano.
-            if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.Q) && objectCatcher.PickedObject == null)
+            if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.Q) && objectCatcher.PickedObject != null)
             {
                 // Si el nombre coincide, ejecuta la función para crear y agarrar un nuevo objeto.
                 CreateObjectAndGrab();
