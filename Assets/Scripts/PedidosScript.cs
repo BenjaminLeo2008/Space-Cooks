@@ -12,8 +12,11 @@ private float remainingTime;
 
 void Start()
 {
-    totalTime = 20f;
-    remainingTime = 20f;
+        if (totalTime == 0)
+        {
+            totalTime = 20f;
+            remainingTime = 20f;
+        }
 }
 // StartTimer se llama desde PedidosControlScript para inicializar el pedido
 public void StartTimer(float maxTime)

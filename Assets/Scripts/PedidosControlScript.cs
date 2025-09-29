@@ -33,16 +33,24 @@ yield return new WaitForSeconds(spawnInterval);
 
 if (orderPrefabs.Count > 0)
 {
-// Elige un prefab de forma aleatoria
-int randomIndex = Random.Range(0, orderPrefabs.Count);
-GameObject newOrder = Instantiate(orderPrefabs[randomIndex]);
-Debug.Log("Escala del nuevo pedido: " + newOrder.transform.localScale);
+                // Elige un prefab de forma aleatoria
+                int randomIndex = Random.Range(0, orderPrefabs.Count);
+                GameObject newOrder = Instantiate(orderPrefabs[randomIndex]);
+                RectTransform newOrderRect = newOrder.GetComponent<RectTransform>();
+                Debug.Log("La posicion del proximo pedido sera: " + nextSpawnPoint);
+                Debug.Log("Escala del nuevo pedido: " + newOrder.transform.localScale);
 
-newOrder.transform.SetParent(orderSpawnPoint.parent, false);
-RectTransform newOrderRect = newOrder.GetComponent<RectTransform>();
-Debug.Log("La posicion del proximo pedido sera: " + nextSpawnPoint);
-newOrderRect.anchoredPosition = nextSpawnPoint;
-PedidosScript pedidoScript = newOrder.GetComponent<PedidosScript>();
+                newOrderRect.anchoredPosition = nextSpawnPoint;
+                newOrder.transform.SetParent(orderSpawnPoint.parent, false);
+
+                PedidosScript pedidoScript = newOrder.GetComponent<PedidosScript>();
+                if (pedidoScript != null)
+                {
+                    pedidoScript.StartTimer(orderTime);
+                }
+
+                nextSpawnPoint.x += offsetBetweenOrders;
+
 
 // Llama a StartTimer() en el pedido recién creado
 if (pedidoScript != null)
