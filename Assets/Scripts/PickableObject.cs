@@ -5,6 +5,11 @@ using UnityEngine;
 public class PickableObject : MonoBehaviour
 {
     public bool IsPickable = true;
+    private Rigidbody _rb;
+
+    private void Start() {
+        _rb = GetComponent<Rigidbody>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -26,6 +31,14 @@ public class PickableObject : MonoBehaviour
             {
                 pickUpScript.ObjectToPickUp = null;
             }
+        }
+    }
+
+    private void Update() {
+        // Si no es posible agarrar, signfica que alguien lo tiene en la mano
+        if (!IsPickable) {
+            // por ende, debe ser kinematico 
+            _rb.isKinematic = true;
         }
     }
 }

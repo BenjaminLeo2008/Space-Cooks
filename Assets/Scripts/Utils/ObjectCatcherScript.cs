@@ -69,7 +69,7 @@ public class ObjectCatcherScript : MonoBehaviour
                 if (_pickedObject.transform.parent == null)
                 {
                     // Verifica que la superficie exista y el objeto tenga el tag correcto
-                    if (superficieTransform != null && _pickedObject.CompareTag("Object") || _pickedObject.CompareTag("Plate"))
+                    if (superficieTransform != null && _pickedObject.CompareTag("Object"))
                     {
                         // Obtiene la altura del objeto con su collider
                         float objectHeight = _pickedObject.GetComponent<Collider>().bounds.extents.y;

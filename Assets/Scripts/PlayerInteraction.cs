@@ -147,16 +147,22 @@ public class PlayerInteraction : MonoBehaviour
       // Guarda la escala original del objeto antes de modificarla.
        originalScale = PickedObject.transform.localScale;
 
-      PickedObject.GetComponent<Rigidbody>().useGravity = false;
-      PickedObject.GetComponent<Rigidbody>().isKinematic = true;
-      PickedObject.transform.position = PlayerInteractionZone.transform.position;
-      PickedObject.transform.SetParent(PlayerInteractionZone);
-     PickedObject.transform.localRotation = Quaternion.identity;
+        Rigidbody PickedObjRb = PickedObject.GetComponent<Rigidbody>();
+
+        if (PickedObjRb) {
+            Debug.Log("Picking Object: " + PickedObject.gameObject.name);
+        }
+
+        //PickedObject.GetComponent<Rigidbody>().useGravity = false;
+        //PickedObject.GetComponent<Rigidbody>().isKinematic = true;
+        PickedObject.transform.position = PlayerInteractionZone.transform.position;
+        PickedObject.transform.SetParent(PlayerInteractionZone);
+        PickedObject.transform.localRotation = Quaternion.identity;
                 
-      PickedObject.transform.localScale = new Vector3 (
-      originalScale.x / PlayerInteractionZone.lossyScale.x,
-       originalScale.y / PlayerInteractionZone.lossyScale.y,
-       originalScale.z / PlayerInteractionZone.lossyScale.z
+        PickedObject.transform.localScale = new Vector3 (
+            originalScale.x / PlayerInteractionZone.lossyScale.x,
+            originalScale.y / PlayerInteractionZone.lossyScale.y,
+            originalScale.z / PlayerInteractionZone.lossyScale.z
         );
     }
 
