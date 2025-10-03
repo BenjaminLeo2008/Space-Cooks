@@ -196,6 +196,48 @@ public class AdvanceActionsScript : MonoBehaviour
                 player.enabled = true;
             }
         }
+        else if (objectCatcher.PickedObject.name.StartsWith("CuttedPotatoInFryer"))
+        {
+            yield return new WaitForSeconds(delay);
+
+            if (objectCatcher.PickedObject != null && myPrefabs.TryGetValue("CookedPotatoInFryer", out GameObject myPrefab))
+            {
+                Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
+                Quaternion currentRotation = objectCatcher.PickedObject.transform.rotation;
+
+                Destroy(objectCatcher.PickedObject);
+
+                GameObject newInstance = Instantiate(myPrefab, currentPosition, currentRotation);
+
+                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
+                if (newRb != null)
+                {
+                    newRb.isKinematic = true;
+                }
+                objectCatcher.SetPickedObject(newInstance);
+            }
+        }
+        else if (objectCatcher.PickedObject.name.StartsWith("CuttedSteakInSpan"))
+        {
+            yield return new WaitForSeconds(delay);
+
+            if (objectCatcher.PickedObject != null && myPrefabs.TryGetValue("CookedSteakInSpan", out GameObject myPrefab))
+            {
+                Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
+                Quaternion currentRotation = objectCatcher.PickedObject.transform.rotation;
+
+                Destroy(objectCatcher.PickedObject);
+
+                GameObject newInstance = Instantiate(myPrefab, currentPosition, currentRotation);
+
+                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
+                if (newRb != null)
+                {
+                    newRb.isKinematic = true;
+                }
+                objectCatcher.SetPickedObject(newInstance);
+            }
+        }
     }
     // Corrutina para lavar el objeto después de un retraso
     private IEnumerator WashPickedObjectDelayed(float delay)
