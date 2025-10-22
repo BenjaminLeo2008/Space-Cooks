@@ -21,11 +21,45 @@ public class FoodStateManager : MonoBehaviour
         }
     }
     void Update(){
-        if (gameObject != null){
+        if (gameObject != null)
+        {
             if(_foodState == 1)
             {
-                
+                Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
+                Quaternion currentRotation = objectCatcher.PickedObject.transform.rotation;
+
+                Destroy(gameObject);
+
+                GameObject newInstance = Instantiate(myPrefab, currentPosition, currentRotation);
             }
+            if (_foodState == 2)
+            {
+                Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
+                Quaternion currentRotation = objectCatcher.PickedObject.transform.rotation;
+
+                Destroy(gameObject);
+
+                GameObject newInstance = Instantiate(myPrefab, currentPosition, currentRotation);
+            }
+            if (_foodState == 3)
+            {
+                Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
+                Quaternion currentRotation = objectCatcher.PickedObject.transform.rotation;
+
+                Destroy(gameObject);
+
+                GameObject newInstance = Instantiate(myPrefab, currentPosition, currentRotation);
+            }
+            if (_foodState == 4)
+            {
+                Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
+                Quaternion currentRotation = objectCatcher.PickedObject.transform.rotation;
+
+                Destroy(gameObject);
+
+                GameObject newInstance = Instantiate(myPrefab, currentPosition, currentRotation);
+            }
+
         }
     }
 
