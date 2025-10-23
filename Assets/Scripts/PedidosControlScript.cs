@@ -5,17 +5,19 @@ using UnityEngine.UI;
 
 public class PedidosControlScript : MonoBehaviour
 {
-    
-public float spawnInterval = 5f;
-public List<GameObject> orderPrefabs;
-public RectTransform orderSpawnPoint;
-public float offsetBetweenOrders = 50f;
-public float orderTime = 10f;
+    public float spawnInterval = 5f;
+    public List<GameObject> orderPrefabs;
+    public RectTransform orderSpawnPoint;
+    public float offsetBetweenOrders = 50f;
+    public float orderTime = 10f;
 
-private Vector2 nextSpawnPoint;
+    private Vector2 nextSpawnPoint; 
+    private int waitingRecipesMax = 6;
+    private List<GameObject> activeOrders = new List<GameObject>();
+    public GameObject orderPrefab;
 
-// Start se llama antes de la primera actualización del frame
-void Start()
+    // Start se llama antes de la primera actualización del frame
+    void Start()
 {
 // Inicializa el punto de spawn con la posición anclada del RectTransform
 nextSpawnPoint = orderSpawnPoint.anchoredPosition;
