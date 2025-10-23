@@ -16,6 +16,8 @@ public class AdvanceActionsScript : MonoBehaviour
     // Referencia al ObjectCatcherScript
     private ObjectCatcherScript objectCatcher;
 
+    private FoodStateManager foodStateManager;
+
     // Variable para rastrear si el jugador está dentro del área del collider.
     private bool _isPlayerInTrigger = false;
 
@@ -376,7 +378,7 @@ public class AdvanceActionsScript : MonoBehaviour
     //función para eliminar el objeto agarrado y liberar la referencia.
     private void DeliverObject()
     {
-        if (deliverablePrefab != null && objectCatcher.PickedObject.name == deliverablePrefab.name)
+        if (deliverablePrefab != null && objectCatcher.PickedObject.name == foodStateManager.FoodState == 3)
         {
             Destroy(objectCatcher.PickedObject);
             objectCatcher.SetPickedObject(null);
@@ -384,7 +386,7 @@ public class AdvanceActionsScript : MonoBehaviour
     }
     private void DestroyObject()
     {
-        if (objectCatcher.PickedObject != null && objectCatcher.PickedObject.CompareTag("Object"))
+        if (objectCatcher.PickedObject != null && objectCatcher.PickedObject.CompareTag("Object") || objectCatcher.PickedObject != null && objectCatcher.PickedObject.CompareTag("Food"))
         {
             Destroy(objectCatcher.PickedObject);
             objectCatcher.SetPickedObject(null);

@@ -60,35 +60,7 @@ public class ObjectCatcherScript : MonoBehaviour
     // El Update se encargará de posicionar el objeto solo si ya ha sido detectado
     void Update()
     {
-        if (gameObject.CompareTag("Tile") || gameObject.CompareTag("Floor"))
-        {
-            // Solo ejecuta la lógica si un objeto ha sido atrapado
-            if (_pickedObject != null)
-            {
-                // Opcional: Asegúrate de que el objeto no tiene un padre (esto ayuda a evitar problemas)
-                if (_pickedObject.transform.parent == null)
-                {
-                    // Verifica que la superficie exista y el objeto tenga el tag correcto
-                    if (superficieTransform != null && _pickedObject.CompareTag("Object"))
-                    {
-                        // Obtiene la altura del objeto con su collider
-                        float objectHeight = _pickedObject.GetComponent<Collider>().bounds.extents.y;
-                        Vector3 superficiePosition = superficieTransform.position;
-
-                        // Calcula la nueva posición del objeto
-                        Vector3 newPosition = new Vector3(
-                            superficiePosition.x + offset.x,
-                            superficiePosition.y + objectHeight + offset.y,
-                            superficiePosition.z + offset.z
-                        );
-
-                        // Establece la rotación y posición
-                        _pickedObject.transform.rotation = superficieTransform.rotation;
-                        _pickedObject.transform.position = newPosition;
-                    }
-                }
-            }
-        }
+        StartCoroutine(PickObjectDelayed(1f));
     }
 
     // Este método se activa cuando un Collider entra en el trigger
@@ -124,6 +96,39 @@ public class ObjectCatcherScript : MonoBehaviour
             // Limpiamos las referencias
             _pickedObject = null;
             _caughtRigidbody = null;
+        }
+    }
+
+    private IEnumerator PickObjectDelayed(float delay)
+    {
+       if (gameObject.CompareTag("Tile") || gameObject.CompareTag("Floor"))
+        {
+            // Solo ejecuta la lógica si un objeto ha sido atrapado
+            if (_pickedObject != null)
+            {
+                // Opcional: Asegúrate de que el objeto no tiene un padre (esto ayuda a evitar problemas)
+                if (_pickedObject.transform.parent == null)
+                {
+                    // Verifica que la superficie exista y el objeto tenga el tag correcto
+                    if (superficieTransform != null && _pickedObject.CompareTag("Object"))
+                    {
+                        // Obtiene la altura del objeto con su collider
+                        float objectHeight = _pickedObject.GetComponent<Collider>().bounds.extents.y;
+                        Vector3 superficiePosition = superficieTransform.position;
+
+                        // Calcula la nueva posición del objeto
+                        Vector3 newPosition = new Vector3(
+                            superficiePosition.x + offset.x,
+                            superficiePosition.y + objectHeight + offset.y,
+                            superficiePosition.z + offset.z
+                        );
+
+                        // Establece la rotación y posición
+                        _pickedObject.transform.rotation = superficieTransform.rotation;
+                        _pickedObject.transform.position = newPosition;
+                    }
+                }
+            }
         }
     }
 }
