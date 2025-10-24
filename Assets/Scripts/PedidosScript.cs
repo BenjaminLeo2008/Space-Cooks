@@ -26,8 +26,8 @@ public class PedidosScript : MonoBehaviour
 
         if (totalTime == 0)
         {
-            totalTime = 30f;
-            remainingTime = 30f;
+            totalTime = 15f;
+            remainingTime = 15f;
         }
     }
     // StartTimer se llama desde PedidosControlScript para inicializar el pedido
