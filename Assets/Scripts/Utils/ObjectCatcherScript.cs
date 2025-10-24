@@ -112,6 +112,7 @@ public class ObjectCatcherScript : MonoBehaviour
                     // Verifica que la superficie exista y el objeto tenga el tag correcto
                     if (superficieTransform != null && _pickedObject.CompareTag("Object"))
                     {
+                        yield return new WaitForSeconds(delay);
                         // Obtiene la altura del objeto con su collider
                         float objectHeight = _pickedObject.GetComponent<Collider>().bounds.extents.y;
                         Vector3 superficiePosition = superficieTransform.position;

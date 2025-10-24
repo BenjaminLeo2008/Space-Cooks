@@ -11566,10 +11566,8 @@ MonoBehaviour:
   spawnInterval: 5
   orderPrefabs:
   - {fileID: 1363528570609600155, guid: 7cf7f3c81eb3e57468829d4866107d56, type: 3}
-  - {fileID: 4786646372534763283, guid: 2bbb6e91fcfa04f468f409ae1f273c92, type: 3}
-  - {fileID: 4520048694872434333, guid: cff64baac0834364fb2164532f593a36, type: 3}
-  - {fileID: 5523887752233030760, guid: 5db291ab0fe4b6e48bd84ac8f6a68fe6, type: 3}
-  - {fileID: 7166829390892250508, guid: 75936c6746bece84e88494d534ffbf79, type: 3}
+  - {fileID: 1363528570609600155, guid: f6c42f6d5ef98c54983709c381e9fef4, type: 3}
+  - {fileID: 1363528570609600155, guid: d521e98bdd88e544abfa433909827432, type: 3}
   orderSpawnPoint: {fileID: 540530960}
   offsetBetweenOrders: 65
   orderTime: 30
