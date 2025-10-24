@@ -13,7 +13,7 @@ public class PedidosControlScript : MonoBehaviour
     public float orderTime = 10f;
 
     //private Vector2 nextSpawnPoint;
-    private int waitingRecipesMax = 6;
+    private int waitingRecipesMax = 7;
     private List<GameObject> activeOrders = new List<GameObject>();
 
 
@@ -38,6 +38,10 @@ yield return new WaitForSeconds(spawnInterval);
                 Debug.Log("Limite de pedidos alcanzado. No se instancio un nuevo pedido.");
                 continue;
                 }
+            else
+            {
+
+            }
 
             if (orderPrefabs.Count > 0)
 {

@@ -10,12 +10,17 @@ private float totalTime;
 
 private float remainingTime;
 
+    void Awake()
+    {
+
+    }
+
 void Start()
 {
         if (totalTime == 0)
         {
-            totalTime = 20f;
-            remainingTime = 20f;
+            totalTime = 30f;
+            remainingTime = 30f;
         }
 }
 // StartTimer se llama desde PedidosControlScript para inicializar el pedido
@@ -51,4 +56,8 @@ else
     Destroy(gameObject);
 }
 }
+    private void OnDestroy()
+    {
+        
+    }
 }
