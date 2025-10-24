@@ -41,6 +41,11 @@ public class PlayerInteraction : MonoBehaviour
         col.isTrigger = true;
     }
 
+    private void IsPlateInFront()
+    {
+        
+    }
+
     void Update()
     {
         if (ObjectToPickUp != null && ObjectToPickUp.GetComponent<PickableObject>().IsPickable == true && PickedObject == null)

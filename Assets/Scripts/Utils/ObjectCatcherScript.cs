@@ -21,6 +21,7 @@ public class ObjectCatcherScript : MonoBehaviour
 
     // Propiedad pública para que otros scripts puedan leer el objeto atrapado.
     public GameObject PickedObject => _pickedObject;
+    private PickableObject _currentPickableObjectScript;
 
     // Nuevo método público para que otros scripts puedan establecer el objeto atrapado.
     public void SetPickedObject(GameObject newObject)
@@ -29,6 +30,7 @@ public class ObjectCatcherScript : MonoBehaviour
         if (newObject != null)
         {
             _caughtRigidbody = newObject.GetComponent<Rigidbody>();
+            _currentPickableObjectScript = newObject.GetComponent<PickableObject>();
         }
         else
         {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickableObject : MonoBehaviour
 {
     public bool IsPickable = true;
+    public bool IsIngredient = false;
     private Rigidbody _rb;
 
     private void Start() {
