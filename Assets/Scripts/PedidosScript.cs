@@ -6,24 +6,11 @@ using UnityEngine.UI;
 public class PedidosScript : MonoBehaviour
 {
     public List<Image> timeBars;
-    public PedidosControlScript controlDePedidos;
-    public string pedidoID;
     private float totalTime;
     private float remainingTime;
 
     void Start()
     {
-        controlDePedidos = FindObjectOfType<PedidosControlScript>();
-        if (string.IsNullOrEmpty(pedidoID))
-        {
-            pedidoID = System.Guid.NewGuid().ToString();
-        }
-
-        if (!controlDePedidos.activeOrders.ContainsKey(pedidoID))
-        {
-            controlDePedidos.activeOrders.Add(pedidoID, gameObject);
-        }
-
         if (totalTime == 0)
         {
             totalTime = 15f;
@@ -60,7 +47,6 @@ public class PedidosScript : MonoBehaviour
         else
         {
             Debug.Log("El pedido se destruye!");
-            controlDePedidos.activeOrders.Remove(pedidoID);
             Destroy(gameObject);
         }
     }

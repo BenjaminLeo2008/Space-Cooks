@@ -5,67 +5,44 @@ using UnityEngine.UI;
 
 public class PedidosControlScript : MonoBehaviour
 {
-    public float spawnInterval;
+    public float spawnIntervalMin = 5f;
+    public float spawnIntervalMax = 8f;  
     public List<GameObject> orderPrefabs;
-    //public RectTransform orderSpawnPoint;
     public RectTransform orderQueueContainer;
-    public float offsetBetweenOrders = 50f;
+
     public float orderTime = 10f;
+    private int waitingRecipesMax = 6;
 
-    //private Vector2 nextSpawnPoint;
-    private int waitingRecipesMax = 7;
-
-    //Cambie la list por un diccionario que tiene el mismo gameobject que antes pero se le suma un ID unico (El string)
-    public Dictionary<string, GameObject> activeOrders = new Dictionary<string, GameObject>();
+    private List<GameObject> activeOrders = new List<GameObject>();
 
 
     // Start se llama antes de la primera actualización del frame
     void Start()
 {
-// Inicializa el punto de spawn con la posición anclada del RectTransform
-//nextSpawnPoint = orderSpawnPoint.anchoredPosition;
-
-StartCoroutine(SpawnOrders());
+    StartCoroutine(SpawnOrders());
 }
 
 IEnumerator SpawnOrders()
 {
-// Bucle infinito para seguir generando pedidos
     while (true)
     {
-    // Espera el tiempo definido antes de crear el próximo pedido
+        float randomWaitTime = Random.Range(spawnIntervalMin, spawnIntervalMax);
+        yield return new WaitForSeconds(randomWaitTime);
+
         if (activeOrders.Count >= waitingRecipesMax)
         {
-            yield return new WaitForSeconds(spawnInterval);
             Debug.Log("Limite de pedidos alcanzado. No se instancio un nuevo pedido.");
             continue;
         }
-
-    if (orderPrefabs.Count > 0)
+        if (orderPrefabs.Count > 0)
     {
-                yield return new WaitForSeconds(spawnInterval);
                 // Elige un prefab de forma aleatoria
                 int randomIndex = Random.Range(0, orderPrefabs.Count);
-    GameObject newOrderGO = Instantiate(orderPrefabs[randomIndex], orderQueueContainer);
-
-    RectTransform newOrderRect = newOrderGO.GetComponent<RectTransform>();
-    PedidosScript pedidosScript = newOrderGO.GetComponent<PedidosScript>();
+                GameObject newOrderGO = Instantiate(orderPrefabs[randomIndex], orderQueueContainer);
+                activeOrders.Add(newOrderGO);
 
     Debug.Log("Escala del nuevo pedido: " + newOrderGO.transform.localScale);
-
-    //newOrderRect.anchoredPosition = nextSpawnPoint;
-    //newOrderGO.transform.SetParent(orderSpawnPoint.parent, false);
-
-    PedidosScript pedidoScript = newOrderGO.GetComponent<PedidosScript>();
-    if (pedidoScript != null)
-    {
-        pedidoScript.StartTimer(orderTime);
-    }
-
     Debug.Log($"Pedido generado. Total activo: {activeOrders.Count}/{waitingRecipesMax}");
-    //nextSpawnPoint.x += offsetBetweenOrders;
-
-    // Actualiza el punto de spawn para que el próximo pedido se mueva a la derecha
 }
 }
 }
