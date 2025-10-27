@@ -27,6 +27,7 @@ public class ComplexFoodScript : MonoBehaviour
     public bool IsValidIngredient(IngredientData ingredientData)
     {
         if (!possibleIngredients.Contains(ingredientData)) {
+            
             return false;
         } else
         {
