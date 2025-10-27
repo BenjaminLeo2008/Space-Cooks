@@ -7,6 +7,14 @@ public class ComplexFoodScript : MonoBehaviour
     [Header("Settings")]
     public List<IngredientData> possibleIngredients;
     public List<IngredientData> currentIngredients;
+    public ComplexFoodDatabaseSO complexFoodDatabase;
+
+
+    public ComplexFoodSO GetComplexFood() {
+        foreach (ComplexFoodSO food in complexFoodDatabase.allComplexFoods) {
+            // if ( todos los ingredientes son = a los current ingredients ) usar prefab
+        }
+    }
 
 
     public void UpdatePossibleIngredients(IngredientData ingredientData)
@@ -27,7 +35,7 @@ public class ComplexFoodScript : MonoBehaviour
     public bool IsValidIngredient(IngredientData ingredientData)
     {
         if (!possibleIngredients.Contains(ingredientData)) {
-            
+
             return false;
         } else
         {
