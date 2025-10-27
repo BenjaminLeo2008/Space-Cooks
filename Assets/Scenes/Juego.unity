@@ -11587,13 +11587,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7afb2d5216f0f6549a45db5105d56943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 5
+  spawnIntervalMin: 5
+  spawnIntervalMax: 8
   orderPrefabs:
   - {fileID: 1363528570609600155, guid: 7cf7f3c81eb3e57468829d4866107d56, type: 3}
   - {fileID: 1363528570609600155, guid: 3280abe72eeb84048b8c7c98cddc29be, type: 3}
   - {fileID: 1363528570609600155, guid: 99c821c959f96254192577f8a6c9f2b5, type: 3}
   orderQueueContainer: {fileID: 1559823643}
-  offsetBetweenOrders: 60
   orderTime: 25
 --- !u!4 &1592821525
 Transform:
@@ -15846,7 +15846,7 @@ GameObject:
   - component: {fileID: 6220393203773529654}
   - component: {fileID: 6220393203774626934}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Patito
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17086,7 +17086,7 @@ GameObject:
   - component: {fileID: 6220393203773530044}
   - component: {fileID: 6220393203774627324}
   m_Layer: 0
-  m_Name: CarneCortadaCocinada.003
+  m_Name: CarneCortadaQuemada.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

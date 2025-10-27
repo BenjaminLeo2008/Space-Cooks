@@ -7,7 +7,7 @@ public class TimerController : MonoBehaviour
 {
     public Image timer_linear_image;
 
-    public float tiempoInicialSeg = 60f;
+    public float tiempoInicialSeg;
     private float tiempoRestante;
 
     void Start()
