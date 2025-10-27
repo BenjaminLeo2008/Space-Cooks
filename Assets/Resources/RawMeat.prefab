@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6724862977622654034}
   - component: {fileID: 9069514684034872809}
   m_Layer: 0
-  m_Name: RawSteak
+  m_Name: RawMeat
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
