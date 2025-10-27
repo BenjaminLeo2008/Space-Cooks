@@ -10,7 +10,7 @@ public class ComplexFoodScript : MonoBehaviour
     public ComplexFoodDatabaseSO complexFoodDatabase;
 
 
-    public ComplexFoodSO GetComplexFood() {
+    public void GetComplexFood() {
         foreach (ComplexFoodSO food in complexFoodDatabase.allComplexFoods) {
             // if ( todos los ingredientes son = a los current ingredients ) usar prefab
         }
