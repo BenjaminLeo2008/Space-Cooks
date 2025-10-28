@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2a718dee2c5cf48bb3a387d0f43103, type: 3}
   m_Name: SOCookedDough
   m_EditorClassIdentifier: 
-  PrefabObject: {fileID: 0}
-  SimpleNextState: {fileID: 0}
+  PrefabObject: {fileID: 6181964312354829716, guid: c729701bb50b4a54e867a21f9737699d,
+    type: 3}
+  SimpleNextState: {fileID: 11400000, guid: 9d43f5237bd404446a49724136f1ed49, type: 2}
   Recipes: []

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2a718dee2c5cf48bb3a387d0f43103, type: 3}
   m_Name: SOOvercookedDough
   m_EditorClassIdentifier: 
-  PrefabObject: {fileID: 0}
+  PrefabObject: {fileID: 3950085925753048128, guid: bccd0d40e6893284aa635d84d1e5c621,
+    type: 3}
   SimpleNextState: {fileID: 0}
   Recipes: []

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2a718dee2c5cf48bb3a387d0f43103, type: 3}
   m_Name: SOCookedPancake
   m_EditorClassIdentifier: 
-  PrefabObject: {fileID: 0}
-  SimpleNextState: {fileID: 0}
+  PrefabObject: {fileID: 7676885123878535664, guid: 6380211f12531b4469408238e20988d1,
+    type: 3}
+  SimpleNextState: {fileID: 11400000, guid: 3e96b32a5371c9a42a73d1722630e998, type: 2}
   Recipes: []
