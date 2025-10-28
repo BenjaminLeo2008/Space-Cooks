@@ -1,0 +1,216 @@
+fileFormatVersion: 2
+guid: 119d42673c72f344f82457e369cc4147
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Azucar
+    100002: Cylinder.002
+    100004: Cylinder.029
+    100006: FlanLiquidoCrudo.003
+    100008: Leche
+    100010: Olla.002
+    100012: Olla.003
+    100014: Olla.004
+    100016: Olla.006
+    100018: Olla.007
+    100020: Panqueqaue
+    100022: Panqueqaue.001
+    100024: Plato.001
+    100026: Plato.002
+    100028: Plato.004
+    100030: Plato.012
+    100032: //RootNode
+    100034: Star.001
+    100036: Star.002
+    100038: Star.003
+    100040: Star.004
+    100042: Star.008
+    100044: Star.009
+    400000: Azucar
+    400002: Cylinder.002
+    400004: Cylinder.029
+    400006: FlanLiquidoCrudo.003
+    400008: Leche
+    400010: Olla.002
+    400012: Olla.003
+    400014: Olla.004
+    400016: Olla.006
+    400018: Olla.007
+    400020: Panqueqaue
+    400022: Panqueqaue.001
+    400024: Plato.001
+    400026: Plato.002
+    400028: Plato.004
+    400030: Plato.012
+    400032: //RootNode
+    400034: Star.001
+    400036: Star.002
+    400038: Star.003
+    400040: Star.004
+    400042: Star.008
+    400044: Star.009
+    2100000: Material.031
+    2100002: Material.034
+    2100004: Material.030
+    2100006: Material.029
+    2100008: Cremaa
+    2100010: Material.028
+    2100012: Metal.1
+    2100014: Madera.1
+    2100016: No Name
+    2100018: Material.044
+    2100020: Material.042
+    2100022: Material.043
+    2100024: Material.053
+    2300000: Azucar
+    2300002: Cylinder.002
+    2300004: Cylinder.029
+    2300006: FlanLiquidoCrudo.003
+    2300008: Leche
+    2300010: Olla.002
+    2300012: Olla.003
+    2300014: Olla.004
+    2300016: Olla.006
+    2300018: Olla.007
+    2300020: Panqueqaue
+    2300022: Panqueqaue.001
+    2300024: Plato.001
+    2300026: Plato.002
+    2300028: Plato.004
+    2300030: Plato.012
+    2300032: Star.001
+    2300034: Star.002
+    2300036: Star.003
+    2300038: Star.004
+    2300040: Star.008
+    2300042: Star.009
+    3300000: Azucar
+    3300002: Cylinder.002
+    3300004: Cylinder.029
+    3300006: FlanLiquidoCrudo.003
+    3300008: Leche
+    3300010: Olla.002
+    3300012: Olla.003
+    3300014: Olla.004
+    3300016: Olla.006
+    3300018: Olla.007
+    3300020: Panqueqaue
+    3300022: Panqueqaue.001
+    3300024: Plato.001
+    3300026: Plato.002
+    3300028: Plato.004
+    3300030: Plato.012
+    3300032: Star.001
+    3300034: Star.002
+    3300036: Star.003
+    3300038: Star.004
+    3300040: Star.008
+    3300042: Star.009
+    4300000: Cylinder.029
+    4300002: Panqueqaue
+    4300004: Panqueqaue.001
+    4300006: Cylinder.002
+    4300008: Star.008
+    4300010: Star.009
+    4300012: Plato.002
+    4300014: Plato.004
+    4300016: Star.003
+    4300018: Plato.012
+    4300020: Star.004
+    4300022: Star.001
+    4300024: Star.002
+    4300026: Plato.001
+    4300028: Olla.002
+    4300030: Olla.003
+    4300032: Olla.004
+    4300034: Olla.006
+    4300036: Olla.007
+    4300038: Azucar
+    4300040: Leche
+    4300042: FlanLiquidoCrudo.003
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

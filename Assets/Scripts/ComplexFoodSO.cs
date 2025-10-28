@@ -8,7 +8,6 @@ public class ComplexFoodSO : ScriptableObject
     public GameObject complexFoodPrefab;
     public IngredientData[] ingredientsNeededForDish;
 
-    public ComplexFoodSO[] allComplexFoods;
 }
 
 
