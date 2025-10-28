@@ -10,7 +10,6 @@ public class PedidosControlScript : MonoBehaviour
     public List<GameObject> orderPrefabs;
     public RectTransform orderQueueContainer;
 
-    public float orderTime = 10f;
     private int waitingRecipesMax = 6;
 
     private List<GameObject> activeOrders = new List<GameObject>();
@@ -21,7 +20,16 @@ public class PedidosControlScript : MonoBehaviour
 {
     StartCoroutine(SpawnOrders());
 }
-
+    public void QuitarPedidoActivo(GameObject pedidoExpirado)
+    {
+        if (activeOrders.Contains(pedidoExpirado))
+        {
+            //sacarlo de la lista al pedido
+            activeOrders.Remove(pedidoExpirado);
+            Debug.Log("Pedido expirado quitado de la lista. Pedidos activos restantes: " + activeOrders.Count);
+            //spawn orders crea otro pedido
+        }
+    }
 IEnumerator SpawnOrders()
 {
     while (true)
@@ -40,6 +48,12 @@ IEnumerator SpawnOrders()
                 int randomIndex = Random.Range(0, orderPrefabs.Count);
                 GameObject newOrderGO = Instantiate(orderPrefabs[randomIndex], orderQueueContainer);
                 activeOrders.Add(newOrderGO);
+                PedidosScript scriptPedido = newOrderGO.GetComponent<PedidosScript>();
+
+                if (scriptPedido != null)
+                {
+                    scriptPedido.pedidosControlScript = this;
+                }
 
     Debug.Log("Escala del nuevo pedido: " + newOrderGO.transform.localScale);
     Debug.Log($"Pedido generado. Total activo: {activeOrders.Count}/{waitingRecipesMax}");

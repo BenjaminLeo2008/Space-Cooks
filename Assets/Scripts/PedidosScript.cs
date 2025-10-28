@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PedidosScript : MonoBehaviour
 {
+    public PedidosControlScript pedidosControlScript;
     public List<Image> timeBars;
     private float totalTime;
     private float remainingTime;
@@ -47,6 +48,11 @@ public class PedidosScript : MonoBehaviour
         else
         {
             Debug.Log("El pedido se destruye!");
+            if (pedidosControlScript != null)
+            {
+                pedidosControlScript.QuitarPedidoActivo(this.gameObject);
+            }
+
             Destroy(gameObject);
         }
     }
