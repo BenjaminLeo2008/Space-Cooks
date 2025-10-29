@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5498079658906894393}
   - component: {fileID: 1970548445791084436}
   m_Layer: 0
-  m_Name: TortaFritaQuemada
-  m_TagString: Untagged
+  m_Name: OvercookedDough
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

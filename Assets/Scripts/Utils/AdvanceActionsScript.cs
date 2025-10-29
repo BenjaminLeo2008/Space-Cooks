@@ -16,6 +16,8 @@ public class AdvanceActionsScript : MonoBehaviour
     // Referencia al ObjectCatcherScript
     private ObjectCatcherScript objectCatcher;
 
+    public IngredientData ingredientData;
+
 
 
     // Variable para rastrear si el jugador está dentro del área del collider.
@@ -108,7 +110,10 @@ public class AdvanceActionsScript : MonoBehaviour
     // Corrutina para reemplazar el objeto después de un retraso
     private IEnumerator ReplacePickedObjectDelayed(float delay)
     {
-        if (objectCatcher.PickedObject.name.StartsWith("RawPotato"))
+        // El prefab a instanciar AHORA es el PrefabObject del SimpleNextState del IngredientData
+        GameObject nextStatePrefab = ingredientData.SimpleNextState.PrefabObject;
+
+        if (nextStatePrefab != null)
         {
             if (player != null)
             {
@@ -117,14 +122,15 @@ public class AdvanceActionsScript : MonoBehaviour
 
             yield return new WaitForSeconds(delay);
 
-            if (objectCatcher.PickedObject != null && myPrefabs.TryGetValue("CuttedPotato", out GameObject myPrefab))
+            if (objectCatcher.PickedObject != null)
             {
                 Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
                 Quaternion currentRotation = objectCatcher.PickedObject.transform.rotation;
 
                 Destroy(objectCatcher.PickedObject);
 
-                GameObject newInstance = Instantiate(myPrefab, currentPosition, currentRotation);
+                // Usamos el PrefabObject de SimpleNextState
+                GameObject newInstance = Instantiate(nextStatePrefab, currentPosition, currentRotation);
 
                 Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
                 if (newRb != null)
@@ -133,114 +139,18 @@ public class AdvanceActionsScript : MonoBehaviour
                 }
                 objectCatcher.SetPickedObject(newInstance);
             }
+
             if (player != null)
             {
                 player.enabled = true;
             }
         }
-        else if (objectCatcher.PickedObject.name.StartsWith("RawSteak"))
+        else
         {
-            if (player != null)
-            {
-                player.enabled = false;
-            }
-
-            yield return new WaitForSeconds(delay);
-
-            if (objectCatcher.PickedObject != null && myPrefabs.TryGetValue("CuttedSteak", out GameObject myPrefab))
-            {
-                Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
-                Quaternion currentRotation = objectCatcher.PickedObject.transform.rotation;
-
-                Destroy(objectCatcher.PickedObject);
-
-                GameObject newInstance = Instantiate(myPrefab, currentPosition, currentRotation);
-
-                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
-                if (newRb != null)
-                {
-                    newRb.isKinematic = true;
-                }
-                objectCatcher.SetPickedObject(newInstance);
-            }
-            if (player != null)
-            {
-                player.enabled = true;
-            }
+            Debug.LogWarning($"El SimpleNextState de {ingredientData.name} no tiene asignado un PrefabObject.");
         }
-        else if (objectCatcher.PickedObject.name.StartsWith("Dough"))
-        {
-            if (player != null)
-            {
-                player.enabled = false;
-            }
-
-            yield return new WaitForSeconds(delay);
-
-            if (objectCatcher.PickedObject != null && myPrefabs.TryGetValue("DoughDisc", out GameObject myPrefab))
-            {
-                Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
-                Quaternion currentRotation = objectCatcher.PickedObject.transform.rotation;
-
-                Destroy(objectCatcher.PickedObject);
-
-                GameObject newInstance = Instantiate(myPrefab, currentPosition, currentRotation);
-
-                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
-                if (newRb != null)
-                {
-                    newRb.isKinematic = true;
-                }
-                objectCatcher.SetPickedObject(newInstance);
-            }
-            if (player != null)
-            {
-                player.enabled = true;
-            }
         }
-        else if (objectCatcher.PickedObject.name.StartsWith("CuttedPotatoInFryer"))
-        {
-            yield return new WaitForSeconds(delay);
-
-            if (objectCatcher.PickedObject != null && myPrefabs.TryGetValue("CookedPotatoInFryer", out GameObject myPrefab))
-            {
-                Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
-                Quaternion currentRotation = objectCatcher.PickedObject.transform.rotation;
-
-                Destroy(objectCatcher.PickedObject);
-
-                GameObject newInstance = Instantiate(myPrefab, currentPosition, currentRotation);
-
-                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
-                if (newRb != null)
-                {
-                    newRb.isKinematic = true;
-                }
-                objectCatcher.SetPickedObject(newInstance);
-            }
-        }
-        else if (objectCatcher.PickedObject.name.StartsWith("CuttedSteakInSpan"))
-        {
-            yield return new WaitForSeconds(delay);
-
-            if (objectCatcher.PickedObject != null && myPrefabs.TryGetValue("CookedSteakInSpan", out GameObject myPrefab))
-            {
-                Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
-                Quaternion currentRotation = objectCatcher.PickedObject.transform.rotation;
-
-                Destroy(objectCatcher.PickedObject);
-
-                GameObject newInstance = Instantiate(myPrefab, currentPosition, currentRotation);
-
-                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
-                if (newRb != null)
-                {
-                    newRb.isKinematic = true;
-                }
-                objectCatcher.SetPickedObject(newInstance);
-            }
-        }
-    }
+}
     // Corrutina para lavar el objeto después de un retraso
     private IEnumerator WashPickedObjectDelayed(float delay)
     {

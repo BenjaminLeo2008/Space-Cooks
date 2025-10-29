@@ -90,8 +90,8 @@ GameObject:
   - component: {fileID: 5798472719892046757}
   - component: {fileID: 4451041629592208516}
   m_Layer: 0
-  m_Name: CuttedPotato
-  m_TagString: Untagged
+  m_Name: CuttedRawPotato
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
