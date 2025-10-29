@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Resources/Muebles/MesaTabla.prefab.meta
-guid: 53b7ce60cc4e15b48b2e990785c9e39b
-========
-guid: 6380211f12531b4469408238e20988d1
->>>>>>>> 392b04ae6249206a1ff6aca2eaddae06d6cc41f6:Assets/Resources/Cooked/CookedPancake.prefab.meta
+guid: a0413df683d9fa1428a8c390eabb5555
 PrefabImporter:
   externalObjects: {}
   userData: 
