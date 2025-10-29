@@ -91,8 +91,8 @@ GameObject:
   - component: {fileID: 4454269834719584193}
   - component: {fileID: 8367617681607244918}
   m_Layer: 0
-  m_Name: CuttedCookedPotato
-  m_TagString: Untagged
+  m_Name: CookedPotato
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

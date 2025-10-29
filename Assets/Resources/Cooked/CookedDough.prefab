@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8239031579952740879}
   - component: {fileID: 5837795913396775284}
   m_Layer: 0
-  m_Name: TortaFrita2
-  m_TagString: Untagged
+  m_Name: CookedDough
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
