@@ -13,6 +13,7 @@ public class ObjectCatcherScript : MonoBehaviour
     public Transform superficieTransform;
     private GameObject _pickedObject;
     private Rigidbody _caughtRigidbody;
+    private IngredientData _ingredientData;
 
     public GameObject ObjectToPickUp;
     public GameObject pickedObject;
@@ -21,6 +22,7 @@ public class ObjectCatcherScript : MonoBehaviour
 
     // Propiedad pública para que otros scripts puedan leer el objeto atrapado.
     public GameObject PickedObject => _pickedObject;
+    public IngredientData IngredientData => _ingredientData;
     private PickableObject _currentPickableObjectScript;
 
     // Nuevo método público para que otros scripts puedan establecer el objeto atrapado.
@@ -31,6 +33,7 @@ public class ObjectCatcherScript : MonoBehaviour
         {
             _caughtRigidbody = newObject.GetComponent<Rigidbody>();
             _currentPickableObjectScript = newObject.GetComponent<PickableObject>();
+            _ingredientData = newObject.GetComponent<IngredientData>();
         }
         else
         {
@@ -78,6 +81,7 @@ public class ObjectCatcherScript : MonoBehaviour
                 // Si el objeto tiene un Rigidbody, lo "atrapamos"
                 _pickedObject = other.gameObject;
                 _caughtRigidbody = rb;
+                _ingredientData = other.GetComponent<IngredientData>();
                 // Lo hacemos cinemático para que no sea afectado por las físicas
                 _caughtRigidbody.isKinematic = true;
             }

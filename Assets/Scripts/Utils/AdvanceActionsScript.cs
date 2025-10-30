@@ -13,12 +13,15 @@ public class AdvanceActionsScript : MonoBehaviour
     // Diccionario para almacenar todos los prefabs cargados de Resources.
     private Dictionary<string, GameObject> myPrefabs = new Dictionary<string, GameObject>();
 
+    // Diccionario para almacenar todos los IngredientData cargados de Resources.
+    private Dictionary<string, IngredientData> allIngredientData = new Dictionary<string, IngredientData>();
+
+
     // Referencia al ObjectCatcherScript
     private ObjectCatcherScript objectCatcher;
 
+    // ESTA VARIABLE DEBE CONTENER EL SCRIPTABLE OBJECT IngredientData del objeto recogido.
     public IngredientData ingredientData;
-
-
 
     // Variable para rastrear si el jugador está dentro del área del collider.
     private bool _isPlayerInTrigger = false;
@@ -38,12 +41,24 @@ public class AdvanceActionsScript : MonoBehaviour
         GameObject[] loadedPrefabs = Resources.LoadAll<GameObject>("");
         foreach (GameObject prefab in loadedPrefabs)
         {
-            myPrefabs[prefab.name] = prefab;
+            // Línea 45: myPrefabs[prefab.name] = prefab;
+            // Se eliminó la carga directa de prefabs aquí, ya que los IngredientData ahora manejan la referencia.
         }
+
+        // Carga todos los IngredientData de la carpeta "Resources" al inicio.
+        IngredientData[] loadedIngredients = Resources.LoadAll<IngredientData>("");
+        foreach (IngredientData data in loadedIngredients)
+        {
+            allIngredientData[data.name] = data;
+        }
+
+        // Línea 51:
+        // Se eliminó la línea vacía.
     }
 
     void Update()
     {
+        ingredientData = objectCatcher.IngredientData;
         // Elige la función a ejecutar basándose en el nombre del GameObject
         if (targetGameObjectName == "Mesa para crear")
         {
@@ -59,7 +74,15 @@ public class AdvanceActionsScript : MonoBehaviour
         {
             if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.Q) && objectCatcher.PickedObject != null)
             {
-                StartCoroutine(ReplacePickedObjectDelayed(2f));
+                // Solo inicia la corrutina si tenemos un IngredientData y una transición definida.
+                if (ingredientData != null && ingredientData.SimpleNextState != null)
+                {
+                    StartCoroutine(ReplacePickedObjectDelayed(2f));
+                }
+                else
+                {
+                    Debug.LogWarning("No se puede reemplazar. El objeto recogido no tiene SimpleNextState definido.");
+                }
             }
         }
         else if (targetGameObjectName == "Mesa para entregar")
@@ -149,8 +172,7 @@ public class AdvanceActionsScript : MonoBehaviour
         {
             Debug.LogWarning($"El SimpleNextState de {ingredientData.name} no tiene asignado un PrefabObject.");
         }
-        }
-}
+    }
     // Corrutina para lavar el objeto después de un retraso
     private IEnumerator WashPickedObjectDelayed(float delay)
     {
@@ -168,7 +190,9 @@ public class AdvanceActionsScript : MonoBehaviour
             yield return new WaitForSeconds(delay);
 
             // Accede al objeto atrapado a través de la propiedad pública "PickedObject"
-            if (objectCatcher.PickedObject != null && myPrefabs.TryGetValue("Plate", out GameObject myPrefab))
+            // Línea 244: if (objectCatcher.PickedObject != null && myPrefabs.TryGetValue("Plate", out GameObject myPrefab))
+            // Reemplazamos el uso de myPrefabs por una búsqueda de IngredientData para mantener la consistencia.
+            if (objectCatcher.PickedObject != null && allIngredientData.TryGetValue("Plate", out IngredientData plateData) && plateData.PrefabObject != null)
             {
                 // Obtiene la posición y rotación del objeto actual
                 Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
@@ -178,7 +202,7 @@ public class AdvanceActionsScript : MonoBehaviour
                 Destroy(objectCatcher.PickedObject);
 
                 // Instancia el nuevo objeto desde el prefab en la misma posición y rotación
-                GameObject newInstance = Instantiate(myPrefab, currentPosition, currentRotation);
+                GameObject newInstance = Instantiate(plateData.PrefabObject, currentPosition, currentRotation);
 
                 // Nos aseguramos de que el nuevo objeto tenga un Rigidbody y lo hacemos cinemático.
                 Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
@@ -196,14 +220,25 @@ public class AdvanceActionsScript : MonoBehaviour
             }
         }
     }
-    // función para crear un objeto desde cero y agarrarlo.
+    //función para crear un objeto desde cero y agarrarlo.
     private void CreateObjectAndGrab()
     {
-        if (gameObject.name == "Mesa para crear papa")
+        // Extraemos el nombre del ingrediente de la mesa.
+        // Ejemplo: "Mesa para crear papa" -> "papa"
+        // Asegúrate de que los IngredientData en Resources tengan el mismo nombre ("Papa").
+        string ingredientName = targetGameObjectName.Replace("Mesa para crear ", "");
+
+        // Convertimos la primera letra a mayúscula para que coincida con el nombre del Scriptable Object (SO)
+        if (ingredientName.Length > 0)
         {
-            if (myPrefabs.TryGetValue("RawPotato", out GameObject myPrefab))
+            ingredientName = char.ToUpper(ingredientName[0]) + ingredientName.Substring(1);
+        }
+        // Busca el IngredientData en el diccionario.
+        if (allIngredientData.TryGetValue(ingredientName, out IngredientData dataToCreate) && dataToCreate.IsStartingIngredient)
+        {
+            if (dataToCreate.PrefabObject != null)
             {
-                GameObject newInstance = Instantiate(myPrefab, transform.position, transform.rotation);
+                GameObject newInstance = Instantiate(dataToCreate.PrefabObject, transform.position, transform.rotation);
 
                 Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
                 if (newRb != null)
@@ -212,78 +247,15 @@ public class AdvanceActionsScript : MonoBehaviour
                 }
                 objectCatcher.SetPickedObject(newInstance);
             }
-        }
-        else if (gameObject.name == "Mesa para crear carne")
-        {
-            if (myPrefabs.TryGetValue("RawSteak", out GameObject myPrefab))
+            else
             {
-                GameObject newInstance = Instantiate(myPrefab, transform.position, transform.rotation);
-
-                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
-                if (newRb != null)
-                {
-                    newRb.isKinematic = true;
-                }
-                objectCatcher.SetPickedObject(newInstance);
+                Debug.LogError($"IngredientData '{ingredientName}' no tiene asignado un PrefabObject.");
             }
         }
-        else if (gameObject.name == "Mesa para crear azucar")
+        else
         {
-            if (myPrefabs.TryGetValue("Sugar", out GameObject myPrefab))
-            {
-                GameObject newInstance = Instantiate(myPrefab, transform.position, transform.rotation);
-
-                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
-                if (newRb != null)
-                {
-                    newRb.isKinematic = true;
-                }
-                objectCatcher.SetPickedObject(newInstance);
-            }
+            Debug.LogError($"No se encontró un IngredientData válido o no es un ingrediente inicial para: {ingredientName}");
         }
-        else if (gameObject.name == "Mesa para crear leche")
-        {
-            if (myPrefabs.TryGetValue("Milk", out GameObject myPrefab))
-            {
-                GameObject newInstance = Instantiate(myPrefab, transform.position, transform.rotation);
-
-                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
-                if (newRb != null)
-                {
-                    newRb.isKinematic = true;
-                }
-                objectCatcher.SetPickedObject(newInstance);
-            }
-        }
-        else if (gameObject.name == "Mesa para crear huevo")
-        {
-            if (myPrefabs.TryGetValue("Egg", out GameObject myPrefab))
-            {
-                GameObject newInstance = Instantiate(myPrefab, transform.position, transform.rotation);
-
-                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
-                if (newRb != null)
-                {
-                    newRb.isKinematic = true;
-                }
-                objectCatcher.SetPickedObject(newInstance);
-            }
-        }
-        else if (gameObject.name == "Mesa para crear masa")
-        {
-            if (myPrefabs.TryGetValue("Dough", out GameObject myPrefab))
-            {
-                GameObject newInstance = Instantiate(myPrefab, transform.position, transform.rotation);
-
-                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
-                if (newRb != null)
-                {
-                    newRb.isKinematic = true;
-                }
-                objectCatcher.SetPickedObject(newInstance);
-            }
-        }
-
     }
     //función para eliminar el objeto agarrado y liberar la referencia.
     private void DeliverObject()

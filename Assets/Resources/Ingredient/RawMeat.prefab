@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 321049378198026890}
-  - component: {fileID: 4163430127782340934}
   - component: {fileID: 6724862977622654034}
   - component: {fileID: 9069514684034872809}
+  - component: {fileID: 4163430127782340934}
   m_Layer: 0
   m_Name: RawMeat
   m_TagString: Object
@@ -34,20 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4163430127782340934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 321049378198251178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f15355c47dd2184aaf39b9b3e5ed484, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsPickable: 1
-  IsIngredient: 0
 --- !u!54 &6724862977622654034
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -77,6 +63,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.98, y: 0.43371165, z: 2.392677}
   m_Center: {x: 0.18, y: 0, z: -0.24}
+--- !u!114 &4163430127782340934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321049378198251178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f15355c47dd2184aaf39b9b3e5ed484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsPickable: 1
+  IsIngredient: 0
+  _data: {fileID: 11400000, guid: 61bc84a331fd4314199994d345379dc4, type: 2}
 --- !u!1 &8946403575294407965
 GameObject:
   m_ObjectHideFlags: 0

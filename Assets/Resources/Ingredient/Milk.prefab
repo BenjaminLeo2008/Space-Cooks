@@ -156,3 +156,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsPickable: 1
   IsIngredient: 0
+  _data: {fileID: 11400000, guid: a1edb66ee85a1f84b9be04dd934b724a, type: 2}

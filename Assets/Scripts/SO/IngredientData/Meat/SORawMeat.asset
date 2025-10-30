@@ -15,4 +15,5 @@ MonoBehaviour:
   PrefabObject: {fileID: 321049378198251178, guid: a40a9eca83b823646a230abd4305ddcc,
     type: 3}
   SimpleNextState: {fileID: 11400000, guid: 4a478af0c53cc3c4989af10bc4ad10bd, type: 2}
+  IsStartingIngredient: 1
   Recipes: []

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2a718dee2c5cf48bb3a387d0f43103, type: 3}
   m_Name: SOCookedPancake
   m_EditorClassIdentifier: 
-  PrefabObject: {fileID: 7676885123878535664, guid: 6380211f12531b4469408238e20988d1,
+  PrefabObject: {fileID: 7676885123878535664, guid: f2c059a3817331245825bea3af669ae0,
     type: 3}
-  SimpleNextState: {fileID: 11400000, guid: 3e96b32a5371c9a42a73d1722630e998, type: 2}
+  SimpleNextState: {fileID: 11400000, guid: 9d43f5237bd404446a49724136f1ed49, type: 2}
+  IsStartingIngredient: 0
   Recipes: []

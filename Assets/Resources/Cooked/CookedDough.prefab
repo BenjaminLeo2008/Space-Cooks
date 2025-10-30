@@ -77,6 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsPickable: 1
   IsIngredient: 0
+  _data: {fileID: 11400000, guid: 013e8d9e25e4caa4f81e9782cccf6ae4, type: 2}
 --- !u!1 &7263882108195270618
 GameObject:
   m_ObjectHideFlags: 0
