@@ -28,6 +28,8 @@ public class AdvanceActionsScript : MonoBehaviour
 
     public PlayerController player;
 
+    public List<GameObject> DeliverablePrefabs;
+
     void Start()
     {
         // Obtiene la referencia al ObjectCatcherScript en el mismo GameObject
@@ -260,7 +262,7 @@ public class AdvanceActionsScript : MonoBehaviour
     //función para eliminar el objeto agarrado y liberar la referencia.
     private void DeliverObject()
     {
-        if (deliverablePrefab != null && objectCatcher.PickedObject.name == deliverablePrefab.name)
+        if (objectCatcher.PickedObject != null && DeliverablePrefabs.Contains(objectCatcher.PickedObject))
         {
             if (objectCatcher.PickedObject != null && allIngredientData.TryGetValue("DirtyPlate", out IngredientData plateData) && plateData.PrefabObject != null)
             {
