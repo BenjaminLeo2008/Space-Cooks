@@ -188,7 +188,7 @@ public class AdvanceActionsScript : MonoBehaviour
 
             // Espera el tiempo especificado antes de continuar
             yield return new WaitForSeconds(delay);
-
+              
             // Accede al objeto atrapado a través de la propiedad pública "PickedObject"
             // Línea 244: if (objectCatcher.PickedObject != null && myPrefabs.TryGetValue("Plate", out GameObject myPrefab))
             // Reemplazamos el uso de myPrefabs por una búsqueda de IngredientData para mantener la consistencia.
