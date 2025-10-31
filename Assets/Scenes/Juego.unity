@@ -5171,7 +5171,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &704149991
 PrefabInstance:
@@ -10464,6 +10464,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 383131400}
+  image3: {fileID: 0}
+  image2: {fileID: 0}
+  image1: {fileID: 0}
+  imageACocinar: {fileID: 0}
+  PlayerController: {fileID: 0}
+  ContadorTiempo: {fileID: 0}
 --- !u!114 &1617954481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23548,7 +23554,7 @@ Transform:
   - {fileID: 5461731747273447908}
   - {fileID: 1297773721}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &5461731747273447514
 Transform:
@@ -25324,7 +25330,7 @@ PrefabInstance:
     - target: {fileID: 4330891420389143237, guid: f522fbf0196e73141b1db434f7a371ef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4330891420389143237, guid: f522fbf0196e73141b1db434f7a371ef,
         type: 3}
