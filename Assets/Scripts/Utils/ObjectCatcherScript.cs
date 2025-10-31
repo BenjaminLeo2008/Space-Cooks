@@ -11,6 +11,7 @@ public class ObjectCatcherScript : MonoBehaviour
 
     private SphereCollider _col;
     public Transform superficieTransform;
+    public Transform finalSuperficieTransform;
     private GameObject _pickedObject;
     private Rigidbody _caughtRigidbody;
     private IngredientData _ingredientData;
