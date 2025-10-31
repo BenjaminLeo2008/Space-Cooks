@@ -262,16 +262,54 @@ public class AdvanceActionsScript : MonoBehaviour
     {
         if (deliverablePrefab != null && objectCatcher.PickedObject.name == deliverablePrefab.name)
         {
-            Destroy(objectCatcher.PickedObject);
-            objectCatcher.SetPickedObject(null);
+            if (objectCatcher.PickedObject != null && allIngredientData.TryGetValue("DirtyPlate", out IngredientData plateData) && plateData.PrefabObject != null)
+            {
+                // Obtiene la posición y rotación del objeto actual
+                Vector3 currentPosition = objectCatcher.finalSuperficieTransform.transform.position;
+                Quaternion currentRotation = objectCatcher.finalSuperficieTransform.transform.rotation;
+
+                // Destruye el objeto actual
+                Destroy(objectCatcher.PickedObject);
+
+                // Instancia el nuevo objeto desde el prefab en la misma posición y rotación
+                GameObject newInstance = Instantiate(plateData.PrefabObject, currentPosition, currentRotation);
+
+                // Nos aseguramos de que el nuevo objeto tenga un Rigidbody y lo hacemos cinemático.
+                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
+                if (newRb != null)
+                {
+                    newRb.isKinematic = true;
+                }
+                // Llama a la función del otro script para actualizar el objeto
+                objectCatcher.SetPickedObject(newInstance);
+            }
         }
     }
     private void DestroyObject()
     {
         if (objectCatcher.PickedObject != null && objectCatcher.PickedObject.CompareTag("Object") || objectCatcher.PickedObject != null && objectCatcher.PickedObject.CompareTag("Food"))
         {
-            Destroy(objectCatcher.PickedObject);
-            objectCatcher.SetPickedObject(null);
+            if (objectCatcher.PickedObject != null && allIngredientData.TryGetValue("Plate", out IngredientData plateData) && plateData.PrefabObject != null)
+            {
+                // Obtiene la posición y rotación del objeto actual
+                Vector3 currentPosition = objectCatcher.PickedObject.transform.position;
+                Quaternion currentRotation = objectCatcher.PickedObject.transform.rotation;
+
+                // Destruye el objeto actual
+                Destroy(objectCatcher.PickedObject);
+
+                // Instancia el nuevo objeto desde el prefab en la misma posición y rotación
+                GameObject newInstance = Instantiate(plateData.PrefabObject, currentPosition, currentRotation);
+
+                // Nos aseguramos de que el nuevo objeto tenga un Rigidbody y lo hacemos cinemático.
+                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
+                if (newRb != null)
+                {
+                    newRb.isKinematic = true;
+                }
+                // Llama a la función del otro script para actualizar el objeto
+                objectCatcher.SetPickedObject(newInstance);
+            }
         }
     }
 }
