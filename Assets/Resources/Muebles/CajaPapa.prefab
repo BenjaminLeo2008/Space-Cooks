@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dee09d9846a31e42a86df3dc430de21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetGameObjectName: 
+  targetGameObjectName: Mesa para crear RawPotato
   deliverablePrefab: {fileID: 0}
   ingredientData: {fileID: 0}
   player: {fileID: 0}

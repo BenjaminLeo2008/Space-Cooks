@@ -14037,10 +14037,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1879824298}
     m_Modifications:
+    - target: {fileID: 3405058324434462320, guid: 882c69b0d66928343b33e84947736a94,
+        type: 3}
+      propertyPath: detectionRadius
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4551906606847131921, guid: 882c69b0d66928343b33e84947736a94,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -46.953007
+      value: -46.6
       objectReference: {fileID: 0}
     - target: {fileID: 4551906606847131921, guid: 882c69b0d66928343b33e84947736a94,
         type: 3}
@@ -14050,7 +14055,7 @@ PrefabInstance:
     - target: {fileID: 4551906606847131921, guid: 882c69b0d66928343b33e84947736a94,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.880001
+      value: -10.9
       objectReference: {fileID: 0}
     - target: {fileID: 4551906606847131921, guid: 882c69b0d66928343b33e84947736a94,
         type: 3}
@@ -14095,30 +14100,13 @@ PrefabInstance:
     - target: {fileID: 4551906606847565105, guid: 882c69b0d66928343b33e84947736a94,
         type: 3}
       propertyPath: m_Name
-      value: CajaPapa (1)
+      value: Mesa para crear rawPotato
       objectReference: {fileID: 0}
-    - target: {fileID: 5705608612518491667, guid: 882c69b0d66928343b33e84947736a94,
-        type: 3}
-      propertyPath: deliverablePrefab
-      value: 
-      objectReference: {fileID: 5222405271574615460, guid: e982344ccb7238548ac679e305bd9f38,
-        type: 3}
-    - target: {fileID: 5705608612518491667, guid: 882c69b0d66928343b33e84947736a94,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 754563316}
     - target: {fileID: 5705608612518491667, guid: 882c69b0d66928343b33e84947736a94,
         type: 3}
       propertyPath: targetGameObjectName
-      value: Mesa para crear RawPotato
+      value: Mesa para crear SORawPotato
       objectReference: {fileID: 0}
-    - target: {fileID: 5705608612518491667, guid: 882c69b0d66928343b33e84947736a94,
-        type: 3}
-      propertyPath: ingredientData
-      value: 
-      objectReference: {fileID: 11400000, guid: c0d04f36011a2da4681782bda54878ee,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 882c69b0d66928343b33e84947736a94, type: 3}
 --- !u!1 &1861872846

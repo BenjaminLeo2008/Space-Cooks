@@ -13,6 +13,7 @@ public struct RecipeTransition
 public class IngredientData : ScriptableObject
 {
     public GameObject PrefabObject;
+    public string Name => PrefabObject.name;
 
     public IngredientData SimpleNextState;
 

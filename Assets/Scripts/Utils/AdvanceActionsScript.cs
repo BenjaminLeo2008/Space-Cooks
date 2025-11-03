@@ -5,7 +5,8 @@ using UnityEngine;
 public class AdvanceActionsScript : MonoBehaviour
 {
     // Nombre del GameObject para activar el reemplazo. Configúralo en el Inspector.
-    [SerializeField] private string targetGameObjectName;
+    public ETiposMesa tipoDeMesa;
+    [SerializeField] private IngredientData ingredienteInvolucrado;
 
     // Prefab que se puede entregar, agrégalo desde el Inspector.
     [SerializeField] private GameObject deliverablePrefab;
@@ -30,6 +31,16 @@ public class AdvanceActionsScript : MonoBehaviour
 
     public List<GameObject> DeliverablePrefabs;
 
+    public enum ETiposMesa {
+        Crear,
+        Cortar,
+        Asar,
+        Entregar,
+        Desechar,
+        Hervir,
+        Lavar,
+    }
+
     void Start()
     {
         // Obtiene la referencia al ObjectCatcherScript en el mismo GameObject
@@ -53,16 +64,13 @@ public class AdvanceActionsScript : MonoBehaviour
         {
             allIngredientData[data.name] = data;
         }
-
-        // Línea 51:
-        // Se eliminó la línea vacía.
     }
 
     void Update()
     {
         ingredientData = objectCatcher.IngredientData;
         // Elige la función a ejecutar basándose en el nombre del GameObject
-        if (targetGameObjectName == "Mesa para crear")
+        if (tipoDeMesa == ETiposMesa.Crear)
         {
             // Solo se ejecuta si el "Player" está en el trigger, se presiona 'Q'
             // y no hay ningún objeto en la mano.
@@ -72,7 +80,7 @@ public class AdvanceActionsScript : MonoBehaviour
                 CreateObjectAndGrab();
             }
         }
-        else if (targetGameObjectName == "Mesa para reemplazar comida")
+        else if (tipoDeMesa == ETiposMesa.Cortar)
         {
             if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.Q) && objectCatcher.PickedObject != null)
             {
@@ -87,21 +95,21 @@ public class AdvanceActionsScript : MonoBehaviour
                 }
             }
         }
-        else if (targetGameObjectName == "Mesa para entregar")
+        else if (tipoDeMesa == ETiposMesa.Entregar)
         {
             if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.Q) && objectCatcher.PickedObject != null)
             {
                 DeliverObject();
             }
         }
-        else if (targetGameObjectName == "Mesa para eliminar")
+        else if (tipoDeMesa == ETiposMesa.Desechar)
         {
             if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.Q) && objectCatcher.PickedObject != null)
             {
                 DestroyObject();
             }
         }
-        else if (targetGameObjectName == "Mesa para lavar")
+        else if (tipoDeMesa == ETiposMesa.Lavar)
         {
             if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.Q) && objectCatcher.PickedObject != null)
             {
@@ -225,18 +233,8 @@ public class AdvanceActionsScript : MonoBehaviour
     //función para crear un objeto desde cero y agarrarlo.
     private void CreateObjectAndGrab()
     {
-        // Extraemos el nombre del ingrediente de la mesa.
-        // Ejemplo: "Mesa para crear papa" -> "papa"
-        // Asegúrate de que los IngredientData en Resources tengan el mismo nombre ("Papa").
-        string ingredientName = targetGameObjectName.Replace("Mesa para crear ", "");
-
-        // Convertimos la primera letra a mayúscula para que coincida con el nombre del Scriptable Object (SO)
-        if (ingredientName.Length > 0)
-        {
-            ingredientName = char.ToUpper(ingredientName[0]) + ingredientName.Substring(1);
-        }
         // Busca el IngredientData en el diccionario.
-        if (allIngredientData.TryGetValue(ingredientName, out IngredientData dataToCreate) && dataToCreate.IsStartingIngredient)
+        if (allIngredientData.TryGetValue(ingredienteInvolucrado.Name, out IngredientData dataToCreate) && dataToCreate.IsStartingIngredient)
         {
             if (dataToCreate.PrefabObject != null)
             {
@@ -251,14 +249,15 @@ public class AdvanceActionsScript : MonoBehaviour
             }
             else
             {
-                Debug.LogError($"IngredientData '{ingredientName}' no tiene asignado un PrefabObject.");
+                Debug.LogError($"IngredientData '{gameObject.name}' no tiene asignado un PrefabObject.");
             }
         }
         else
         {
-            Debug.LogError($"No se encontró un IngredientData válido o no es un ingrediente inicial para: {ingredientName}");
+            Debug.LogError($"No se encontró un IngredientData válido o no es un ingrediente inicial para: {gameObject.name}");
         }
     }
+
     //función para eliminar el objeto agarrado y liberar la referencia.
     private void DeliverObject()
     {
