@@ -9,6 +9,7 @@ public class PlayerInteraction : MonoBehaviour
     public GameObject ObjectToPickUp;
     public GameObject PickedObject;
     public Transform PlayerInteractionZone;
+
     [SerializeField] private float detectionRadius;
     [SerializeField] private SphereCollider col;
     private GameObject _closestTile;
@@ -28,6 +29,7 @@ public class PlayerInteraction : MonoBehaviour
     private ObjectCatcherScript _caughtCatcherScript;
     private SphereCollider _caughtCol;
 
+
     void Start()
     {
         col = GetComponent<SphereCollider>();
@@ -41,6 +43,7 @@ public class PlayerInteraction : MonoBehaviour
         col.isTrigger = true;
     }
 
+
     private void IsPlateInFront()
     {
         
@@ -48,11 +51,12 @@ public class PlayerInteraction : MonoBehaviour
 
     void Update()
     {
-        if (ObjectToPickUp != null && ObjectToPickUp.GetComponent<PickableObject>().IsPickable == true && PickedObject == null)
+        if (ObjectToPickUp && ObjectToPickUp.GetComponent<PickableObject>().IsPickable && PickedObject == null)
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
                 pickUpObject();
+                Debug.Log("toco la F");
             }
         }
         else if (PickedObject != null)
@@ -62,6 +66,10 @@ public class PlayerInteraction : MonoBehaviour
                 dropObject();
             }
         }
+
+    
+
+        
 
         // Si hay tiles detectados, encuentra el más cercano.
         if (_tileCloseList.Count > 0)
