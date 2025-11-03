@@ -53,7 +53,7 @@ public class ContadorTiempo : MonoBehaviour
         {
             player.enabled = false;
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         SceneManager.LoadScene(escenaPuntaje);
     }
 }
