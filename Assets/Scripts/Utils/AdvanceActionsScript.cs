@@ -22,7 +22,7 @@ public class AdvanceActionsScript : MonoBehaviour
     private ObjectCatcherScript objectCatcher;
 
     // ESTA VARIABLE DEBE CONTENER EL SCRIPTABLE OBJECT IngredientData del objeto recogido.
-    public IngredientData ingredientData;
+    public IngredientData currentIngredientData;
 
     // Variable para rastrear si el jugador está dentro del área del collider.
     private bool _isPlayerInTrigger = false;
@@ -30,6 +30,8 @@ public class AdvanceActionsScript : MonoBehaviour
     public PlayerController player;
 
     public List<GameObject> DeliverablePrefabs;
+
+    public IngredientDatabase ingredientDatabase;
 
     public enum ETiposMesa {
         Crear,
@@ -50,75 +52,46 @@ public class AdvanceActionsScript : MonoBehaviour
             Debug.LogError("No se encontró ObjectCatcherScript en este GameObject. Asegúrate de que ambos scripts estén juntos.");
         }
 
-        // Carga todos los prefabs de la carpeta "Resources" una sola vez al inicio del juego.
-        GameObject[] loadedPrefabs = Resources.LoadAll<GameObject>("");
-        foreach (GameObject prefab in loadedPrefabs)
-        {
-            // Línea 45: myPrefabs[prefab.name] = prefab;
-            // Se eliminó la carga directa de prefabs aquí, ya que los IngredientData ahora manejan la referencia.
-        }
-
-        // Carga todos los IngredientData de la carpeta "Resources" al inicio.
-        IngredientData[] loadedIngredients = Resources.LoadAll<IngredientData>("");
-        foreach (IngredientData data in loadedIngredients)
-        {
-            allIngredientData[data.name] = data;
+        if (ingredientDatabase == null) return;
+        foreach (IngredientData ingData in ingredientDatabase.allIngredients) {
+            if (!ingData) continue;
+            allIngredientData.Add(ingData.Name, ingData);
         }
     }
 
     void Update()
     {
-        ingredientData = objectCatcher.IngredientData;
+        currentIngredientData = objectCatcher.IngredientData;
         // Elige la función a ejecutar basándose en el nombre del GameObject
-        if (tipoDeMesa == ETiposMesa.Crear)
-        {
-            // Solo se ejecuta si el "Player" está en el trigger, se presiona 'Q'
-            // y no hay ningún objeto en la mano.
-            if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.Q) && objectCatcher.PickedObject != null)
-            {
-                // Si el nombre coincide, ejecuta la función para crear y agarrar un nuevo objeto.
-                CreateObjectAndGrab();
-            }
-        }
-        else if (tipoDeMesa == ETiposMesa.Cortar)
-        {
-            if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.Q) && objectCatcher.PickedObject != null)
-            {
-                // Solo inicia la corrutina si tenemos un IngredientData y una transición definida.
-                if (ingredientData != null && ingredientData.SimpleNextState != null)
-                {
+        if (!(_isPlayerInTrigger && Input.GetKeyDown(KeyCode.Q))) return;
+
+        bool hasAnObject = (objectCatcher.PickedObject != null);
+
+        switch (tipoDeMesa) {
+            case ETiposMesa.Crear:
+                if (!hasAnObject) CreateObjectAndGrab();
+                break;
+            case ETiposMesa.Cortar:
+                if (hasAnObject && currentIngredientData != null && currentIngredientData.SimpleNextState != null) 
                     StartCoroutine(ReplacePickedObjectDelayed(2f));
-                }
-                else
-                {
+                else 
                     Debug.LogWarning("No se puede reemplazar. El objeto recogido no tiene SimpleNextState definido.");
-                }
-            }
-        }
-        else if (tipoDeMesa == ETiposMesa.Entregar)
-        {
-            if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.Q) && objectCatcher.PickedObject != null)
-            {
-                DeliverObject();
-            }
-        }
-        else if (tipoDeMesa == ETiposMesa.Desechar)
-        {
-            if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.Q) && objectCatcher.PickedObject != null)
-            {
-                DestroyObject();
-            }
-        }
-        else if (tipoDeMesa == ETiposMesa.Lavar)
-        {
-            if (_isPlayerInTrigger && Input.GetKeyDown(KeyCode.Q) && objectCatcher.PickedObject != null)
-            {
-                StartCoroutine(WashPickedObjectDelayed(2f));
-            }
-        }
-        else
-        {
-            Debug.Log("El GameObject de nombre " + gameObject.name + " no tiene acciones avanzadas");
+                break;
+            case ETiposMesa.Entregar:
+                if (hasAnObject) DeliverObject();
+                break;
+            case ETiposMesa.Desechar:
+                if (hasAnObject) DestroyObject();
+                break;
+            case ETiposMesa.Lavar:
+                if (hasAnObject) StartCoroutine(WashPickedObjectDelayed(2f));
+                break;
+            case ETiposMesa.Asar:
+                break;
+            case ETiposMesa.Hervir:
+                break;
+            default:
+                break;
         }
     }
 
@@ -144,7 +117,7 @@ public class AdvanceActionsScript : MonoBehaviour
     private IEnumerator ReplacePickedObjectDelayed(float delay)
     {
         // El prefab a instanciar AHORA es el PrefabObject del SimpleNextState del IngredientData
-        GameObject nextStatePrefab = ingredientData.SimpleNextState.PrefabObject;
+        GameObject nextStatePrefab = currentIngredientData.SimpleNextState.PrefabObject;
 
         if (nextStatePrefab != null)
         {
@@ -180,7 +153,7 @@ public class AdvanceActionsScript : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"El SimpleNextState de {ingredientData.name} no tiene asignado un PrefabObject.");
+            Debug.LogWarning($"El SimpleNextState de {currentIngredientData.name} no tiene asignado un PrefabObject.");
         }
     }
     // Corrutina para lavar el objeto después de un retraso
@@ -261,31 +234,29 @@ public class AdvanceActionsScript : MonoBehaviour
     //función para eliminar el objeto agarrado y liberar la referencia.
     private void DeliverObject()
     {
-        if (objectCatcher.PickedObject != null && DeliverablePrefabs.Contains(objectCatcher.PickedObject))
+        if (allIngredientData.TryGetValue("DirtyPlate", out IngredientData plateData) && plateData.PrefabObject != null)
         {
-            if (objectCatcher.PickedObject != null && allIngredientData.TryGetValue("DirtyPlate", out IngredientData plateData) && plateData.PrefabObject != null)
+            // Obtiene la posición y rotación del objeto actual
+            Vector3 currentPosition = objectCatcher.finalSuperficieTransform.transform.position;
+            Quaternion currentRotation = objectCatcher.finalSuperficieTransform.transform.rotation;
+
+            // Destruye el objeto actual
+            Destroy(objectCatcher.PickedObject);
+
+            // Instancia el nuevo objeto desde el prefab en la misma posición y rotación
+            GameObject newInstance = Instantiate(plateData.PrefabObject, currentPosition, currentRotation);
+
+            // Nos aseguramos de que el nuevo objeto tenga un Rigidbody y lo hacemos cinemático.
+            Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
+            if (newRb != null)
             {
-                // Obtiene la posición y rotación del objeto actual
-                Vector3 currentPosition = objectCatcher.finalSuperficieTransform.transform.position;
-                Quaternion currentRotation = objectCatcher.finalSuperficieTransform.transform.rotation;
-
-                // Destruye el objeto actual
-                Destroy(objectCatcher.PickedObject);
-
-                // Instancia el nuevo objeto desde el prefab en la misma posición y rotación
-                GameObject newInstance = Instantiate(plateData.PrefabObject, currentPosition, currentRotation);
-
-                // Nos aseguramos de que el nuevo objeto tenga un Rigidbody y lo hacemos cinemático.
-                Rigidbody newRb = newInstance.GetComponent<Rigidbody>();
-                if (newRb != null)
-                {
-                    newRb.isKinematic = true;
-                }
-                // Llama a la función del otro script para actualizar el objeto
-                objectCatcher.SetPickedObject(newInstance);
+                newRb.isKinematic = true;
             }
+            // Llama a la función del otro script para actualizar el objeto
+            objectCatcher.SetPickedObject(newInstance);
         }
     }
+
     private void DestroyObject()
     {
         if (objectCatcher.PickedObject != null && objectCatcher.PickedObject.CompareTag("Object") || objectCatcher.PickedObject != null && objectCatcher.PickedObject.CompareTag("Food"))

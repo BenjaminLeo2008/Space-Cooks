@@ -1245,6 +1245,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1879824298}
     m_Modifications:
+    - target: {fileID: 4446142370423080916, guid: 5437c93c54faf2c41b3e292142b5d9a7,
+        type: 3}
+      propertyPath: ingredientDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d44e415a98b5a64a809162608a53ded,
+        type: 2}
     - target: {fileID: 6142285723915695589, guid: 5437c93c54faf2c41b3e292142b5d9a7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2077,6 +2083,12 @@ PrefabInstance:
       propertyPath: targetGameObjectName
       value: Mesa para crear RawPotato
       objectReference: {fileID: 0}
+    - target: {fileID: 5705608612518491667, guid: 882c69b0d66928343b33e84947736a94,
+        type: 3}
+      propertyPath: ingredientDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d44e415a98b5a64a809162608a53ded,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 882c69b0d66928343b33e84947736a94, type: 3}
 --- !u!1001 &270238803
@@ -3635,6 +3647,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1879824298}
     m_Modifications:
+    - target: {fileID: 4446142370423080916, guid: 5437c93c54faf2c41b3e292142b5d9a7,
+        type: 3}
+      propertyPath: ingredientDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d44e415a98b5a64a809162608a53ded,
+        type: 2}
     - target: {fileID: 6142285723915695589, guid: 5437c93c54faf2c41b3e292142b5d9a7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4231,6 +4249,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1879824298}
     m_Modifications:
+    - target: {fileID: 3537684302542568123, guid: 2090c799c49c3004289b1a842864b22f,
+        type: 3}
+      propertyPath: tipoDeMesa
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537684302542568123, guid: 2090c799c49c3004289b1a842864b22f,
+        type: 3}
+      propertyPath: ingredientDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d44e415a98b5a64a809162608a53ded,
+        type: 2}
     - target: {fileID: 3749426489302568160, guid: 2090c799c49c3004289b1a842864b22f,
         type: 3}
       propertyPath: detectionRadius
@@ -4883,6 +4912,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1879824298}
     m_Modifications:
+    - target: {fileID: 3537684302542568123, guid: 2090c799c49c3004289b1a842864b22f,
+        type: 3}
+      propertyPath: ingredientDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d44e415a98b5a64a809162608a53ded,
+        type: 2}
     - target: {fileID: 5882398437537356679, guid: 2090c799c49c3004289b1a842864b22f,
         type: 3}
       propertyPath: m_Name
@@ -5234,6 +5269,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1879824298}
     m_Modifications:
+    - target: {fileID: 4446142370423080916, guid: 5437c93c54faf2c41b3e292142b5d9a7,
+        type: 3}
+      propertyPath: ingredientDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d44e415a98b5a64a809162608a53ded,
+        type: 2}
     - target: {fileID: 6142285723915695589, guid: 5437c93c54faf2c41b3e292142b5d9a7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5766,6 +5807,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1879824298}
     m_Modifications:
+    - target: {fileID: 6371353034589162337, guid: 1213a1a695d9660438b5548eb9386f5b,
+        type: 3}
+      propertyPath: ingredientDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d44e415a98b5a64a809162608a53ded,
+        type: 2}
     - target: {fileID: 7908171355187749748, guid: 1213a1a695d9660438b5548eb9386f5b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8593,6 +8640,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1879824298}
     m_Modifications:
+    - target: {fileID: 6371353034589162337, guid: 1213a1a695d9660438b5548eb9386f5b,
+        type: 3}
+      propertyPath: ingredientDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d44e415a98b5a64a809162608a53ded,
+        type: 2}
     - target: {fileID: 7908171355187749748, guid: 1213a1a695d9660438b5548eb9386f5b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9450,6 +9503,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1879824298}
     m_Modifications:
+    - target: {fileID: 6371353034589162337, guid: 1213a1a695d9660438b5548eb9386f5b,
+        type: 3}
+      propertyPath: ingredientDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d44e415a98b5a64a809162608a53ded,
+        type: 2}
     - target: {fileID: 7908171355187749748, guid: 1213a1a695d9660438b5548eb9386f5b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10599,6 +10658,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1919551907716658921, guid: d7c3d06047bd9ba40ad93dcadc51b8a0,
+        type: 3}
+      propertyPath: ingredientDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d44e415a98b5a64a809162608a53ded,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7c3d06047bd9ba40ad93dcadc51b8a0, type: 3}
 --- !u!1 &1389611249
@@ -12870,6 +12935,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1919551907716658921, guid: d7c3d06047bd9ba40ad93dcadc51b8a0,
+        type: 3}
+      propertyPath: ingredientDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d44e415a98b5a64a809162608a53ded,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7c3d06047bd9ba40ad93dcadc51b8a0, type: 3}
 --- !u!1 &1705959767
@@ -13643,6 +13714,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: CajaCARNE (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6651916430370547365, guid: b7783dbb2f86012469e288b02709598d,
+        type: 3}
+      propertyPath: ingredientDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d44e415a98b5a64a809162608a53ded,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7783dbb2f86012469e288b02709598d, type: 3}
 --- !u!4 &1775257200 stripped
@@ -14107,6 +14184,12 @@ PrefabInstance:
       propertyPath: targetGameObjectName
       value: Mesa para crear SORawPotato
       objectReference: {fileID: 0}
+    - target: {fileID: 5705608612518491667, guid: 882c69b0d66928343b33e84947736a94,
+        type: 3}
+      propertyPath: ingredientDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d44e415a98b5a64a809162608a53ded,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 882c69b0d66928343b33e84947736a94, type: 3}
 --- !u!1 &1861872846
@@ -17865,6 +17948,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: CajaCARNE
       objectReference: {fileID: 0}
+    - target: {fileID: 6651916430370547365, guid: b7783dbb2f86012469e288b02709598d,
+        type: 3}
+      propertyPath: ingredientDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d44e415a98b5a64a809162608a53ded,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7783dbb2f86012469e288b02709598d, type: 3}
 --- !u!33 &5461731747270055936

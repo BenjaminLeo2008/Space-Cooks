@@ -220,6 +220,7 @@ MonoBehaviour:
   detectionRadius: 1.5
   offset: {x: 0, y: 0, z: 0}
   superficieTransform: {fileID: 1446645653756509423}
+  finalSuperficieTransform: {fileID: 0}
   ObjectToPickUp: {fileID: 0}
   pickedObject: {fileID: 0}
   interactionZone: {fileID: 0}
@@ -235,9 +236,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dee09d9846a31e42a86df3dc430de21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetGameObjectName: Mesa para reemplazar comida
+  tipoDeMesa: 1
+  ingredienteInvolucrado: {fileID: 0}
   deliverablePrefab: {fileID: 0}
+  currentIngredientData: {fileID: 0}
   player: {fileID: 0}
+  DeliverablePrefabs: []
+  ingredientDatabase: {fileID: 0}
 --- !u!1 &6840903136246204017
 GameObject:
   m_ObjectHideFlags: 0

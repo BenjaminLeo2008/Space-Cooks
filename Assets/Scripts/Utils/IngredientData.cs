@@ -21,3 +21,8 @@ public class IngredientData : ScriptableObject
 
     public List<RecipeTransition> Recipes;
 }
+
+[CreateAssetMenu(fileName = "NewIngredientDatabase", menuName = "Custom/Ingredient Data")]
+public class IngredientDatabase : ScriptableObject {
+    public IngredientData[] allIngredients;
+}

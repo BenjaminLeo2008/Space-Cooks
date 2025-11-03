@@ -6,7 +6,7 @@ public class PickableObject : MonoBehaviour
 {
     public bool IsPickable = true;
     private Rigidbody _rb;
-    public IngredientData _data;
+    public IngredientData data;
 
     private void Start() {
         _rb = GetComponent<Rigidbody>();
