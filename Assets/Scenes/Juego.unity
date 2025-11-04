@@ -2069,26 +2069,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5705608612518491667, guid: 882c69b0d66928343b33e84947736a94,
         type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 754563316}
-    - target: {fileID: 5705608612518491667, guid: 882c69b0d66928343b33e84947736a94,
-        type: 3}
-      propertyPath: deliverablePrefab
-      value: 
-      objectReference: {fileID: 5222405271574615460, guid: e982344ccb7238548ac679e305bd9f38,
-        type: 3}
-    - target: {fileID: 5705608612518491667, guid: 882c69b0d66928343b33e84947736a94,
-        type: 3}
       propertyPath: targetGameObjectName
       value: Mesa para crear RawPotato
       objectReference: {fileID: 0}
-    - target: {fileID: 5705608612518491667, guid: 882c69b0d66928343b33e84947736a94,
-        type: 3}
-      propertyPath: ingredientDatabase
-      value: 
-      objectReference: {fileID: 11400000, guid: 5d44e415a98b5a64a809162608a53ded,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 882c69b0d66928343b33e84947736a94, type: 3}
 --- !u!1001 &270238803
