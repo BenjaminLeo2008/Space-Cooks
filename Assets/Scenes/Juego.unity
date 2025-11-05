@@ -5866,11 +5866,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Olla
       objectReference: {fileID: 0}
-    - target: {fileID: 5338642864785840269, guid: ab12d791d3f7a56479247e10f31fdb23,
-        type: 3}
-      propertyPath: m_Name
-      value: Model
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab12d791d3f7a56479247e10f31fdb23, type: 3}
 --- !u!1 &675985152

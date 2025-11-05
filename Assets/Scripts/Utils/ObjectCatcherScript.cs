@@ -34,7 +34,7 @@ public class ObjectCatcherScript : MonoBehaviour
         {
             _caughtRigidbody = newObject.GetComponent<Rigidbody>();
             _currentPickableObjectScript = newObject.GetComponent<PickableObject>();
-            _ingredientData = _currentPickableObjectScript.data;
+            _ingredientData = _currentPickableObjectScript.Data;
         }
         else
         {
@@ -83,7 +83,7 @@ public class ObjectCatcherScript : MonoBehaviour
                 _pickedObject = other.gameObject;
                 _caughtRigidbody = rb;
                 _currentPickableObjectScript = other.GetComponent<PickableObject>();
-                _ingredientData = _currentPickableObjectScript.data;
+                _ingredientData = _currentPickableObjectScript.Data;
                 // Lo hacemos cinemático para que no sea afectado por las físicas
                 _caughtRigidbody.isKinematic = true;
             }
