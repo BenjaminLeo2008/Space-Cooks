@@ -1852,11 +1852,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Olla (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 3610689014755490834, guid: ab12d791d3f7a56479247e10f31fdb23,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab12d791d3f7a56479247e10f31fdb23, type: 3}
 --- !u!4 &734617957 stripped
@@ -2087,7 +2082,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5115452152471546163, guid: d42764470af0ff048a79f90ce5cbbc0b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d42764470af0ff048a79f90ce5cbbc0b, type: 3}
 --- !u!4 &806433909 stripped
 Transform:
@@ -2657,7 +2653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad69598edce4c4f44b8f211bbdd699fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkHalfExtents: {x: 0.5, y: 0.9, z: 0.5}
+  checkHalfExtents: {x: 2.5, y: 2.5, z: 2.5}
   checkTransform: {fileID: 554910231}
   checkLayer:
     serializedVersion: 2
@@ -3562,6 +3558,26 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1578319280}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1605969310 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6207264555881093339, guid: d42764470af0ff048a79f90ce5cbbc0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 806433908}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1605969311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605969310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f15355c47dd2184aaf39b9b3e5ed484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsPickable: 1
+  _data: {fileID: 0}
 --- !u!1001 &1613709575
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class PickableObject : MonoBehaviour
 {
     public bool IsPickable = true;
     private Rigidbody _rb;
-    private IngredientData _data;
+    [SerializeField] private IngredientData _data;
 
     #region PUBLIC API 
 

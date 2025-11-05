@@ -28,11 +28,11 @@ public class ObjectGrabberScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Input.GetKeyDown(KeyCode.F)) return;
+        if (!Input.GetKeyDown(KeyCode.F)) return; // mata la funcion si no toca F
 
         IngredientData detectedIng = DetectObject();
 
-        if (detectedIng && _currentIngredient == null)
+        if (detectedIng != null && _currentIngredient == null)
         {
             SetCurrentIngredient(detectedIng);
             GlueObjectToPlayer(_currentObj);
@@ -58,6 +58,15 @@ public class ObjectGrabberScript : MonoBehaviour
 
             Debug.Log("Detected obj!");
             PickableObject ingredientObj = hits[0].GetComponent<PickableObject>();
+
+            foreach (Collider col in hits)
+            {
+                if (ingredientObj == null)
+                ingredientObj = col.GetComponent<PickableObject>();
+            }
+
+            if (ingredientObj) Debug.Log("Encontro un objeto con PickableObject!");
+
             IngredientData ingData = ingredientObj.Data;
 
             _currentObj = ingredientObj.gameObject;
@@ -74,6 +83,7 @@ public class ObjectGrabberScript : MonoBehaviour
     private void SetCurrentIngredient(IngredientData ingData)
     {
         _currentIngredient = ingData;
+        //Debug.Log("Se seteo un objeto");
     }
 
     private void ClearCurrentIngredient()
@@ -102,8 +112,16 @@ public class ObjectGrabberScript : MonoBehaviour
         var rb = obj.GetComponent<Rigidbody>();
 
         rb.isKinematic = false;
+
+        Debug.Log("Unglued obj!");
     }
 
     #endregion
 
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(checkTransform.position, checkHalfExtents);
+    }
 }
