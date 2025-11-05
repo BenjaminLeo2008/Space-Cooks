@@ -16,4 +16,6 @@ MonoBehaviour:
     type: 3}
   SimpleNextState: {fileID: 0}
   IsStartingIngredient: 1
-  Recipes: []
+  Recipes:
+  - RequiredIngredient: {fileID: 0}
+    ResultingPrefab: {fileID: 0}
