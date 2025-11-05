@@ -1312,6 +1312,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 512594691}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &554910231 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 959567966791655252, guid: 9a4898e0a29267140aa270caf30cb7f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1009870770}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &597701140
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2401,6 +2407,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 959567965738213442, guid: 9a4898e0a29267140aa270caf30cb7f6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 959567965738213443, guid: 9a4898e0a29267140aa270caf30cb7f6,
+        type: 3}
+      propertyPath: mainCam
+      value: 
+      objectReference: {fileID: 230415058}
+    - target: {fileID: 959567965738213443, guid: 9a4898e0a29267140aa270caf30cb7f6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 959567965738213444, guid: 9a4898e0a29267140aa270caf30cb7f6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2618,6 +2639,29 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1034775692}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1042403357 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 959567965738213446, guid: 9a4898e0a29267140aa270caf30cb7f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1009870770}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1042403358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042403357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad69598edce4c4f44b8f211bbdd699fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkHalfExtents: {x: 0.5, y: 0.9, z: 0.5}
+  checkTransform: {fileID: 554910231}
+  checkLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1001 &1075523025
 PrefabInstance:
   m_ObjectHideFlags: 0
