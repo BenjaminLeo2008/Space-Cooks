@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject Pausa;
+    public GameObject TutoReceta1;
+    public GameObject TutoReceta2;
     private bool gameIsPaused = false;
     public GameObject image3;
     public GameObject image2;
@@ -19,34 +21,37 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 0f;
         PlayerController.enabled = false;
-        ContadorTiempo.enabled = false;
+        ContadorTiempo.enabled = false; 
+    }
+    public void IniciarCorrutina()
+    {
         StartCoroutine(StartCountdown());
     }
 
-    IEnumerator StartCountdown()
-    {
-        float intervalTime = 1.0f;
+IEnumerator StartCountdown()
+        {
+            float intervalTime = 1.0f;
 
-        image3.SetActive(true);
-        yield return new WaitForSecondsRealtime(intervalTime);
-        image3.SetActive(false);
+            image3.SetActive(true);
+            yield return new WaitForSecondsRealtime(intervalTime);
+            image3.SetActive(false);
 
-        image2.SetActive(true);
-        yield return new WaitForSecondsRealtime(intervalTime);
-        image2.SetActive(false);
+            image2.SetActive(true);
+            yield return new WaitForSecondsRealtime(intervalTime);
+            image2.SetActive(false);
 
-        image1.SetActive(true);
-        yield return new WaitForSecondsRealtime(intervalTime);
-        image1.SetActive(false);
+            image1.SetActive(true);
+            yield return new WaitForSecondsRealtime(intervalTime);
+            image1.SetActive(false);
 
-        imageACocinar.SetActive(true);
-        yield return new WaitForSecondsRealtime(2.0f);
-        imageACocinar.SetActive(false);
+            imageACocinar.SetActive(true);
+            yield return new WaitForSecondsRealtime(2.0f);
+            imageACocinar.SetActive(false);
 
-        PlayerController.enabled = true;
-        ContadorTiempo.enabled = true;
-        Time.timeScale = 1f;
-    }
+            PlayerController.enabled = true;
+            ContadorTiempo.enabled = true;
+            Time.timeScale = 1f;
+        }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
