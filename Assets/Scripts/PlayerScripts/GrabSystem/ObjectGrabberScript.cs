@@ -9,13 +9,32 @@ public class ObjectGrabberScript : MonoBehaviour
     [SerializeField] private Vector3 checkHalfExtents;
     [SerializeField] private Transform checkTransform;
     [SerializeField] private LayerMask checkLayer;
+    public bool debug = true;
 
-    private IngredientData _currentIngredient;
-    private GameObject _currentObj;
+
+    [Header("Visualize Variables")]
+    public ObjectGrabbed Grabbed;
+     
+    [System.Serializable]
+    public class ObjectGrabbed
+    {
+        public IngredientData CurrentIngredient;
+        public GameObject CurrentObject;
+        public PickableObject CurrentPickable;
+
+        public ObjectGrabbed(IngredientData ingData, GameObject obj, PickableObject pickable)
+        {
+            CurrentIngredient = ingData;
+            CurrentObject = obj;
+            CurrentPickable = pickable;
+        }
+    }
 
     #region PUBLIC API
 
-    public IngredientData CurrentIngredientHeld => _currentIngredient;
+    public IngredientData CurrentIngredientHeld => Grabbed.CurrentIngredient;
+    public GameObject CurrentGameObjHeld => Grabbed.CurrentObject;
+    public PickableObject CurrentPickableHeld => Grabbed.CurrentPickable;
 
     #endregion
 
@@ -30,24 +49,31 @@ public class ObjectGrabberScript : MonoBehaviour
     {
         if (!Input.GetKeyDown(KeyCode.F)) return; // mata la funcion si no toca F
 
-        IngredientData detectedIng = DetectObject();
+        (
+            IngredientData detectedIng, 
+            GameObject ingObj,
+            PickableObject pickableObj
+        ) = DetectObject();
 
-        if (detectedIng != null && _currentIngredient == null)
-        {
-            SetCurrentIngredient(detectedIng);
-            GlueObjectToPlayer(_currentObj);
+        bool alreadyDidSomething = false;
+
+        if (Grabbed.CurrentIngredient != null)
+        { // esto limipa/libera/borra los datos que teniamos seteados del objeto.
+            alreadyDidSomething = true;
+            UnglueObjectToPlayer(Grabbed.CurrentObject);
+            ClearCurrentIngredient();
         }
 
-        if (_currentIngredient != null)
-        {
-            UnglueObjectToPlayer(_currentObj);
-            ClearCurrentIngredient();
+        if (detectedIng != null && Grabbed.CurrentIngredient == null && !alreadyDidSomething)
+        { // esto setea el current ingredient, con lo que detectamos.
+            SetCurrentIngredient(detectedIng, ingObj, pickableObj);
+            GlueObjectToPlayer(Grabbed.CurrentObject);
         }
     }
 
 
     #region Tracking logic
-    private IngredientData DetectObject()
+    private (IngredientData, GameObject, PickableObject) DetectObject()
     {
         Collider[] hits = Physics.OverlapBox(checkTransform.position, checkHalfExtents,
         Quaternion.identity, checkLayer, QueryTriggerInteraction.Ignore);
@@ -68,27 +94,26 @@ public class ObjectGrabberScript : MonoBehaviour
             if (ingredientObj) Debug.Log("Encontro un objeto con PickableObject!");
 
             IngredientData ingData = ingredientObj.Data;
-
-            _currentObj = ingredientObj.gameObject;
+            GameObject obj = ingredientObj.gameObject;
 
         
-            return ingData;
+            return (ingData, obj, ingredientObj);
         }
         else
         {
-            return null;
+            return (null, null, null);
         }
     }
 
-    private void SetCurrentIngredient(IngredientData ingData)
+    private void SetCurrentIngredient(IngredientData ingData, GameObject ingObj, PickableObject pickableObj)
     {
-        _currentIngredient = ingData;
+        Grabbed = new ObjectGrabbed(ingData, ingObj, pickableObj);
         //Debug.Log("Se seteo un objeto");
     }
 
     private void ClearCurrentIngredient()
     {
-        _currentIngredient = null;
+        Grabbed = new ObjectGrabbed(null, null, null);
     }
     #endregion
 
@@ -121,6 +146,7 @@ public class ObjectGrabberScript : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (!debug) return;
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(checkTransform.position, checkHalfExtents);
     }

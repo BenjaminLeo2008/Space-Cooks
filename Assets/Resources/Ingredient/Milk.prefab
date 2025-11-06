@@ -90,8 +90,8 @@ GameObject:
   - component: {fileID: 6207264555881317627}
   - component: {fileID: 8048872067521470640}
   - component: {fileID: 5069497152832720659}
-  - component: {fileID: 5115452152471546163}
-  m_Layer: 0
+  - component: {fileID: 1605969311}
+  m_Layer: 9
   m_Name: Milk
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5115452152471546163
+--- !u!114 &1605969311
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,4 +155,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPickable: 1
-  data: {fileID: 11400000, guid: a1edb66ee85a1f84b9be04dd934b724a, type: 2}
+  _data: {fileID: 11400000, guid: a1edb66ee85a1f84b9be04dd934b724a, type: 2}

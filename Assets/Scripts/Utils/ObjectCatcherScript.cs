@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class ObjectCatcherScript : MonoBehaviour
 {
+
+    [Header("New settings")]
+    [SerializeField] private Transform objectPosTransform;
+
     [Header("Settings")]
     [SerializeField] private float detectionRadius;
     [SerializeField] private Vector3 offset;
@@ -72,8 +76,22 @@ public class ObjectCatcherScript : MonoBehaviour
     // Este método se activa cuando un Collider entra en el trigger
     void OnTriggerEnter(Collider other)
     {
+
+        if (!(other.gameObject.layer == LayerMask.GetMask("Object"))) return;
+
+        PickableObject pickable = other.gameObject.GetComponent<PickableObject>();
+
+        if (pickable && !pickable.IsPicked)
+        {
+            pickable.transform.position = objectPosTransform.position;
+            pickable.Rb.isKinematic = false;
+            // logica para enchufar el objeto a un transform en especifico.
+        }
+        
+        /*
+
         // Detecta el objeto solo si no estamos sosteniendo uno y si tiene el tag correcto
-        if (_pickedObject == null && other.gameObject.CompareTag("Object") || other.gameObject.CompareTag("Plate"))
+        if (_pickedObject == null)
         {
             // Obtiene el Rigidbody del objeto que entró
             Rigidbody rb = other.GetComponent<Rigidbody>();
@@ -88,6 +106,7 @@ public class ObjectCatcherScript : MonoBehaviour
                 _caughtRigidbody.isKinematic = true;
             }
         }
+        */
     }
 
     // Este método se activa cuando un Collider sale del trigger
@@ -111,35 +130,35 @@ public class ObjectCatcherScript : MonoBehaviour
 
     private IEnumerator PickObjectDelayed(float delay)
     {
-       if (gameObject.CompareTag("Tile") || gameObject.CompareTag("Floor"))
+       if (!(gameObject.layer == LayerMask.GetMask("Object"))) yield return return;
+        
+       // Solo ejecuta la lógica si un objeto ha sido atrapado
+       if (_pickedObject != null)
         {
-            // Solo ejecuta la lógica si un objeto ha sido atrapado
-            if (_pickedObject != null)
+           // Opcional: Asegúrate de que el objeto no tiene un padre (esto ayuda a evitar problemas)
+           if (_pickedObject.transform.parent == null)
             {
-                // Opcional: Asegúrate de que el objeto no tiene un padre (esto ayuda a evitar problemas)
-                if (_pickedObject.transform.parent == null)
-                {
-                    // Verifica que la superficie exista y el objeto tenga el tag correcto
-                    if (superficieTransform != null && _pickedObject.CompareTag("Object"))
-                    {
-                        yield return new WaitForSeconds(delay);
-                        // Obtiene la altura del objeto con su collider
-                        float objectHeight = _pickedObject.GetComponent<Collider>().bounds.extents.y;
-                        Vector3 superficiePosition = superficieTransform.position;
+               // Verifica que la superficie exista y el objeto tenga el tag correcto
+               if (superficieTransform != null && _pickedObject.CompareTag("Object"))
+               {
+                   yield return new WaitForSeconds(delay);
+                   // Obtiene la altura del objeto con su collider
+                   float objectHeight = _pickedObject.GetComponent<Collider>().bounds.extents.y;
+                   Vector3 superficiePosition = superficieTransform.position;
 
-                        // Calcula la nueva posición del objeto
-                        Vector3 newPosition = new Vector3(
-                            superficiePosition.x + offset.x,
-                            superficiePosition.y + objectHeight + offset.y,
-                            superficiePosition.z + offset.z
-                        );
+                   // Calcula la nueva posición del objeto
+                   Vector3 newPosition = new Vector3(
+                       superficiePosition.x + offset.x,
+                       superficiePosition.y + objectHeight + offset.y,
+                       superficiePosition.z + offset.z
+                   );
 
-                        // Establece la rotación y posición
-                        _pickedObject.transform.rotation = superficieTransform.rotation;
-                        _pickedObject.transform.position = newPosition;
-                    }
-                }
-            }
-        }
+                   // Establece la rotación y posición
+                   _pickedObject.transform.rotation = superficieTransform.rotation;
+                   _pickedObject.transform.position = newPosition;
+               }
+           }
+       }
+        
     }
 }

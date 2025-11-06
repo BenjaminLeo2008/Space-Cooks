@@ -7,17 +7,26 @@ public class PickableObject : MonoBehaviour
     public bool IsPickable = true;
     private Rigidbody _rb;
     [SerializeField] private IngredientData _data;
+    [SerializeField] private bool _isPicked;
 
     #region PUBLIC API 
 
     public IngredientData Data => _data;
+    public bool IsPicked => _isPicked;
+    public Rigidbody Rb => _rb;
+
+    public void SetPicked(bool isPicked)
+    {
+        _isPicked = isPicked;
+    }
 
     #endregion
 
-    private void Start() {
+    private void Awake() {
         _rb = GetComponent<Rigidbody>();
     }
 
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PlayerInteractionZone"))
@@ -40,12 +49,5 @@ public class PickableObject : MonoBehaviour
             }
         }
     }
-
-    private void Update() {
-        // Si no es posible agarrar, signfica que alguien lo tiene en la mano
-        if (!IsPickable) {
-            // por ende, debe ser kinematico 
-            _rb.isKinematic = true;
-        }
-    }
+    */
 }
