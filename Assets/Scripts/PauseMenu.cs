@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pausePanel;
+    public GameObject Pausa;
     private bool gameIsPaused = false;
     public GameObject image3;
     public GameObject image2;
@@ -64,14 +64,14 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0f;
-        pausePanel.SetActive(true);
+        Pausa.SetActive(true);
         gameIsPaused = true;
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1f;
-        pausePanel.SetActive(false);
+        Pausa.SetActive(false);
         gameIsPaused = false;
     }
 
