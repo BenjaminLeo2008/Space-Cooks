@@ -130,7 +130,7 @@ public class ObjectCatcherScript : MonoBehaviour
 
     private IEnumerator PickObjectDelayed(float delay)
     {
-       if (!(gameObject.layer == LayerMask.GetMask("Object"))) yield return return;
+       if (!(gameObject.layer == LayerMask.GetMask("Object"))) yield break;
         
        // Solo ejecuta la lógica si un objeto ha sido atrapado
        if (_pickedObject != null)
