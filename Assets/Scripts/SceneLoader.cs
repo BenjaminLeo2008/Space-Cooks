@@ -30,9 +30,11 @@ public class SceneLoader : MonoBehaviour
             {
                 BarraAzul.fillAmount = 1;
                 asyncOperation.allowSceneActivation = true;
-                }
-                yield return null;
             }
+            yield return null;
         }
     }
 }
+
+
+
