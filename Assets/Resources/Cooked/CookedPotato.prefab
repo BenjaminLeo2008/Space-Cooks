@@ -90,9 +90,9 @@ GameObject:
   - component: {fileID: 6538360046028674740}
   - component: {fileID: 4454269834719584193}
   - component: {fileID: 8367617681607244918}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CookedPotato
-  m_TagString: Object
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,5 +154,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPickable: 1
-  IsIngredient: 0
   _data: {fileID: 11400000, guid: 18e57b23c56142943ae2f4113577d615, type: 2}
+  _isPicked: 0

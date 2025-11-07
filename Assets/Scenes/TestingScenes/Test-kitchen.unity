@@ -185,6 +185,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Freidora.001
       objectReference: {fileID: 0}
+    - target: {fileID: 7908171355187920724, guid: 1213a1a695d9660438b5548eb9386f5b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1213a1a695d9660438b5548eb9386f5b, type: 3}
 --- !u!4 &66186895 stripped
@@ -260,6 +265,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesa de delivery
       objectReference: {fileID: 0}
+    - target: {fileID: 8251406096295461155, guid: 6d3025e708485ca4a97577c4fe1046f8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d3025e708485ca4a97577c4fe1046f8, type: 3}
 --- !u!4 &79743213 stripped
@@ -334,6 +344,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MueblePared
+      objectReference: {fileID: 0}
+    - target: {fileID: 1269335137179786159, guid: ab5032b0002a5b842a8991761a5bd5ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4219549530552189150, guid: ab5032b0002a5b842a8991761a5bd5ec,
         type: 3}
@@ -477,6 +492,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MuebleEsquina (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7435346919274055246, guid: bf933d172865c1d4aa4c7d0c662c4aad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7435346919274551918, guid: bf933d172865c1d4aa4c7d0c662c4aad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -607,6 +627,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mueble (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7567393928207279349, guid: 4390912916809344eb8cbbba6e6a137e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4390912916809344eb8cbbba6e6a137e, type: 3}
 --- !u!4 &276762303 stripped
@@ -688,6 +713,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hornalla1
       objectReference: {fileID: 0}
+    - target: {fileID: 6142285723915856325, guid: 5437c93c54faf2c41b3e292142b5d9a7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5437c93c54faf2c41b3e292142b5d9a7, type: 3}
 --- !u!4 &280313247 stripped
@@ -763,6 +793,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MueblePared (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1269335137179786159, guid: ab5032b0002a5b842a8991761a5bd5ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab5032b0002a5b842a8991761a5bd5ec, type: 3}
 --- !u!4 &284675101 stripped
@@ -837,6 +872,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MueblePared (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1269335137179786159, guid: ab5032b0002a5b842a8991761a5bd5ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab5032b0002a5b842a8991761a5bd5ec, type: 3}
@@ -937,6 +977,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MuebleEsquina (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435346919274055246, guid: bf933d172865c1d4aa4c7d0c662c4aad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7435346919274551918, guid: bf933d172865c1d4aa4c7d0c662c4aad,
         type: 3}
@@ -1150,6 +1195,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Freidora.001 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7908171355187920724, guid: 1213a1a695d9660438b5548eb9386f5b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1213a1a695d9660438b5548eb9386f5b, type: 3}
 --- !u!4 &429505218 stripped
@@ -1263,6 +1313,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LavaPlatos
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662968184429923830, guid: b3604efd5d24de943bd75c2cdefb632c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3604efd5d24de943bd75c2cdefb632c, type: 3}
@@ -1400,6 +1455,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TachoBasura (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1627269618584363202, guid: d7c3d06047bd9ba40ad93dcadc51b8a0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1627269618584665314, guid: d7c3d06047bd9ba40ad93dcadc51b8a0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1536,6 +1596,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mueble (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 7567393928207279349, guid: 4390912916809344eb8cbbba6e6a137e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4390912916809344eb8cbbba6e6a137e, type: 3}
 --- !u!4 &662687810 stripped
@@ -1611,6 +1676,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mueble (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7567393928207279349, guid: 4390912916809344eb8cbbba6e6a137e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4390912916809344eb8cbbba6e6a137e, type: 3}
 --- !u!4 &668017217 stripped
@@ -1685,6 +1755,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MueblePared (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1269335137179786159, guid: ab5032b0002a5b842a8991761a5bd5ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab5032b0002a5b842a8991761a5bd5ec, type: 3}
@@ -1767,6 +1842,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hornalla1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6142285723915856325, guid: 5437c93c54faf2c41b3e292142b5d9a7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5437c93c54faf2c41b3e292142b5d9a7, type: 3}
 --- !u!4 &705124563 stripped
@@ -1846,6 +1926,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mueble (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7567393928207279349, guid: 4390912916809344eb8cbbba6e6a137e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4390912916809344eb8cbbba6e6a137e, type: 3}
@@ -2016,6 +2101,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MueblePared (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1269335137179786159, guid: ab5032b0002a5b842a8991761a5bd5ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab5032b0002a5b842a8991761a5bd5ec, type: 3}
 --- !u!4 &762667802 stripped
@@ -2090,6 +2180,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mueble (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7567393928207279349, guid: 4390912916809344eb8cbbba6e6a137e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4390912916809344eb8cbbba6e6a137e, type: 3}
@@ -2266,6 +2361,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MuebleEsquina
       objectReference: {fileID: 0}
+    - target: {fileID: 7435346919274055246, guid: bf933d172865c1d4aa4c7d0c662c4aad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7435346919274551918, guid: bf933d172865c1d4aa4c7d0c662c4aad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2396,6 +2496,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MueblePared (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1269335137179786159, guid: ab5032b0002a5b842a8991761a5bd5ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab5032b0002a5b842a8991761a5bd5ec, type: 3}
 --- !u!4 &1004420291 stripped
@@ -2470,6 +2575,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MueblePared (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1269335137179786159, guid: ab5032b0002a5b842a8991761a5bd5ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab5032b0002a5b842a8991761a5bd5ec, type: 3}
@@ -2735,6 +2845,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mueble (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7567393928207279349, guid: 4390912916809344eb8cbbba6e6a137e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4390912916809344eb8cbbba6e6a137e, type: 3}
 --- !u!4 &1034775693 stripped
@@ -2838,6 +2953,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mueble (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 7567393928207279349, guid: 4390912916809344eb8cbbba6e6a137e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4390912916809344eb8cbbba6e6a137e, type: 3}
 --- !u!4 &1075523026 stripped
@@ -2873,6 +2993,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MesaParaCortarV2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5882398437537356679, guid: 2090c799c49c3004289b1a842864b22f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5882398437537580967, guid: 2090c799c49c3004289b1a842864b22f,
         type: 3}
@@ -3183,6 +3308,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hornalla1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6142285723915856325, guid: 5437c93c54faf2c41b3e292142b5d9a7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5437c93c54faf2c41b3e292142b5d9a7, type: 3}
 --- !u!4 &1210056086 stripped
@@ -3278,6 +3408,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MesaParaCortarV2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5882398437537356679, guid: 2090c799c49c3004289b1a842864b22f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5882398437537580967, guid: 2090c799c49c3004289b1a842864b22f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3316,7 +3451,7 @@ PrefabInstance:
     - target: {fileID: 5882398437537580967, guid: 2090c799c49c3004289b1a842864b22f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 52
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 5882398437537580967, guid: 2090c799c49c3004289b1a842864b22f,
         type: 3}
@@ -3362,6 +3497,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MuebleEsquina (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435346919274055246, guid: bf933d172865c1d4aa4c7d0c662c4aad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7435346919274551918, guid: bf933d172865c1d4aa4c7d0c662c4aad,
         type: 3}
@@ -3437,6 +3577,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MuebleEsquina (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435346919274055246, guid: bf933d172865c1d4aa4c7d0c662c4aad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7435346919274551918, guid: bf933d172865c1d4aa4c7d0c662c4aad,
         type: 3}
@@ -3593,6 +3738,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MuebleEsquina (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 7435346919274055246, guid: bf933d172865c1d4aa4c7d0c662c4aad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7435346919274551918, guid: bf933d172865c1d4aa4c7d0c662c4aad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3667,6 +3817,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MuebleEsquina (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435346919274055246, guid: bf933d172865c1d4aa4c7d0c662c4aad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7435346919274551918, guid: bf933d172865c1d4aa4c7d0c662c4aad,
         type: 3}
@@ -3798,6 +3953,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mueble (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 7567393928207279349, guid: 4390912916809344eb8cbbba6e6a137e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4390912916809344eb8cbbba6e6a137e, type: 3}
 --- !u!4 &1613709576 stripped
@@ -3873,6 +4033,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mueble
       objectReference: {fileID: 0}
+    - target: {fileID: 7567393928207279349, guid: 4390912916809344eb8cbbba6e6a137e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4390912916809344eb8cbbba6e6a137e, type: 3}
 --- !u!4 &1667321998 stripped
@@ -3892,6 +4057,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MuebleEsquina (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435346919274055246, guid: bf933d172865c1d4aa4c7d0c662c4aad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7435346919274551918, guid: bf933d172865c1d4aa4c7d0c662c4aad,
         type: 3}
@@ -4006,7 +4176,7 @@ PrefabInstance:
     - target: {fileID: 4551906606847131921, guid: 882c69b0d66928343b33e84947736a94,
         type: 3}
       propertyPath: m_RootOrder
-      value: 49
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 4551906606847131921, guid: 882c69b0d66928343b33e84947736a94,
         type: 3}
@@ -4027,6 +4197,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mesa para crear rawPotato
+      objectReference: {fileID: 0}
+    - target: {fileID: 4551906606847565105, guid: 882c69b0d66928343b33e84947736a94,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5705608612518491667, guid: 882c69b0d66928343b33e84947736a94,
         type: 3}
@@ -4120,6 +4295,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Freidora.001 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7908171355187920724, guid: 1213a1a695d9660438b5548eb9386f5b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1213a1a695d9660438b5548eb9386f5b, type: 3}
 --- !u!4 &1735628271 stripped
@@ -4195,6 +4375,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MueblePared (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1269335137179786159, guid: ab5032b0002a5b842a8991761a5bd5ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab5032b0002a5b842a8991761a5bd5ec, type: 3}
 --- !u!4 &1736781210 stripped
@@ -4214,6 +4399,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MuebleEsquina (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435346919274055246, guid: bf933d172865c1d4aa4c7d0c662c4aad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7435346919274551918, guid: bf933d172865c1d4aa4c7d0c662c4aad,
         type: 3}
@@ -4289,6 +4479,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MuebleEsquina (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435346919274055246, guid: bf933d172865c1d4aa4c7d0c662c4aad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7435346919274551918, guid: bf933d172865c1d4aa4c7d0c662c4aad,
         type: 3}
@@ -4420,6 +4615,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CajaPapa
       objectReference: {fileID: 0}
+    - target: {fileID: 4551906606847565105, guid: 882c69b0d66928343b33e84947736a94,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5705608612518491667, guid: 882c69b0d66928343b33e84947736a94,
         type: 3}
       propertyPath: targetGameObjectName
@@ -4500,6 +4700,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mueble (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 7567393928207279349, guid: 4390912916809344eb8cbbba6e6a137e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4390912916809344eb8cbbba6e6a137e, type: 3}
 --- !u!4 &1824374346 stripped
@@ -4575,6 +4780,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MueblePared (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1269335137179786159, guid: ab5032b0002a5b842a8991761a5bd5ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab5032b0002a5b842a8991761a5bd5ec, type: 3}
 --- !u!4 &1857557181 stripped
@@ -4649,6 +4859,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MueblePared (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1269335137179786159, guid: ab5032b0002a5b842a8991761a5bd5ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab5032b0002a5b842a8991761a5bd5ec, type: 3}
@@ -4912,6 +5127,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MueblePared (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1269335137179786159, guid: ab5032b0002a5b842a8991761a5bd5ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab5032b0002a5b842a8991761a5bd5ec, type: 3}
 --- !u!4 &1979901254 stripped
@@ -4987,6 +5207,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mueble (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7567393928207279349, guid: 4390912916809344eb8cbbba6e6a137e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4390912916809344eb8cbbba6e6a137e, type: 3}
 --- !u!4 &2002913547 stripped
@@ -5061,6 +5286,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CajaCARNE (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597080596150420313, guid: b7783dbb2f86012469e288b02709598d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6651916430370547365, guid: b7783dbb2f86012469e288b02709598d,
         type: 3}
@@ -5142,6 +5372,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CajaCARNE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597080596150420313, guid: b7783dbb2f86012469e288b02709598d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6651916430370547365, guid: b7783dbb2f86012469e288b02709598d,
         type: 3}

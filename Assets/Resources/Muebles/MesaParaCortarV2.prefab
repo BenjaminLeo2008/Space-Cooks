@@ -167,9 +167,9 @@ GameObject:
   - component: {fileID: 6514648967962413327}
   - component: {fileID: 3749426489302568160}
   - component: {fileID: 3537684302542568123}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MesaParaCortarV2
-  m_TagString: Tile
+  m_TagString: Mesa para cortar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b3a3e213e541d48b40dae05f5663cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPosTransform: {fileID: 0}
   detectionRadius: 1.5
   offset: {x: 0, y: 0, z: 0}
   superficieTransform: {fileID: 1446645653756509423}

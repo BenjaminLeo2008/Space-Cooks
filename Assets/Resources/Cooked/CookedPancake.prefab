@@ -89,9 +89,9 @@ GameObject:
   - component: {fileID: 9139220385237459339}
   - component: {fileID: 1856305157868283013}
   - component: {fileID: 6684585187460295576}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CookedPancake
-  m_TagString: Object
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,5 +153,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPickable: 1
-  IsIngredient: 0
   _data: {fileID: 11400000, guid: cc7d9e4e5f11cb646a415645beee2e14, type: 2}
+  _isPicked: 0

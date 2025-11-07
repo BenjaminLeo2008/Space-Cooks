@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6724862977622654034}
   - component: {fileID: 9069514684034872809}
   - component: {fileID: 4163430127782340934}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RawMeat
-  m_TagString: Object
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,8 +76,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPickable: 1
-  IsIngredient: 0
   _data: {fileID: 11400000, guid: 61bc84a331fd4314199994d345379dc4, type: 2}
+  _isPicked: 0
 --- !u!1 &8946403575294407965
 GameObject:
   m_ObjectHideFlags: 0

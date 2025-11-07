@@ -91,9 +91,9 @@ GameObject:
   - component: {fileID: 6118229871172023353}
   - component: {fileID: 3405058324434462320}
   - component: {fileID: 5705608612518491667}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CajaPapa
-  m_TagString: Untagged
+  m_TagString: "Caja de creaci\xF3n"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b3a3e213e541d48b40dae05f5663cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPosTransform: {fileID: 0}
   detectionRadius: 0
   offset: {x: 0, y: 0, z: 0}
   superficieTransform: {fileID: 7753835238402288276}
@@ -162,9 +163,10 @@ MonoBehaviour:
   ingredienteInvolucrado: {fileID: 11400000, guid: c0d04f36011a2da4681782bda54878ee,
     type: 2}
   deliverablePrefab: {fileID: 0}
-  ingredientData: {fileID: 0}
+  currentIngredientData: {fileID: 0}
   player: {fileID: 0}
   DeliverablePrefabs: []
+  ingredientDatabase: {fileID: 0}
 --- !u!1 &6965382257558910316
 GameObject:
   m_ObjectHideFlags: 0

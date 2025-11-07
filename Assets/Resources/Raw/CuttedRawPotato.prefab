@@ -89,9 +89,9 @@ GameObject:
   - component: {fileID: 1023277530111366615}
   - component: {fileID: 5798472719892046757}
   - component: {fileID: 4451041629592208516}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CuttedRawPotato
-  m_TagString: Object
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPickable: 1
-  IsIngredient: 0
   _data: {fileID: 11400000, guid: 9143aad70a7f1e4459037d54ee8f879a, type: 2}
+  _isPicked: 0
 --- !u!65 &5798472719892046757
 BoxCollider:
   m_ObjectHideFlags: 0

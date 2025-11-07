@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1269335137179551695}
   - component: {fileID: 4219549530552189150}
   - component: {fileID: 7986865038929417535}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MueblePared
-  m_TagString: Untagged
+  m_TagString: Mueble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b3a3e213e541d48b40dae05f5663cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPosTransform: {fileID: 0}
   detectionRadius: 0
   offset: {x: 0, y: 0, z: 0}
   superficieTransform: {fileID: 7469790751747004404}

@@ -143,11 +143,12 @@ public class ObjectGrabberScript : MonoBehaviour
 
     #endregion
 
-
+    #region ViewGrabZone
     private void OnDrawGizmos()
     {
         if (!debug) return;
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(checkTransform.position, checkHalfExtents);
     }
+    #endregion
 }

@@ -119,9 +119,9 @@ GameObject:
   - component: {fileID: 7435346919274551918}
   - component: {fileID: 1155328215133766506}
   - component: {fileID: 1733109652682839779}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MuebleEsquina
-  m_TagString: Untagged
+  m_TagString: Mueble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b3a3e213e541d48b40dae05f5663cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPosTransform: {fileID: 0}
   detectionRadius: 0
   offset: {x: 0, y: 0, z: 0}
   superficieTransform: {fileID: 8315165700387817395}

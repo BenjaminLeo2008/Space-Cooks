@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 1605969311}
   m_Layer: 9
   m_Name: Milk
-  m_TagString: Object
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,3 +156,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsPickable: 1
   _data: {fileID: 11400000, guid: a1edb66ee85a1f84b9be04dd934b724a, type: 2}
+  _isPicked: 0

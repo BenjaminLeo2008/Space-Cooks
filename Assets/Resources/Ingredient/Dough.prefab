@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7372481353345242367}
   - component: {fileID: 7919331704203495681}
   - component: {fileID: 4192148742130292956}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Dough
-  m_TagString: Object
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,8 +76,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPickable: 1
-  IsIngredient: 0
   _data: {fileID: 11400000, guid: 35da34d171531294ea00d24f7e285802, type: 2}
+  _isPicked: 0
 --- !u!1 &3661310337281321520
 GameObject:
   m_ObjectHideFlags: 0
