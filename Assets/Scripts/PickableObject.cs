@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PickableObject : MonoBehaviour
 {
-    public bool IsPickable = true;
+    [Header("Settings")]
+    [SerializeField] private Vector3 checkHalfExtents;
+    [SerializeField] private Transform checkTransform;
+    [SerializeField] private LayerMask checkLayer;
     private Rigidbody _rb;
     [SerializeField] private IngredientData _data;
     [SerializeField] private bool _isPicked;
@@ -25,29 +28,47 @@ public class PickableObject : MonoBehaviour
     private void Awake() {
         _rb = GetComponent<Rigidbody>();
     }
-
-    /*
-    private void OnTriggerEnter(Collider other)
+    #region DetectOtherPickableObjects
+    private (IngredientData, GameObject, PickableObject) DetectObject()
     {
-        if (other.CompareTag("PlayerInteractionZone"))
+        Collider[] hits = Physics.OverlapBox(checkTransform.position, checkHalfExtents,
+        Quaternion.identity, checkLayer, QueryTriggerInteraction.Ignore);
+
+        if (hits.Length > 0)
+
         {
-            if (this.transform.parent == null)
+
+            Debug.Log("Detected obj!");
+            PickableObject ingredientObj = hits[0].GetComponent<PickableObject>();
+
+            foreach (Collider col in hits)
             {
-                other.GetComponentInParent<PlayerInteraction>().ObjectToPickUp = this.gameObject;
+                if (ingredientObj == null)
+                    ingredientObj = col.GetComponent<PickableObject>();
             }
+
+            if (ingredientObj) Debug.Log("Encontro un objeto con PickableObject!");
+
+            IngredientData ingData = ingredientObj.Data;
+            GameObject obj = ingredientObj.gameObject;
+
+
+            return (ingData, obj, ingredientObj);
+        }
+        else
+        {
+            return (null, null, null);
         }
     }
+    #endregion
 
-    private void OnTriggerExit(Collider other)
+
+
+    #region viewBox
+    private void OnDrawGizmos()
     {
-        if (other.CompareTag("PlayerInteractionZone"))
-        {
-            PlayerInteraction pickUpScript = other.GetComponentInParent<PlayerInteraction>();
-            if (pickUpScript != null && pickUpScript.ObjectToPickUp == this.gameObject)
-            {
-                pickUpScript.ObjectToPickUp = null;
-            }
-        }
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(checkTransform.position, checkHalfExtents);
     }
-    */
+    #endregion
 }
