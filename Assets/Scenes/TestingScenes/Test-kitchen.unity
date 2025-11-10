@@ -3159,6 +3159,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 8219308308878718507, guid: e982344ccb7238548ac679e305bd9f38,
+        type: 3}
+      propertyPath: checkLayer.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8980129192655238165, guid: e982344ccb7238548ac679e305bd9f38,
         type: 3}
       propertyPath: m_LocalRotation.x
