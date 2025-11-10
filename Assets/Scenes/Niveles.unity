@@ -439,7 +439,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -2005,7 +2005,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loaderUI: {fileID: 1634903801}
-  BarraAzul: {fileID: 208359355}
+  barraAzul: {fileID: 0}
+  porcentajeText: {fileID: 0}
+  speed: 0.5
+  minLoadTime: 1
 --- !u!114 &1042580792
 MonoBehaviour:
   m_ObjectHideFlags: 0
