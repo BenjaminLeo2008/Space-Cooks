@@ -81,12 +81,4 @@ public class ComplexFoodScript : MonoBehaviour
             return true;
         }
     }
-
-    /* COMENTARIO DE CÓDIGO ELIMINADO:
-    public void GetComplexFood() {
-        foreach (ComplexFoodSO food in complexFoodDatabase.allComplexFoods) {
-            // if ( todos los ingredientes son = a los current ingredients ) usar prefab
-        }
-    }
-    */
 }

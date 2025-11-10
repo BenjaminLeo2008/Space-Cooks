@@ -5,7 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewComplexFood", menuName = "Custom/ComplexFood")]
 public class ComplexFoodSO : ScriptableObject
 {
+    //Cada posible combinación de plato
     public GameObject complexFoodPrefab;
+    //Los ingredientes para llegar a ese plato
     public IngredientData[] ingredientsNeededForDish;
 
 }
