@@ -2,65 +2,112 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
-// Si usas TextMeshPro, descomenta estas 2 líneas y usa TMP_Text abajo.
-// using TMPro;
+using TMPro; // Importar si usas TextMeshPro (RECOMENDADO)
 
 public class SceneLoader : MonoBehaviour
 {
-    [Header("UI")]
+    // --- Referencias de UI ---
+    [Header("Referencias de UI")]
+    // Objeto principal de la UI de carga (Canvas o Panel)
     public GameObject loaderUI;
+
+    // La imagen (Image) que actúa como barra, DEBE tener el "Image Type" en Filled (Llenado)
     public Image barraAzul;
-    public Text porcentajeText;   // si usas TMP: cambia a TMP_Text
 
-    [Header("Opciones")]
-    public float speed = 0.6f;       // velocidad de llenado visual (fill/seg)
-    public float minLoadTime = 1.0f; // tiempo mínimo visible de la pantalla
+    // El texto para mostrar el porcentaje (si usas TMP)
+    public TMP_Text porcentajeTexto;
 
-    public void LoadScene(int buildIndex)
+    // --- Configuraciones ---
+    [Header("Configuraciones")]
+    // Velocidad a la que se mueve la barra visual (solo si la carga real es muy rápida)
+    public float visualSpeed = 1.5f;
+
+    // Tiempo mínimo en segundos que el usuario debe ver la pantalla de carga (estético)
+    public float minLoadTime = 1.0f;
+
+    // Flag para saber si la escena real ya está lista para activarse (al 90%)
+    private bool isSceneReady = false;
+
+    private void Start()
     {
-        StartCoroutine(LoadScene_Coroutine(buildIndex));
-    }
-
-    private IEnumerator LoadScene_Coroutine(int buildIndex)
-    {
-        // Seguridad: asegurate de empezar desde cero y UI visible
-        if (loaderUI != null) loaderUI.SetActive(true);
-        if (barraAzul != null) barraAzul.fillAmount = 0f;
-        if (porcentajeText != null) porcentajeText.text = "0%";
-
-        // Empezar a cargar sin activar
-        AsyncOperation op = SceneManager.LoadSceneAsync(buildIndex);
-        op.allowSceneActivation = false;
-
-        float visual = 0f;         // lo que ve el usuario (0→1)
-        float t0 = Time.unscaledTime;
-
-        while (!op.isDone)
+        // Por seguridad, aseguramos que la UI de carga esté oculta al iniciar el juego.
+        if (loaderUI != null)
         {
-            // progreso real de Unity (0..0.9) ⇒ normalizado a 0..1
-            float real = Mathf.Clamp01(op.progress / 0.9f);
-
-            // suavizar la barra hacia el progreso real
-            visual = Mathf.MoveTowards(visual, real, speed * Time.deltaTime);
-
-            if (barraAzul != null) barraAzul.fillAmount = visual;
-            if (porcentajeText != null) porcentajeText.text = Mathf.RoundToInt(visual * 100f) + "%";
-
-            // activar solo cuando:
-            //  1) Unity ya terminó (real >= 1)
-            //  2) La barra llegó a 1 visualmente
-            //  3) Pasó el tiempo mínimo de pantalla
-            if (real >= 1f && visual >= 1f && (Time.unscaledTime - t0) >= minLoadTime)
-            {
-                // pequeña pausa estética
-                yield return new WaitForSeconds(0.15f);
-                op.allowSceneActivation = true;
-            }
-
-            yield return null;
+            loaderUI.SetActive(false);
         }
     }
+
+    // --- Método llamado por el botón ---
+    // Recibe el índice (Build Index) de la escena a la que quieres ir.
+    public void LoadScene(int buildIndex)
+    {
+        // Aseguramos que el tiempo corra si venimos de un menú en pausa.
+        Time.timeScale = 1f;
+
+        // Iniciamos la Coroutine
+        StartCoroutine(LoadSceneCoroutine(buildIndex));
+    }
+
+    // --- Corutina de Carga Asíncrona ---
+    private IEnumerator LoadSceneCoroutine(int buildIndex)
+    {
+        // 1. Preparación de la UI
+        if (loaderUI != null) loaderUI.SetActive(true);
+        if (barraAzul != null) barraAzul.fillAmount = 0f;
+        if (porcentajeTexto != null) porcentajeTexto.text = "0%";
+        isSceneReady = false;
+
+        // 2. Iniciar la Carga Real
+        AsyncOperation operation = SceneManager.LoadSceneAsync(buildIndex);
+
+        // ** CLAVE: Prevenir la activación de la escena al 90% **
+        operation.allowSceneActivation = false;
+
+        float visualProgress = 0f;
+        float timer = 0f;
+
+        // --- Loop Principal de Carga y Animación ---
+        while (!operation.isDone)
+        {
+            // Acumular el tiempo para asegurar el minLoadTime. Usamos Time.unscaledDeltaTime 
+            // por si Time.timeScale cambia.
+            timer += Time.unscaledDeltaTime;
+
+            // a) Determinar el progreso objetivo
+            // Unity solo llega a 0.9. Lo normalizamos para que el 0.9 real sea 1.0 visualmente.
+            float targetProgress = operation.progress / 0.9f;
+
+            // Marcamos si la carga real está al 90% (lista para activarse)
+            if (operation.progress >= 0.9f)
+            {
+                isSceneReady = true;
+                targetProgress = 1.0f; // Ahora el objetivo visual es el 100%
+            }
+
+            // b) Mover la barra visual suavemente hacia el objetivo
+            // Usamos MoveTowards para una animación fluida
+            visualProgress = Mathf.MoveTowards(visualProgress, targetProgress, Time.unscaledDeltaTime * visualSpeed);
+
+            // c) Actualizar la UI
+            if (barraAzul != null) barraAzul.fillAmount = visualProgress;
+            if (porcentajeTexto != null) porcentajeTexto.text = Mathf.RoundToInt(visualProgress * 100f) + "%";
+
+            // d) Condición de Activación
+            // La escena se activa SOLO si:
+            // 1. La barra visual ha llegado al 100% (visualProgress >= 1f)
+            // 2. Y el tiempo mínimo estético (minLoadTime) ha pasado.
+            if (isSceneReady && visualProgress >= 1f && timer >= minLoadTime)
+            {
+                // ** CLAVE: Permitir que la escena se cargue finalmente **
+                operation.allowSceneActivation = true;
+            }
+
+            yield return null; // Esperar al siguiente frame
+        }
+
+    }
 }
+
 
 
 
