@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d2a718dee2c5cf48bb3a387d0f43103, type: 3}
-  m_Name: SOMilk
+  m_Script: {fileID: 11500000, guid: fac36f61001bef84b8ccf9c597dcfefa, type: 3}
+  m_Name: PancakeWithDDL
   m_EditorClassIdentifier: 
-  PrefabObject: {fileID: 6207264555881093339, guid: d42764470af0ff048a79f90ce5cbbc0b,
-    type: 3}
-  SimpleNextState: {fileID: 0}
-  IsStartingIngredient: 1
-  Recipes: []
+  complexFoodPrefab: {fileID: 0}
+  ingredientsNeededForDish:
+  - {fileID: 0}
+  - {fileID: 0}

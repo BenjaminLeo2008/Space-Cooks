@@ -6,24 +6,27 @@ using UnityEngine;
 public class ObjectCatcherScript : MonoBehaviour
 {
 
-    [Header("New settings")]
-    [SerializeField] private Transform objectPosTransform;
+    //[Header("New settings")]
+    //[SerializeField] private Transform objectPosTransform;
 
     [Header("Settings")]
     [SerializeField] private float detectionRadius;
     [SerializeField] private Vector3 offset;
 
     private SphereCollider _col;
-    public Transform superficieTransform;
-    public Transform finalSuperficieTransform;
     private GameObject _pickedObject;
     private Rigidbody _caughtRigidbody;
     private IngredientData _ingredientData;
-
+    private Vector3 originalScale;
+    
+    #region PUBLIC API
     public GameObject ObjectToPickUp;
     public GameObject pickedObject;
     public Transform interactionZone;
-    private Vector3 originalScale;
+    public Transform superficieTransform;
+    public Transform finalSuperficieTransform;
+    #endregion
+
 
     // Propiedad pública para que otros scripts puedan leer el objeto atrapado.
     public GameObject PickedObject => _pickedObject;
@@ -83,7 +86,7 @@ public class ObjectCatcherScript : MonoBehaviour
 
         if (pickable && !pickable.IsPicked)
         {
-            pickable.transform.position = objectPosTransform.position;
+            pickable.transform.position = superficieTransform.position;
             pickable.Rb.isKinematic = false;
             // logica para enchufar el objeto a un transform en especifico.
         }
@@ -128,7 +131,7 @@ public class ObjectCatcherScript : MonoBehaviour
         }
     }
 
-    private IEnumerator PickObjectDelayed(float delay)
+    private IEnumerator PickObjectDelayed(float delayTime)
     {
        if (!(gameObject.layer == LayerMask.GetMask("Object"))) yield break;
         
@@ -141,7 +144,7 @@ public class ObjectCatcherScript : MonoBehaviour
                // Verifica que la superficie exista y el objeto tenga el tag correcto
                if (superficieTransform != null && _pickedObject.CompareTag("Object"))
                {
-                   yield return new WaitForSeconds(delay);
+                   yield return new WaitForSeconds(1f);
                    // Obtiene la altura del objeto con su collider
                    float objectHeight = _pickedObject.GetComponent<Collider>().bounds.extents.y;
                    Vector3 superficiePosition = superficieTransform.position;

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AdvanceActionsScript : MonoBehaviour
 {
-    // Nombre del GameObject para activar el reemplazo. Configúralo en el Inspector.
-    public ETiposMesa tipoDeMesa;
     [SerializeField] private IngredientData ingredienteInvolucrado;
 
     // Prefab que se puede entregar, agrégalo desde el Inspector.
@@ -21,11 +19,15 @@ public class AdvanceActionsScript : MonoBehaviour
     // Referencia al ObjectCatcherScript
     private ObjectCatcherScript objectCatcher;
 
+    // Variable para rastrear si el jugador está dentro del área del collider.
+    private bool _isPlayerInTrigger = false;
+
+    #region PUBLIC API
     // ESTA VARIABLE DEBE CONTENER EL SCRIPTABLE OBJECT IngredientData del objeto recogido.
     public IngredientData currentIngredientData;
 
-    // Variable para rastrear si el jugador está dentro del área del collider.
-    private bool _isPlayerInTrigger = false;
+    // Nombre del GameObject para activar el reemplazo. Configúralo en el Inspector.
+    public ETiposMesa tipoDeMesa;
 
     public PlayerController player;
 
@@ -42,7 +44,7 @@ public class AdvanceActionsScript : MonoBehaviour
         Hervir,
         Lavar,
     }
-
+    #endregion
     void Start()
     {
         // Obtiene la referencia al ObjectCatcherScript en el mismo GameObject

@@ -10,12 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d2a718dee2c5cf48bb3a387d0f43103, type: 3}
-  m_Name: SORawDough
+  m_Name: SOEmpanadaCooked
   m_EditorClassIdentifier: 
-  PrefabObject: {fileID: 3172728732176950031, guid: 3a839cecf0a542440acdf4052e1df3b0,
-    type: 3}
-  SimpleNextState: {fileID: 11400000, guid: f6e2f7ea0a15da74d88eadada6473498, type: 2}
-  IsStartingIngredient: 1
-  Recipes:
-  - RequiredIngredient: {fileID: 0}
-    ResultingPrefab: {fileID: 0}
+  PrefabObject: {fileID: 0}
+  SimpleNextState: {fileID: 0}
+  IsStartingIngredient: 0
+  Recipes: []

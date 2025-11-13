@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPosTransform: {fileID: 0}
-  detectionRadius: 0
+  detectionRadius: 2
   offset: {x: 0, y: 0, z: 0}
   superficieTransform: {fileID: 3679080354287373511}
   finalSuperficieTransform: {fileID: 0}

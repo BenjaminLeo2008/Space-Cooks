@@ -390,6 +390,11 @@ PrefabInstance:
       propertyPath: objectPosTransform
       value: 
       objectReference: {fileID: 566248291}
+    - target: {fileID: 7986865038929417535, guid: ab5032b0002a5b842a8991761a5bd5ec,
+        type: 3}
+      propertyPath: detectionRadius
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab5032b0002a5b842a8991761a5bd5ec, type: 3}
 --- !u!4 &131636456 stripped

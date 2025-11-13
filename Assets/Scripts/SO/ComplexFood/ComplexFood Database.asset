@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: ComplexFood Database
+  m_EditorClassIdentifier: Assembly-CSharp::ComplexFoodDatabaseSO
+  allComplexFoods:
+  - {fileID: 11400000, guid: 00e6c31334762c34a92829ab0d695fd5, type: 2}
+  - {fileID: 11400000, guid: 48cda434cb801b64bbfb2faa2fdf872a, type: 2}
+  - {fileID: 11400000, guid: 46e0126de446c494da4252ffb5205415, type: 2}
+  - {fileID: 11400000, guid: 8a35c40e303b99841a910127d0c4a727, type: 2}
+  - {fileID: 11400000, guid: a3c35f29d8d85ec459233038a58cffe9, type: 2}
+  - {fileID: 11400000, guid: 0d91cb72fc834d34db9f7ee061c85213, type: 2}
+  - {fileID: 11400000, guid: 51c7240bf12d80141ab6efebce4d5688, type: 2}

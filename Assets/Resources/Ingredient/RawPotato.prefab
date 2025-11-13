@@ -153,6 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f15355c47dd2184aaf39b9b3e5ed484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsPickable: 1
-  _data: {fileID: 0}
+  checkHalfExtents: {x: 0, y: 0, z: 0}
+  checkTransform: {fileID: 0}
+  checkLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _data: {fileID: 11400000, guid: c0d04f36011a2da4681782bda54878ee, type: 2}
   _isPicked: 0
