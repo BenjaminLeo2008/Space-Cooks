@@ -2881,7 +2881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad69598edce4c4f44b8f211bbdd699fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkHalfExtents: {x: 2.5, y: 2.5, z: 2.5}
+  checkHalfExtents: {x: 2.5, y: 7.18, z: 2.5}
   checkTransform: {fileID: 554910231}
   checkLayer:
     serializedVersion: 2
