@@ -20,7 +20,7 @@ public class PickableObject : MonoBehaviour
 
     public void SetPicked(bool isPicked)
     {
-        _isPicked = isPicked;
+        _isPicked = IsPicked;
     }
 
     #endregion

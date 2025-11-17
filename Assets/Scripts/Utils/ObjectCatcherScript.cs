@@ -25,12 +25,13 @@ public class ObjectCatcherScript : MonoBehaviour
     public Transform interactionZone;
     public Transform superficieTransform;
     public Transform finalSuperficieTransform;
+    public GameObject PickedObject => _pickedObject;
+    public IngredientData IngredientData => _ingredientData;
     #endregion
 
 
     // Propiedad pública para que otros scripts puedan leer el objeto atrapado.
-    public GameObject PickedObject => _pickedObject;
-    public IngredientData IngredientData => _ingredientData;
+
     private PickableObject _currentPickableObjectScript;
 
     // Nuevo método público para que otros scripts puedan establecer el objeto atrapado.
@@ -73,23 +74,35 @@ public class ObjectCatcherScript : MonoBehaviour
     // El Update se encargará de posicionar el objeto solo si ya ha sido detectado
     void Update()
     {
-        StartCoroutine(PickObjectDelayed(1f));
+        PickObject();
     }
 
     // Este método se activa cuando un Collider entra en el trigger
     void OnTriggerEnter(Collider other)
     {
 
-        if (!(other.gameObject.layer == LayerMask.GetMask("Object"))) return;
+        if (other.gameObject.layer != LayerMask.NameToLayer("Object"))
+        {
+            Debug.Log("no objetopp");
+            return;
+        }
 
         PickableObject pickable = other.gameObject.GetComponent<PickableObject>();
+        Debug.Log("Sanguche de migaaaaaaaaaaa"); 
 
         if (pickable && !pickable.IsPicked)
         {
+            Debug.Log("Objecttovich");
+            _pickedObject = other.gameObject;
+            _ingredientData = _currentPickableObjectScript.Data;
+            _currentPickableObjectScript = other.GetComponent<PickableObject>();
+            _caughtRigidbody = pickable.Rb;
             pickable.transform.position = superficieTransform.position;
-            pickable.Rb.isKinematic = false;
-            // logica para enchufar el objeto a un transform en especifico.
+            pickable.Rb.isKinematic = true;
+           
         }
+            // logica para enchufar el objeto a un transform en especifico.
+    }
         
         /*
 
@@ -110,7 +123,6 @@ public class ObjectCatcherScript : MonoBehaviour
             }
         }
         */
-    }
 
     // Este método se activa cuando un Collider sale del trigger
     void OnTriggerExit(Collider other)
@@ -131,37 +143,36 @@ public class ObjectCatcherScript : MonoBehaviour
         }
     }
 
-    private IEnumerator PickObjectDelayed(float delayTime)
+    void PickObject()
     {
-       if (!(gameObject.layer == LayerMask.GetMask("Object"))) yield break;
-        
-       // Solo ejecuta la lógica si un objeto ha sido atrapado
-       if (_pickedObject != null)
+        if (_pickedObject.layer != LayerMask.NameToLayer("Object"))
+            return;
+
+        // Solo ejecuta la lógica si un objeto ha sido atrapado
+        if (_pickedObject != null)
         {
-           // Opcional: Asegúrate de que el objeto no tiene un padre (esto ayuda a evitar problemas)
-           if (_pickedObject.transform.parent == null)
+            // Opcional: Asegúrate de que el objeto no tiene un padre (esto ayuda a evitar problemas)
+            if (_pickedObject.transform.parent == null)
             {
-               // Verifica que la superficie exista y el objeto tenga el tag correcto
-               if (superficieTransform != null && _pickedObject.CompareTag("Object"))
-               {
-                   yield return new WaitForSeconds(1f);
-                   // Obtiene la altura del objeto con su collider
-                   float objectHeight = _pickedObject.GetComponent<Collider>().bounds.extents.y;
-                   Vector3 superficiePosition = superficieTransform.position;
+                // Verifica que la superficie exista y el objeto tenga el tag correcto
+                if (superficieTransform != null && _pickedObject.layer == LayerMask.GetMask("Object"))
+                {
+                    // Obtiene la altura del objeto con su collider
+                    float objectHeight = _pickedObject.GetComponent<Collider>().bounds.extents.y;
+                    Vector3 superficiePosition = superficieTransform.position;
 
-                   // Calcula la nueva posición del objeto
-                   Vector3 newPosition = new Vector3(
-                       superficiePosition.x + offset.x,
-                       superficiePosition.y + objectHeight + offset.y,
-                       superficiePosition.z + offset.z
-                   );
+                    // Calcula la nueva posición del objeto
+                    Vector3 newPosition = new Vector3(
+                        superficiePosition.x + offset.x,
+                        superficiePosition.y + objectHeight + offset.y,
+                        superficiePosition.z + offset.z
+                    );
 
-                   // Establece la rotación y posición
-                   _pickedObject.transform.rotation = superficieTransform.rotation;
-                   _pickedObject.transform.position = newPosition;
-               }
-           }
-       }
-        
+                    // Establece la rotación y posición
+                    _pickedObject.transform.rotation = superficieTransform.rotation;
+                    _pickedObject.transform.position = newPosition;
+                }
+            }
+        } 
     }
 }

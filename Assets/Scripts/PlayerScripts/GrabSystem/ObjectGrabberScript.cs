@@ -129,6 +129,7 @@ public class ObjectGrabberScript : MonoBehaviour
         rb.isKinematic = true;
 
         Debug.Log("Gluing obj!");
+        Grabbed.CurrentPickable.SetPicked(true);
     }
 
     private void UnglueObjectToPlayer(GameObject obj)
