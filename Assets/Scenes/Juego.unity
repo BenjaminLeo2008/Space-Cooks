@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2547,6 +2547,7 @@ GameObject:
   - component: {fileID: 324759756}
   - component: {fileID: 324759755}
   - component: {fileID: 324759760}
+  - component: {fileID: 324759761}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2569,9 +2570,10 @@ MonoBehaviour:
   TiempoUI: {fileID: 1551198895}
   player: {fileID: 754563316}
   escenaPuntaje: EscenaPuntaje
-  min: 0
-  seg: 50
+  min: 2
+  seg: 0
   TimerTxt: {fileID: 1713791836}
+  timerController: {fileID: 0}
 --- !u!114 &324759756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2669,6 +2671,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71eba3ab66c8ed04f84869bb9d31764b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &324759761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324759754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 733d05c41cf15ca4d9b0387544e52096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TiempoUI: {fileID: 41878874}
+  player: {fileID: 1449835610}
+  escenaPuntaje: EscenaPuntaje
+  min: 2
+  seg: 0
+  TimerTxt: {fileID: 1713791836}
+  timerController: {fileID: 0}
 --- !u!1 &333085518
 GameObject:
   m_ObjectHideFlags: 0
@@ -6586,7 +6607,7 @@ PrefabInstance:
     - target: {fileID: 959567965738213444, guid: 9a4898e0a29267140aa270caf30cb7f6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.04
+      value: 7.99
       objectReference: {fileID: 0}
     - target: {fileID: 959567965738213444, guid: 9a4898e0a29267140aa270caf30cb7f6,
         type: 3}
@@ -13072,6 +13093,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1592821525}
   - component: {fileID: 1592821524}
+  - component: {fileID: 1592821526}
   m_Layer: 0
   m_Name: ControlPedido
   m_TagString: Untagged
@@ -13092,7 +13114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnIntervalMin: 3
-  spawnIntervalMax: 3
+  spawnIntervalMax: 6
   orderPrefabs:
   - {fileID: 1363528570609600155, guid: 7cf7f3c81eb3e57468829d4866107d56, type: 3}
   - {fileID: 1363528570609600155, guid: ba86358036f58604299a2414fe51ef63, type: 3}
@@ -13114,6 +13136,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1592821526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592821523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4acad8ac4ab09e4409a1dd3c5667f515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pedidosControlScript: {fileID: 0}
+  timeBars: []
 --- !u!1001 &1602057077
 PrefabInstance:
   m_ObjectHideFlags: 0
