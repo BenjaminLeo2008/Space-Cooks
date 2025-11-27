@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,13 +12,14 @@ public class ContadorTiempo : MonoBehaviour
     public string escenaPuntaje = "EscenaPuntaje";
     public int min, seg;
     public TextMeshProUGUI TimerTxt;
+    public TimerController timerController;
 
     private float restante;
     private bool enMarcha;
 
     private void Awake()
     {
-        restante = (min * 60) + seg;
+        if (timerController != null)
         enMarcha = true;
     }
 
@@ -53,7 +54,7 @@ public class ContadorTiempo : MonoBehaviour
         {
             player.enabled = false;
         }
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(escenaPuntaje);
     }
 }
