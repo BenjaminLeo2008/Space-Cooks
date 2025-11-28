@@ -80,27 +80,28 @@ public class ObjectCatcherScript : MonoBehaviour
     // Este método se activa cuando un Collider entra en el trigger
     void OnTriggerEnter(Collider other)
     {
-
+        Debug.Log("Sandia");
         if (other.gameObject.layer != LayerMask.NameToLayer("Object"))
         {
-            Debug.Log("no objetopp");
+            Debug.Log("Se está por returnear");
             return;
+            
         }
 
         PickableObject pickable = other.gameObject.GetComponent<PickableObject>();
-        Debug.Log("Sanguche de migaaaaaaaaaaa"); 
 
         if (pickable && !pickable.IsPicked)
         {
-            Debug.Log("Objecttovich");
+            Debug.Log("isagi");
+            _currentPickableObjectScript = other.GetComponent<PickableObject>();
             _pickedObject = other.gameObject;
             _ingredientData = _currentPickableObjectScript.Data;
-            _currentPickableObjectScript = other.GetComponent<PickableObject>();
             _caughtRigidbody = pickable.Rb;
             pickable.transform.position = superficieTransform.position;
             pickable.Rb.isKinematic = true;
-           
+           Debug.Log("Se pickeo el objeto");
         }
+        Debug.Log("Pizza");
             // logica para enchufar el objeto a un transform en especifico.
     }
         
@@ -136,6 +137,7 @@ public class ObjectCatcherScript : MonoBehaviour
                 _caughtRigidbody.isKinematic = false;
             }
             // Limpiamos las referencias
+            Debug.Log("Barou");
             _pickedObject = null;
             _ingredientData = null;
             _currentPickableObjectScript = null;
@@ -145,18 +147,23 @@ public class ObjectCatcherScript : MonoBehaviour
 
     void PickObject()
     {
-        if (_pickedObject.layer != LayerMask.NameToLayer("Object"))
-            return;
-
-        // Solo ejecuta la lógica si un objeto ha sido atrapado
-        if (_pickedObject != null)
+        if (_pickedObject == null)
         {
+            Debug.Log("ness");
+            return;
+        }
+        // Solo ejecuta la lógica si un objeto ha sido atrapado
+        if (_pickedObject.layer != LayerMask.NameToLayer("Object"))
+        {
+            Debug.Log("loki");
             // Opcional: Asegúrate de que el objeto no tiene un padre (esto ayuda a evitar problemas)
             if (_pickedObject.transform.parent == null)
             {
+                Debug.Log("kaiser");
                 // Verifica que la superficie exista y el objeto tenga el tag correcto
                 if (superficieTransform != null && _pickedObject.layer == LayerMask.GetMask("Object"))
                 {
+                    Debug.Log("don lorenzo");
                     // Obtiene la altura del objeto con su collider
                     float objectHeight = _pickedObject.GetComponent<Collider>().bounds.extents.y;
                     Vector3 superficiePosition = superficieTransform.position;
